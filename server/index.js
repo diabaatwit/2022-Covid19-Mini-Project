@@ -21,12 +21,9 @@ db.once('open', () => console.log('Connected to database'))
 // telling the app that we'll use json
 app.use(express.json())
 
-<<<<<<< HEAD
 // use patient router in http://localhost:3001/patients
 const patientsRouter = require('./routes/patients')
 app.use('/patients', patientsRouter)
-=======
->>>>>>> 573275a0e1c18431c4152727380a27be055b264b
 
 
 app.get("/", (req, res) => {

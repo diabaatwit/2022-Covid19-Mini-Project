@@ -18,8 +18,8 @@ router.get('/', async (req, res) => {
 })
 
 // getting one patient
-router.get('/:id', (req, res) => {
-    res.send(req.params.id)
+router.get('/:id', getPatient, (req, res) => {
+    res.json(res.patient)
 })
 
 

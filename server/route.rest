@@ -10,17 +10,27 @@ POST http://localhost:3001/patients
 Content-Type: application/json
 
 {
-    "name": "Frank Kremindahl",
-    "age": 26,
-    "email": "frank@example.com",
-    "phoneNumber": "891-516-9992",
-    "address": "162 Henry St.",
-    "city": "newton",
+    "name": "Omar Diab",
+    "age": 32,
+    "email": "omar@example.com",
+    "phoneNumber": "891-341-7163",
+    "address": "24 Harvard St.",
+    "city": "Cambridge",
     "state": "MA",
-    "zipCode": "02168"
+    "zipCode": "32761"
 }
 
 
 ###
 
-DELETE http://localhost:3001/patients/61f71d8736c1b2c6cb26ec2a
+PATCH http://localhost:3001/patients/61f81f239180161ec9270e13
+Content-Type: application/json
+
+{
+    "age": "33"
+}
+
+
+###
+
+GET http://localhost:3001/patients/61f81f239180161ec9270e13
