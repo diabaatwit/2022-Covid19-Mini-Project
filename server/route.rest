@@ -1,0 +1,26 @@
+
+// testing requests, make sure to install Rest Client form VScode extensions.
+
+GET http://localhost:3001/patients
+
+###
+
+
+POST http://localhost:3001/patients
+Content-Type: application/json
+
+{
+    "name": "Frank Kremindahl",
+    "age": 26,
+    "email": "frank@example.com",
+    "phoneNumber": "891-516-9992",
+    "address": "162 Henry St.",
+    "city": "newton",
+    "state": "MA",
+    "zipCode": "02168"
+}
+
+
+###
+
+DELETE http://localhost:3001/patients/61f71d8736c1b2c6cb26ec2a

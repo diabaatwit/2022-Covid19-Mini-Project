@@ -11,6 +11,9 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+
+<button>Press me</button>
+
 //Ruben Ruiz :)
 //Diana Ruiz :P
 
