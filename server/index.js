@@ -25,6 +25,10 @@ app.use(express.json())
 const patientsRouter = require('./routes/patients')
 app.use('/patients', patientsRouter)
 
+// use exam router in http://localhost:3001/exams
+const examsRouter = require('./routes/exams')
+app.use('/exams', examsRouter)
+
 
 app.get("/", (req, res) => {
   res.json({ message: "Hello from server!" });
