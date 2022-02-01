@@ -20,6 +20,10 @@ Content-Type: application/json
     "zipCode": "32761"
 }
 
+###
+
+DELETE http://localhost:3001/patients/61f9b10f2730b051e7971290
+
 
 ###
 
