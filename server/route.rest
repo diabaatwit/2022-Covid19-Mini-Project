@@ -22,7 +22,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3001/patients/61f9b10f2730b051e7971290
+DELETE http://localhost:3001/patients/61fadeb421d63c8ab45dadb7
 
 
 ###
