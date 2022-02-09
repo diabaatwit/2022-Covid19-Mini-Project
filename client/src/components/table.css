@@ -1,29 +1,87 @@
 
-
 .container {
 	position: absolute;
 	top: 20%;
 	left: 8%;
+	width: 45%;
+	
+}
+
+
+
+.patient-head tbody:before {
+	content: '';
+	display: block;
+	height: 20px;
+  }
+
+.card-item{
+	height: 30px;
+	justify-self: center;
+}
+
+.exam-card{
+	background-color: #242730;
+}
+.exam-card td{
+	font-size: clamp(10px,2vw,14px);
+	
+}
+
+.exam-card div{
+	height: 40px;
+}
+
+.exam-id,.patient-id{
+	overflow-wrap: break-word;
+}
+
+.container td{
+	width: 100%;
+}
+
+
+.key-findings{
+	text-overflow: ellipsis;
+
+  	white-space: nowrap;
+  	overflow: hidden;
+}
+
+.xray {
+	width: 60%;
+	min-width: 25px;
+	border-radius: 5px;
+}
+
+.zip-code{
+	flex-grow: 1;
 }
 
 table {
-	width: 800px;
+	table-layout: fixed;
+	width: 100%;
 	border-collapse: collapse;
 	overflow: hidden;
 	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+	border-spacing: 10px;
+
 }
+
+
 
 th, td{
     padding: 15px;
-    background-color: rgba(255,255,255,0.2);
     color: #fff;
 }
 
 th{
     text-align: left;
-    background-color: #55608f;
+    background-color: transparent;
     font-size: larger;
 }
+
+
 
 
 
