@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Table from './components/TableExams'
+import Header from './components/WebsiteHeader';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Header />
+    <Table />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -9,6 +9,7 @@ router.get('/', async (req, res) => {
     try {
         // get all exams, and retrieve it in json format.
         const exams = await Exam.find()
+        res.header("Access-Control-Allow-Origin", "*")
         res.json(exams)
     }
     catch (err) {
@@ -19,6 +20,7 @@ router.get('/', async (req, res) => {
 
 // getting one exam
 router.get('/:id', getExam, (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*")
     res.json(res.exam)
 })
 
@@ -43,11 +45,6 @@ router.post('/', async (req, res) => {
     }
 })
 
-// Getting a specific exam
-router.get('/:id', getExam, (req, res) => {
-    res.json(res.exam)
-  })
-
 
 // Updating an exam
 router.patch('/:id', getExam, async (req, res) => {
@@ -71,6 +68,7 @@ router.patch('/:id', getExam, async (req, res) => {
     }
     try {
       const updatedExam = await res.exam.save()
+      res.header("Access-Control-Allow-Origin", "*")
       res.json(updatedExam)
     } catch (err) {
       res.status(400).json({ message: err.message })
@@ -82,6 +80,7 @@ router.patch('/:id', getExam, async (req, res) => {
     try {
       // delete exam with this id.
       await res.exam.remove()
+      res.header("Access-Control-Allow-Origin", "*")
       res.json({ message: 'Exam deleted' })
     } catch (err) {
       // if error, display error 500
