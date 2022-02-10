@@ -7,6 +7,10 @@
     text-decoration: none;
 }
 
+html{
+    background-color: #D4D5D4;
+}
+
 header{
     width: 100vw;
     height: 100px;
