@@ -32,7 +32,39 @@ class Table extends Component {
   examRecordCard = () => {
     return this.state.exams.map(exam => {
       return (
-        <tr class="exam-card"key={exam._id}> 
+
+        <div class ="exam-card" key={exam.id}>
+          
+          <div class="card-item xray-box">
+            <img class="xray" src={exam.xRayImageLink} alt="xRayImage"/>
+          </div>
+          <div class="spacer"/>
+          <div class="card-item brixia-scores"><span>{exam.brixiaScores}</span></div>
+          <div class="spacer"/>
+          <div class="card-item exam-id"><span>{exam._id}</span></div>
+          <div class="spacer"/>
+          <div class="card-item patient-id"><span>{exam.patientID}</span></div>
+          <div class="spacer"/>
+          <div class="card-item key-findings"><span>{exam.keyFindings}</span></div>
+          <div class="spacer"/>
+          <div class="card-item age"><span>23</span></div>
+          <div class="spacer"/>
+          <div class="card-item sex"><span>F</span></div>
+          <div class="spacer"/>
+          <div class="card-item bmi"><span>21</span></div>
+          <div class="spacer"/>
+          <div class="card-item zip-code"><span>0000</span></div>
+         
+          
+        </div>
+
+        /*<div class="card-item age"><span>{exam.age}</span></div>
+          <div class="card-item sex"><span>{exam.sex}</span></div>
+          <div class="card-item bmi"><span>{exam.bmi}</span></div>
+          <div class="card-item zip-code"><span>{exam.zipCode}</span></div>
+          */
+
+        /*<tr class="exam-card"key={exam._id}> 
           <td>
             <div class="card-item">
               <img class="xray" src={exam.xRayImageLink} alt="xRayImage"/>
@@ -46,7 +78,7 @@ class Table extends Component {
           <td><div class="card-item sex">{exam.sex}</div></td>
           <td><div class="card-item bmi">{exam.bmi}</div></td>
           <td><div class="card-item zip-code">{exam.zipCode}</div></td>
-        </tr>
+        </tr>*/
       )
     })
   }
@@ -65,7 +97,25 @@ class Table extends Component {
 
     return exams.length > 0
       ? (
+        <div class="container">
+          <div class = "header-exam">
+           <div>IMG</div>
+           <div>Brixia Scores</div>
+           <div> Exam ID</div>
+           <div> Patient ID</div>
+           <div> Key Findings</div>
+           <div> Age</div>
+           <div> Sex</div>
+           <div> Zip Code</div>
+           
+          </div>
+          
+          <div class="list-exam">
+            {this.examRecordCard()}
+          </div>
 
+        </div>
+  /*
         <div class='container'>
           <table>
             <thead class="patient-head">
@@ -89,7 +139,7 @@ class Table extends Component {
             </tbody>
           </table>
         </div>
-
+*/
       ) : (
         <div>No exams.</div>
       )
