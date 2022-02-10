@@ -3,11 +3,11 @@ import './table.css'
 
 class Table extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       exams: [],
       isLoading: false,
-      isError: false
+      isError: false,
     }
   }
 
@@ -25,15 +25,13 @@ class Table extends Component {
     }
   }
 
-  renderTableHeader = () => {
-    return Object.keys(this.state.exams[0]).map(attr => <th key={attr}>{attr.toUpperCase()}</th>)
-  }
+
 
   examRecordCard = () => {
     return this.state.exams.map(exam => {
       return (
 
-        <div class ="exam-card" key={exam.id}>
+        <div class ="exam-card" key={exam.id} onClick={e => {}}>
           
           <div class="card-item xray-box">
             <img class="xray" src={exam.xRayImageLink} alt="xRayImage"/>
@@ -41,9 +39,9 @@ class Table extends Component {
           <div class="spacer"/>
           <div class="card-item brixia-scores"><span>{exam.brixiaScores}</span></div>
           <div class="spacer"/>
-          <div class="card-item exam-id"><span>{exam._id}</span></div>
+          <div class="card-item exam-id"><a><span>{exam._id}</span></a></div>
           <div class="spacer"/>
-          <div class="card-item patient-id"><span>{exam.patientID}</span></div>
+          <div class="card-item patient-id"><a><span>{exam.patientID}</span></a></div>
           <div class="spacer"/>
           <div class="card-item key-findings"><span>{exam.keyFindings}</span></div>
           <div class="spacer"/>
@@ -99,14 +97,15 @@ class Table extends Component {
       ? (
         <div class="container">
           <div class = "header-exam">
-           <div>IMG</div>
-           <div>Brixia Scores</div>
-           <div> Exam ID</div>
-           <div> Patient ID</div>
-           <div> Key Findings</div>
-           <div> Age</div>
-           <div> Sex</div>
-           <div> Zip Code</div>
+           <div id="img-header">IMG</div>
+           <div id="brixia-header">Brixia<br/> Scores</div>
+           <div id="exam-header"> Exam ID</div>
+           <div id="patient-header"> Patient ID</div>
+           <div id="key-header"> Key Findings</div>
+           <div id="age-header"> Age</div>
+           <div id="sex-header"> Sex</div>
+           <div id="bmi-header"> BMI</div>
+           <div id="zip-header"> Zip Code</div>
            
           </div>
           
