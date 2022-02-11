@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './table.css'
 
-
 class Table extends Component {
   constructor(props) {
     super(props);
@@ -37,7 +36,6 @@ class Table extends Component {
 
     }
   }
-
 
 /**Rendering an exam card */
   examRecordCard = () => {
@@ -136,7 +134,6 @@ class Table extends Component {
         <div>No exams.</div>
       )
   }
-
 
 }
 
