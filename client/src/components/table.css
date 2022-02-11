@@ -32,7 +32,7 @@
 	border-radius: .2em;
 	cursor: pointer;
 	transition: background-color 225ms ease-out, 
-	border 100ms ease-out, border-radius 100ms ease-out, height 100ms ease-in;
+	border 100ms ease-out, border-radius 100ms ease-out, height 80ms ease-out;
 	box-shadow: 0 0 5px rgba(0,0,0,0.4);
 	
 }
@@ -46,10 +46,27 @@
 }
 
 .exam-card-highlight{
-	background-color: #252e49;
-	border: solid 2px #4b718a;
+	background-color: #3c5c72;
+	border: solid 2px #2e3855;
 	border-radius: .2em;
-	height:4.1em;
+	height:3.6em;
+	display: flex;
+	align-content: center;	
+	padding: 0.1em;
+	margin-bottom: .2em;
+	position: relative;
+	cursor: pointer;
+	transition: background-color 225ms ease-out, 
+	border 100ms ease-out, border-radius 100ms ease-out, height 80ms ease-out;
+	box-shadow: 0 0 5px rgba(0,0,0,1);
+}
+
+.exam-card-highlight:hover{
+
+	background-color: #3a6480;
+	border: solid 3px #599dca;
+	border-radius: .3em;
+	height:3.9em;
 }
 
 .xray{

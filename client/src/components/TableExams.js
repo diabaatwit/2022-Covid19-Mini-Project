@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './table.css'
 
+
 class Table extends Component {
   constructor(props) {
     super(props);
@@ -8,9 +9,21 @@ class Table extends Component {
       exams: [],
       isLoading: false,
       isError: false,
+      isSelected: false,
+      searchTerm: '',
+      
     }
+    this.onClick = this.onClick.bind(this);
   }
+/* responsible for toggling the stlye on an exam card */
 
+  onClick() {
+    this.setState({
+      isSelected: !this.state.isSelected
+    });
+
+  }
+/* fetching exams */
   async componentDidMount() {
     this.setState({ isLoading: true })
     const response = await fetch('http://localhost:3001/exams');
@@ -26,63 +39,59 @@ class Table extends Component {
   }
 
 
-
+/**Rendering an exam card */
   examRecordCard = () => {
-    return this.state.exams.map(exam => {
+  //filtering the exam list by what was entered in the search box, which is stored under state searchTerm
+    return this.state.exams.filter((val)=>{
+      if(this.state.searchTerm=="") {
+        return val
+      }else if ((val._id).includes(this.state.searchTerm) ||
+       (val.patientID).includes(this.state.searchTerm) ||
+       (val.keyFindings.toLowerCase()).includes(this.state.searchTerm.toLowerCase())){
+        return val
+      }
+    }).map(exam => { 
       return (
-
-        <div class ="exam-card" key={exam.id} onClick={e => {}}>
+          /*My problem is here: this is responsible for toggling the class
+          refer to line 20 for onClick function, and 12 for the state property.*/
+        <div className ={ this.state.isSelected ? "exam-card-highlight": "exam-card"} key={exam._id} onClick={this.onClick}>
           
-          <div class="card-item xray-box">
-            <img class="xray" src={exam.xRayImageLink} alt="xRayImage"/>
+          <div className="card-item xray-box">
+            <img className="xray" src={exam.xRayImageLink} alt="xRayImage"/>
           </div>
-          <div class="spacer"/>
-          <div class="card-item brixia-scores"><span>{exam.brixiaScores}</span></div>
-          <div class="spacer"/>
-          <div class="card-item exam-id"><a><span>{exam._id}</span></a></div>
-          <div class="spacer"/>
-          <div class="card-item patient-id"><a><span>{exam.patientID}</span></a></div>
-          <div class="spacer"/>
-          <div class="card-item key-findings"><span>{exam.keyFindings}</span></div>
-          <div class="spacer"/>
-          <div class="card-item age"><span>23</span></div>
-          <div class="spacer"/>
-          <div class="card-item sex"><span>F</span></div>
-          <div class="spacer"/>
-          <div class="card-item bmi"><span>21</span></div>
-          <div class="spacer"/>
-          <div class="card-item zip-code"><span>0000</span></div>
+          <div className="spacer"/>
+          <div className="card-item brixia-scores"><span>{exam.brixiaScores}</span></div>
+          <div className="spacer"/>
+          <div className="card-item exam-id"><a><span>{exam._id}</span></a></div>
+          <div className="spacer"/>
+          <div className="card-item patient-id"><a><span>{exam.patientID}</span></a></div>
+          <div className="spacer"/>
+          <div className="card-item key-findings"><span>{exam.keyFindings}</span></div>
+          <div className="spacer"/>
+          <div className="card-item age"><span>23</span></div>
+          <div className="spacer"/>
+          <div className="card-item sex"><span>F</span></div>
+          <div className="spacer"/>
+          <div className="card-item bmi"><span>21</span></div>
+          <div className="spacer"/>
+          <div className="card-item zip-code"><span>0000</span></div>
          
           
         </div>
-
+        //not currently sure how to also include this patient data
         /*<div class="card-item age"><span>{exam.age}</span></div>
           <div class="card-item sex"><span>{exam.sex}</span></div>
           <div class="card-item bmi"><span>{exam.bmi}</span></div>
           <div class="card-item zip-code"><span>{exam.zipCode}</span></div>
           */
 
-        /*<tr class="exam-card"key={exam._id}> 
-          <td>
-            <div class="card-item">
-              <img class="xray" src={exam.xRayImageLink} alt="xRayImage"/>
-            </div>
-          </td>
-          <td><div class="card-item brixia-scores">{exam.brixiaScores}</div></td>
-          <td><div class="card-item exam-id">{exam._id}</div></td>
-          <td><div class="card-item patient-id">{exam.patientID}</div></td>
-          <td><div class="card-item key-findings">{exam.keyFindings}</div></td>
-          <td><div class="card-item age">{exam.age}</div></td>
-          <td><div class="card-item sex">{exam.sex}</div></td>
-          <td><div class="card-item bmi">{exam.bmi}</div></td>
-          <td><div class="card-item zip-code">{exam.zipCode}</div></td>
-        </tr>*/
       )
     })
   }
 
   render() {
     const { exams, isLoading, isError } = this.state
+    //const [searchTerm, setSearchTerm] = useState('')
 
     if (isLoading) {
       return <div class="loading">Loading Table...</div>
@@ -95,8 +104,15 @@ class Table extends Component {
 
     return exams.length > 0
       ? (
+        //input tracking searchTerms
         <div class="container">
-          <div class = "header-exam">
+          
+          <input type="text" placeholder="Search..." 
+          value={this.state.searchTerm} 
+          onChange={event => {
+            this.setState({ searchTerm: event.target.value} )} }/>
+          
+          <div className = "header-exam">
            <div id="img-header">IMG</div>
            <div id="brixia-header">Brixia<br/> Scores</div>
            <div id="exam-header"> Exam ID</div>
@@ -106,39 +122,16 @@ class Table extends Component {
            <div id="sex-header"> Sex</div>
            <div id="bmi-header"> BMI</div>
            <div id="zip-header"> Zip Code</div>
-           
           </div>
           
           <div class="list-exam">
-            {this.examRecordCard()}
+          
+          {this.examRecordCard()}
+            
+
           </div>
 
         </div>
-  /*
-        <div class='container'>
-          <table>
-            <thead class="patient-head">
-              <tr>
-                <th>Img</th>
-                <th>Brixia Scores</th>
-                <th>Exam Id</th>
-                <th>Patient Id</th>
-                <th>Key Findings</th>
-                <th>Age</th>
-                <th>Sex</th>
-                <th>BMI</th>
-                <th>Zip Code</th>
-                
-              </tr>
-            </thead>
-            <tbody>
-    
-                {this.examRecordCard()}
-                
-            </tbody>
-          </table>
-        </div>
-*/
       ) : (
         <div>No exams.</div>
       )
