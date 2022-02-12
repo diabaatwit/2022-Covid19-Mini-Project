@@ -170,5 +170,26 @@ a{
 	
 }
 	
-/*hover stuff*/
+/*search bar*/
+
+#search-container{
+	display:flex;
+	padding: .5em;
+}
+
+#search-label{
+	font-weight: 100;
+	font-size: 1.7em;
+	flex: 1;
+	font-family: 'Roboto', sans-serif;
+
+}
+
+.search-bar{
+	border: solid 1px #66686D;
+	border-radius: 5px;
+	background-color: #AFAEB2;
+	flex: 4;
+	
+}
 

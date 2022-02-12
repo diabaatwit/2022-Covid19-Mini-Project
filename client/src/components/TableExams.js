@@ -104,11 +104,13 @@ class Table extends Component {
       ? (
         //input tracking searchTerms
         <div class="container">
-          
-          <input type="text" placeholder="Search..." 
-          value={this.state.searchTerm} 
-          onChange={event => {
-            this.setState({ searchTerm: event.target.value} )} }/>
+          <div id="search-container"> 
+            <p id="search-label">Search:</p>
+            <input className="search-bar" type="text" 
+            value={this.state.searchTerm} 
+            onChange={event => {
+              this.setState({ searchTerm: event.target.value} )} }/>
+          </div>
           
           <div className = "header-exam">
            <div id="img-header">IMG</div>
