@@ -1,29 +1,195 @@
-
-
-.container {
-	position: absolute;
-	top: 20%;
-	left: 8%;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+.container{
+	
+	padding: 10px;
+	margin-left: 5%;
+	margin-top: 6%;
+	margin-right: 50%;
+	margin-bottom: auto;
+	min-width: 593px;
 }
 
-table {
-	width: 800px;
-	border-collapse: collapse;
+.list-exam{
+	border: solid 1px black;
+	border-radius: .2em;
+	padding: .3em;
+	box-shadow: 0 0 3px rgba(0,0,0,0.4);
+}
+
+.exam-card{
+	
+	display: flex;
+	align-content: center;
+	height: 4em;
+	padding: 0.1em;
+	background-color: #242730;
+	margin-bottom: .2em;
+	position: relative;
+	border: solid 2px rgb(15, 6, 27);
+	border-radius: .2em;
+	cursor: pointer;
+	transition: background-color 225ms ease-out, 
+	border 100ms ease-out, border-radius 100ms ease-out, height 80ms ease-out;
+	box-shadow: 0 0 5px rgba(0,0,0,0.4);
+	
+}
+
+.exam-card:hover{
+
+	background-color: #2b385e;
+	border: solid 3px #6095b9;
+	border-radius: .3em;
+	height:4.3em;
+}
+
+.exam-card-highlight{
+	background-color: #3c5c72;
+	border: solid 2px #2e3855;
+	border-radius: .2em;
+	height:3.6em;
+	display: flex;
+	align-content: center;	
+	padding: 0.1em;
+	margin-bottom: .2em;
+	position: relative;
+	cursor: pointer;
+	transition: background-color 225ms ease-out, 
+	border 100ms ease-out, border-radius 100ms ease-out, height 80ms ease-out;
+	box-shadow: 0 0 5px rgba(0,0,0,1);
+}
+
+.exam-card-highlight:hover{
+
+	background-color: #3a6480;
+	border: solid 3px #599dca;
+	border-radius: .3em;
+	height:3.9em;
+}
+
+.xray{
+	max-width: 100%;
+	max-height: 100%;
+}
+
+
+
+
+.card-item{
+	font-family: 'Roboto Mono', monospace;
+	color:rgb(228, 228, 228);
+	padding: .3em;
 	overflow: hidden;
-	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+	/*border: solid 2px black;
+	background-color: gray;*/
+	
 }
 
-th, td{
-    padding: 15px;
-    background-color: rgba(255,255,255,0.2);
-    color: #fff;
+.spacer{
+	
+	margin-top: 1%;
+	max-height: 70%;
+   	border-left: solid 2px rgb(100, 100, 100);
 }
 
-th{
-    text-align: left;
-    background-color: #55608f;
-    font-size: larger;
+.card-item span{
+	text-align:justify;
+	vertical-align: middle;
+	font-size: clamp(0.7em,.8vw,1.1em);
 }
 
 
+/*making sure the text gets broken up*/
+.exam-id,.patient-id{
+	overflow-wrap: break-word;
+	font-weight: bold;
+
+}
+.key-findings{
+	text-overflow: ellipsis;
+
+  	white-space: nowrap;
+  	overflow: hidden;
+	
+}
+
+/*card sizing*/
+.key-findings{
+	flex: 4;
+}
+.patient-id,.exam-id{
+	flex: 3;
+}
+
+.brixia-scores{
+	flex: 2;
+}
+.age,.sex,.bmi,.zip-code{
+	flex:1;
+}
+.xray-box{
+	flex-grow:0;
+	flex-shrink:0;
+	flex-basis: 40px;
+	
+}
+
+a{
+	color: #00d8ff;
+	text-decoration-line: underline;
+}
+/*header stuff*/
+
+.header-exam{
+	display: flex;
+	border-top: solid 1px #242730;
+}
+#key-header, #patient-header,#exam-header{
+	flex: 3;
+}
+
+#brixia-header{
+	flex: 1.8;
+	
+
+}
+
+#age-header,#sex-header,#zip-header,#bmi-header{
+	flex: 1;
+}
+
+.header-exam{
+	display: flex;
+	padding: .4em;
+	padding-left: 1em; 
+}
+.header-exam div{
+	flex: 1;
+	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
+	
+}
+	
+/*search bar*/
+
+#search-container{
+	display:flex;
+	padding: .5em;
+}
+
+#search-label{
+	font-weight: 100;
+	font-size: 1.7em;
+	flex: 1;
+	font-family: 'Roboto', sans-serif;
+
+}
+
+.search-bar{
+	border: solid 1px #66686D;
+	border-radius: 5px;
+	background-color: #AFAEB2;
+	flex: 4;
+	
+}
 
