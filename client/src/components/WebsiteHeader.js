@@ -12,8 +12,8 @@ class Header extends Component {
                         </div>
                     </div>
                     <nav>
-                        <li><span><a href="" class="button">Main</a></span></li>
-                        <li><span><a href="" class="button">Admin</a></span></li>
+                        <li><span><a href="/" class="button">Main</a></span></li>
+                        <li><span><a href="/admin" class="button">Admin</a></span></li>
                     </nav>
                 </div>
             </header>

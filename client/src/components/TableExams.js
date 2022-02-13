@@ -65,16 +65,6 @@ class Table extends Component {
           <div className="card-item patient-id"><a><span>{exam.patientID}</span></a></div>
           <div className="spacer"/>
           <div className="card-item key-findings"><span>{exam.keyFindings}</span></div>
-          <div className="spacer"/>
-          <div className="card-item age"><span>23</span></div>
-          <div className="spacer"/>
-          <div className="card-item sex"><span>F</span></div>
-          <div className="spacer"/>
-          <div className="card-item bmi"><span>21</span></div>
-          <div className="spacer"/>
-          <div className="card-item zip-code"><span>0000</span></div>
-         
-          
         </div>
         //not currently sure how to also include this patient data
         /*<div class="card-item age"><span>{exam.age}</span></div>
@@ -118,10 +108,6 @@ class Table extends Component {
            <div id="exam-header"> Exam ID</div>
            <div id="patient-header"> Patient ID</div>
            <div id="key-header"> Key Findings</div>
-           <div id="age-header"> Age</div>
-           <div id="sex-header"> Sex</div>
-           <div id="bmi-header"> BMI</div>
-           <div id="zip-header"> Zip Code</div>
           </div>
           
           <div class="list-exam">
