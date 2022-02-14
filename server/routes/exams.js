@@ -91,10 +91,10 @@ router.patch('/:id', getExam, async (req, res) => {
 
   // getting a specific exam by id
   async function getExam(req, res, next) {
-    let exam
+    let exam= []
     try {
       // get exam by id.
-      exam = await Exam.findById(req.params.id)
+      exam[0] = await Exam.findById(req.params.id)
       // if there is no exam with this id, display cannot find exam.
       if (exam == null) {
         return res.status(404).json({ message: 'Cannot find exam' })

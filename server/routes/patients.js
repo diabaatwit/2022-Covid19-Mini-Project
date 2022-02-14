@@ -9,8 +9,9 @@ router.get('/', async (req, res) => {
     try {
         // get all patients, and retrieve it in json format.
         const patients = await Patient.find()
-        res.json(patients)
         res.header("Access-Control-Allow-Origin", "*")
+        res.json(patients)
+        
     }
     catch (err) {
         // if error, display error 500
@@ -48,11 +49,7 @@ router.post('/', async (req, res) => {
     }
 })
 
-// Getting a specific patient
-router.get('/:id', getPatient, (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*")
-    res.json(res.patient)
-  })
+
 
 
 // Updating a patient.
@@ -108,10 +105,10 @@ router.patch('/:id', getPatient, async (req, res) => {
 
   // getting a specific patient by id
   async function getPatient(req, res, next) {
-    let patient
+    let patient= []
     try {
       // get patient by id.
-      patient = await Patient.findById(req.params.id)
+      patient[0] = await Patient.findById(req.params.id)
       // if there is no patient with this id, display cannot find patient.
       if (patient == null) {
         return res.status(404).json({ message: 'Cannot find patient' })

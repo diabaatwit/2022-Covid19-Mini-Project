@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import './table.css'
 
 class Table extends Component {
@@ -22,6 +23,15 @@ class Table extends Component {
     });
 
   }
+
+  onClickPatientID(idClicked){
+    var patientURL = "/patient/" + idClicked
+    console.log(patientURL)
+    window.patientID = patientURL
+    return patientURL
+  }
+
+
 /* fetching exams */
   async componentDidMount() {
     this.setState({ isLoading: true })
@@ -29,6 +39,7 @@ class Table extends Component {
     if (response.ok) {
       const exams = await response.json()
       console.log(exams)
+      console.log(typeof(exams))
       this.setState({ exams, isLoading: false })
     } else {
       this.setState({ isError: true, isLoading: false })
@@ -60,19 +71,13 @@ class Table extends Component {
           <div className="spacer"/>
           <div className="card-item brixia-scores"><span>{exam.brixiaScores}</span></div>
           <div className="spacer"/>
-          <div className="card-item exam-id"><a><span>{exam._id}</span></a></div>
+          <div className="card-item exam-id"><Link to={{pathname: '/exam/' + exam._id}}><span>{exam._id}</span></Link></div>
           <div className="spacer"/>
-          <div className="card-item patient-id"><a><span>{exam.patientID}</span></a></div>
+          <div className="card-item patient-id"><Link to={{pathname: '/patient/' + exam.patientID}} ><span>{exam.patientID}</span></Link></div>
           <div className="spacer"/>
           <div className="card-item key-findings"><span>{exam.keyFindings}</span></div>
         </div>
-        //not currently sure how to also include this patient data
-        /*<div class="card-item age"><span>{exam.age}</span></div>
-          <div class="card-item sex"><span>{exam.sex}</span></div>
-          <div class="card-item bmi"><span>{exam.bmi}</span></div>
-          <div class="card-item zip-code"><span>{exam.zipCode}</span></div>
-          */
-
+        
       )
     })
   }
@@ -127,3 +132,4 @@ class Table extends Component {
 
 export default Table;
 
+// onClick={this.onClickPatientID(exam.patientID)} href="/patient"
