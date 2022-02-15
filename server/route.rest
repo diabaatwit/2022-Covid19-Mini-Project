@@ -17,21 +17,23 @@ Content-Type: application/json
     "address": "29 Main St.",
     "city": "Boston",
     "state": "MA",
-    "zipCode": "31478"
+    "zipCode": "31478",
+    "sex": "F"
 }
 
 ###
 
-DELETE http://localhost:3001/patients/620ac4389086d5aef30fddb6
+DELETE http://localhost:3001/patients/620ac34662cf3a2d42355a79
 
 
 ###
 
-PATCH http://localhost:3001/patients/62017f00f76069b0f768c114
+PATCH http://localhost:3001/patients/6209a0f0efb1b5f366f63993
 Content-Type: application/json
 
 {
-    "name": "Fen Zhang"
+    "name": "James Zhang",
+    "sex": "M"
 }
 
 

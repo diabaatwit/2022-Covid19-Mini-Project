@@ -35,6 +35,10 @@ const patientSchema = new mongoose.Schema({
     zipCode: {
         type: String,
         required: true
+    },
+    sex: {
+        type: String,
+        required: true
     }
 })
 

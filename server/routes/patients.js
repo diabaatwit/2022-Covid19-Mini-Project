@@ -36,7 +36,8 @@ router.post('/', async (req, res) => {
         address: req.body.address,
         city: req.body.city,
         state: req.body.state,
-        zipCode: req.body.zipCode
+        zipCode: req.body.zipCode,
+        sex: req.body.sex
     })
     try {
         // add the patient
@@ -81,6 +82,9 @@ router.patch('/:id', getPatient, async (req, res) => {
     if (req.body.zipCode != null) {
         res.patient[0].zipCode = req.body.zipCode
     }
+    if (req.body.sex != null) {
+      res.patient[0].sex = req.body.sex
+  }
     try {
       const updatedPatient = await res.patient[0].save()
       res.header("Access-Control-Allow-Origin", "*")
