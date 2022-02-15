@@ -58,31 +58,31 @@ router.patch('/:id', getPatient, async (req, res) => {
     // if name in the request body is not null, which means we want to update this name,
     // then update name, and same with all other attributes.
     if (req.body.name != null) {
-      res.patient.name = req.body.name
+      res.patient[0].name = req.body.name
     }
     if (req.body.age != null) {
-      res.patient.age = req.body.age
+      res.patient[0].age = req.body.age
     }
     if (req.body.email != null) {
-      res.patient.email = req.body.email
+      res.patient[0].email = req.body.email
     }
     if (req.body.phoneNumber != null) {
-        res.patient.phoneNumber = req.body.phoneNumber
+        res.patient[0].phoneNumber = req.body.phoneNumber
     }
     if (req.body.address != null) {
-        res.patient.address = req.body.address
+        res.patient[0].address = req.body.address
     }
     if (req.body.city != null) {
-        res.patient.city = req.body.city
+        res.patient[0].city = req.body.city
     }
     if (req.body.state != null) {
-        res.patient.state = req.body.state
+        res.patient[0].state = req.body.state
     }
     if (req.body.zipCode != null) {
-        res.patient.zipCode = req.body.zipCode
+        res.patient[0].zipCode = req.body.zipCode
     }
     try {
-      const updatedPatient = await res.patient.save()
+      const updatedPatient = await res.patient[0].save()
       res.header("Access-Control-Allow-Origin", "*")
       res.json(updatedPatient)
     } catch (err) {
@@ -94,7 +94,7 @@ router.patch('/:id', getPatient, async (req, res) => {
   router.delete('/:id', getPatient, async (req, res) => {
     try {
       // delete patient with this id.
-      await res.patient.remove()
+      await res.patient[0].remove()
       res.json({ message: 'Patient deleted' })
     } catch (err) {
       // if error, display error 500

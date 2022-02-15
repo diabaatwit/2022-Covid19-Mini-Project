@@ -52,22 +52,22 @@ router.patch('/:id', getExam, async (req, res) => {
     // if numHours in the request body is not null, which means we want to update it,
     // then update numHours, and same with all other attributes.
     if (req.body.numHours != null) {
-      res.exam.numHours = req.body.numHours
+      res.exam[0].numHours = req.body.numHours
     }
     if (req.body.xRayImageLink != null) {
-      res.exam.xRayImageLink = req.body.xRayImageLink
+      res.exam[0].xRayImageLink = req.body.xRayImageLink
     }
     if (req.body.keyFindings != null) {
-      res.exam.keyFindings = req.body.keyFindings
+      res.exam[0].keyFindings = req.body.keyFindings
     }
     if (req.body.brixiaScores != null) {
-        res.exam.brixiaScores = req.body.brixiaScores
+        res.exam[0].brixiaScores = req.body.brixiaScores
     }
     if (req.body.patientID != null) {
-        res.exam.patientID = req.body.patientID
+        res.exam[0].patientID = req.body.patientID
     }
     try {
-      const updatedExam = await res.exam.save()
+      const updatedExam = await res.exam[0].save()
       res.header("Access-Control-Allow-Origin", "*")
       res.json(updatedExam)
     } catch (err) {
@@ -79,7 +79,7 @@ router.patch('/:id', getExam, async (req, res) => {
   router.delete('/:id', getExam, async (req, res) => {
     try {
       // delete exam with this id.
-      await res.exam.remove()
+      await res.exam[0].remove()
       res.header("Access-Control-Allow-Origin", "*")
       res.json({ message: 'Exam deleted' })
     } catch (err) {
@@ -91,7 +91,7 @@ router.patch('/:id', getExam, async (req, res) => {
 
   // getting a specific exam by id
   async function getExam(req, res, next) {
-    let exam= []
+    let exam = []
     try {
       // get exam by id.
       exam[0] = await Exam.findById(req.params.id)

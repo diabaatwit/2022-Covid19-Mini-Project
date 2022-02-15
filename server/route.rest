@@ -22,7 +22,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3001/patients/620acb0f00515d0a471c69d0
+DELETE http://localhost:3001/patients/620ac4389086d5aef30fddb6
 
 
 ###
@@ -31,7 +31,7 @@ PATCH http://localhost:3001/patients/62017f00f76069b0f768c114
 Content-Type: application/json
 
 {
-    "name": "Fengnan Zhang"
+    "name": "Fen Zhang"
 }
 
 
@@ -66,3 +66,7 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3001/exams/61f98fd80d94af134b0639af
+
+###
+
+DELETE http://localhost:3001/exams/620ace001e8e902e1d0302d2
