@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import Header from "../components/WebsiteHeader";
-import PatientForm from "../components/patientForm";
+import ExamForm from "../components/examForm";
 
 function Admin() {
   return (
-    <div>Admin Page</div>
+    <div> Admin Page
+    <ExamForm />
+    </div>
   );
 }
 

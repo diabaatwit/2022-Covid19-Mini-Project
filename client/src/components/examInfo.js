@@ -11,7 +11,6 @@ class ExamInfo extends Component {
           isLoading: false,
           isError: false,         
         }
-
       }
       
     /* fetching exam */
