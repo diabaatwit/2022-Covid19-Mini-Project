@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-const Exam = require('../../models/exam')
-
 // 
 //Five boxes for info
 //Then 3 buttons for add, update, delete
