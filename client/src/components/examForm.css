@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+/* Default styles for the browser */
+
+.state-button {
+    border: solid 1px #66686D;
+	border-radius: 5px;
+	background-color: #FFFFFF;
+	color: #ff0000;
+}
+
+.key-findings {
+    padding: 1em;
+	border: solid 1em #F376AB;
+}
