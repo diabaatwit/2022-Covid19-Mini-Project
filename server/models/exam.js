@@ -17,7 +17,7 @@ const examSchema = new mongoose.Schema({
         required: true
     },
     brixiaScores: {
-        type: Array,
+        type: String,
         required: true
     },
     patientID: {
