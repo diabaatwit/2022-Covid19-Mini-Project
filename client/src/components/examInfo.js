@@ -11,7 +11,6 @@ class ExamInfo extends Component {
           isLoading: false,
           isError: false,         
         }
-
       }
       
     /* fetching exam */
@@ -32,31 +31,6 @@ class ExamInfo extends Component {
             //console.log(error)
         }
 
-    }
-
-    /* render exam data*/     
-    examData = () => {
-        return this.state.exams.map(exam => {
-            return (
-                <div key={exam._id}>
-                    <div className="spacer"/>
-                    <div>{exam._id}</div>
-                    <div className="spacer"/>
-                    <div>{exam.numHours}</div>
-                    <div className="spacer"/>
-
-                    <div>{exam.keyFindings}</div>
-                    <div className="spacer"/>
-                    <div className="card-item brixia-scores">{exam.brixiaScores}</div>
-                    <div className="spacer"/>
-                    <div>{exam.patientID}</div>
-
-                    <div><img src={exam.xRayImageLink} alt="xRayImage"/></div>
-                    <div className="spacer"/>
-
-                </div>
-            )
-        })
     }
 
     render() {
@@ -82,7 +56,59 @@ class ExamInfo extends Component {
               </div>
 
                 <div id="cards-container">
-                  <div id="exam-container">
+                  {/* Patient Card */}
+                  <div class="card-container">
+                    <div class="card-title-container">
+                          <div>
+                            <img src={require('../images/patient-icon.png')} alt="Patient Icon" />
+                          </div>
+                          <div>
+                            <p>Patient</p>
+                          </div>
+                    </div>
+
+                    <div class="card-data-container">
+                      <div class='row'>
+                        <div class='column'>
+                          <div class='title-column'>
+                            Patient ID
+                          </div>
+                          <div class='title-column'>
+                            Age
+                          </div>
+                          <div class='title-column'>
+                            Sex
+                          </div>
+                          <div class='title-column'>
+                            BMI
+                          </div>
+                          <div class='title-column'>
+                            Zip Code
+                          </div>
+                      </div>
+                      <div class='column'>
+                        <div class='data-column'>
+                          {this.state.exams[0]._id}
+                        </div>
+                        <div class='data-column'>
+                          XX
+                        </div>
+                        <div class='data-column'>
+                          M/F/I
+                        </div>
+                        <div class='data-column'>
+                          XX
+                        </div>
+                        <div class='data-column'>
+                          02111
+                        </div>
+                        </div>
+                      </div>  
+                    </div>
+                  </div>
+
+                  {/* Exam Card */}
+                  <div class="card-container">
                     <div class="card-title-container">
                           <div>
                             <img src={require('../images/exam-icon.png')} alt="Exam Icon" />
@@ -127,6 +153,7 @@ class ExamInfo extends Component {
                   
                   </div>
                 
+                  {/* X-Ray Image Card */}
                   <div class="xray-card">
                     <img class="xray-image" src={this.state.exams[0].xRayImageLink} alt="xRayImage"/>
                     <div id="examimage-link"><Link to={this.state.exams[0].xRayImageLink} target="_blank" rel="noopener noreferrer"><span>View Full Image</span></Link></div>
