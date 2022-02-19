@@ -3,8 +3,9 @@ import ExamInfo from "../components/examInfo";
 
 function Exam() {
   return (
-      
-    <ExamInfo />
+    <div>
+      <ExamInfo />
+    </div>
   );
 }
 

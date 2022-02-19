@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import './table.css'
+import './exam-card.css'
 
 class ExamInfo extends Component {
 
@@ -76,76 +76,65 @@ class ExamInfo extends Component {
     
         return  exams.length > 0 ? (
 
-            <div class="card-container">
-              <div id="exampage-container"> 
-                <p id="exampage-label"> Exam Details</p>
+            <div id="exampage-container">
+              <div> 
+                <p id="exampage-label"> Exam Details</p><br/>
               </div>
 
-              <div class="card-title-container">
-                    <div>
-                      <img src={require('../images/exam-icon.png')} alt="Exam Icon" />
+                <div id="cards-container">
+                  <div id="exam-container">
+                    <div class="card-title-container">
+                          <div>
+                            <img src={require('../images/exam-icon.png')} alt="Exam Icon" />
+                          </div>
+                          <div>
+                            <p>Exam</p>
+                          </div>
                     </div>
-                    <div>
-                      <p>Exam</p>
-                    </div>
-              </div>
 
-              <div class="card-data-container">
-                <div class='row'>
-                  <div class='column'>
-                    <div class='title-column'>
-                      Exam ID
-                    </div><br/>
-                    <div class='title-column'>
-                      Date
+                    <div class="card-data-container">
+                      <div class='row'>
+                        <div class='column'>
+                          <div class='title-column'>
+                            Exam ID
+                          </div>
+                          <div class='title-column'>
+                            Date
+                          </div>
+                          <div class='title-column'>
+                            Brixia Scores
+                          </div>
+                          <div class='title-column'>
+                            Key Findings
+                          </div>
+                      </div>
+                      <div class='column'>
+                        <div class='data-column'>
+                          {this.state.exams[0]._id}
+                        </div>
+                        <div class='data-column'>
+                          XX-XX-202X
+                        </div>
+                        <div class='data-column'>
+                          <p id="brixia-background">{this.state.exams[0].brixiaScores}</p>
+                        </div>
+                        <div class='data-column' id="key-findings">
+                          {this.state.exams[0].keyFindings}
+                        </div>
+                      </div>
+                      </div>  
                     </div>
-                    <div class='title-column'>
-                      Brixia Scores
-                    </div>
-                    <div class='title-column'>
-                      Key Findings
-                    </div>
+                  
                   </div>
-                <div class='column'>
-                  <div class='data-column'>
-                    {this.state.exams[0]._id}
+                
+                  <div class="xray-card">
+                    <img class="xray-image" src={this.state.exams[0].xRayImageLink} alt="xRayImage"/>
+                    <div id="examimage-link"><Link to={this.state.exams[0].xRayImageLink} target="_blank" rel="noopener noreferrer"><span>View Full Image</span></Link></div>
                   </div>
-                  <div class='data-column'>
-                    Feb-19-2022 (placeholder)
-                  </div>
-                  <div class='data-column'>
-                  {this.state.exams[0].brixiaScores}
-                  </div>
-                  <div class='data-column'>
-                  {this.state.exams[0].keyFindings}
-                  </div>
-                </div>
-              </div>  
-              </div>
-
-              {/*               
-              <div id="exampage-container">
-                <p id="exampage-label"> Exam ID:  {this.state.exams[0]._id}</p>
-              </div> */}
-          
-              {/* <div className = "exampage-details">
-                <div> Patient ID: {this.state.exams[0].patientID}</div>
-                <div > Age: {this.state.exams[0].patientID}</div>     
-                <div id="sex"> Sex: </div>
-                <div id="bmi"> BMI: </div>
-                <div id="zipcode"> Zip Code: </div>
-
-                <div id="brixia-header">Brixia Scores: {this.state.exams[0].brixiaScores}</div>
-                <div id="key-header"> Key Findings:</div>
-                <div id="key-findings"> {this.state.exams[0].keyFindings}</div>
-              </div> */}
-            
-              <div class="exampage-xraycard">
-                <img class="xray-image" src={this.state.exams[0].xRayImageLink} alt="xRayImage"/>
-                <div id="examimage-link"><Link to={this.state.exams[0].xRayImageLink} target="_blank" rel="noopener noreferrer"><span>View Full Image</span></Link></div>
-              </div>
-   
+              </div>   
             </div>
+
+
           ) : (
             <div>No exams</div>
           )
