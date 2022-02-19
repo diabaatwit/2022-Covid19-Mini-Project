@@ -37,6 +37,7 @@ router.post('/', async (req, res) => {
     try {
         // add the exam
         const newExam = await exam.save()
+        res.header("Access-Control-Allow-Origin", "*")
         console.log(newExam)
         res.status(201).json(newExam)
     } catch (err) {
