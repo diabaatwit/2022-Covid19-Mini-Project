@@ -30,7 +30,6 @@ class ExamInfo extends Component {
             this.setState({ isError: true, isLoading: false })
             //console.log(error)
         }
-
     }
 
     render() {
@@ -38,14 +37,11 @@ class ExamInfo extends Component {
         console.log(exams.length)
         
         //const [searchTerm, setSearchTerm] = useState('')
-    
         if (isLoading) {
           return <div class="loading">Loading Exam...</div>
         }
-    
         if (isError) {
           return <div>Error</div>
-    
         }
     
         return  exams.length > 0 ? (
@@ -66,7 +62,7 @@ class ExamInfo extends Component {
                             <p>Patient</p>
                           </div>
                     </div>
-
+                    {/* Patient Card */}
                     <div class="card-data-container">
                       <div class='row'>
                         <div class='column'>
@@ -88,7 +84,7 @@ class ExamInfo extends Component {
                       </div>
                       <div class='column'>
                         <div class='data-column'>
-                          {this.state.exams[0]._id}
+                          {this.state.exams[0].patientID}
                         </div>
                         <div class='data-column'>
                           XX
