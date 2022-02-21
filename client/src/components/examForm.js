@@ -24,41 +24,26 @@ class ExamForm extends Component {
 
     handleOnSubmit = (e) => {
 
-        /*const scores = []
-        console.log(typeof(scores))
-        for (let i in this.state.brixiaScores){
-            scores[i] = this.state.brixiaScores.charAt(i)
-        }
-
-
-        //const scores = [(this.state.brixiaScores).split(',')]
-        console.log(scores)
-        console.log(typeof(scores))
-
-        this.setState({brixiaScores: scores})
-
-
-        console.log(typeof(this.state.brixiaScores))*/
-
-        const exam = this.state
-        console.log(exam)
-        fetch("http://localhost:3001/exams", {
-
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            mode: "no-cors",
-            body: JSON.stringify(exam)
-            
-
-        }).then(() => {
-            console.log("exam added successfully")
-            
-        })
-
+        this.fetching()
+        
     }
 
-    brixiaScoresParsing() {
+    async fetching() {
+        const exam = JSON.stringify(this.state)
+        console.log(exam)
 
+        const options = {
+
+            method: "POST",
+            mode: "cors",
+            headers: { "Content-Type": "application/json"},
+            body: exam
+            
+        }
+
+        await fetch("http://localhost:3001/exams", options)
+        .then(response => response.text())
+        .catch(error => console.log('error', error)); 
     }
 
     render() {
@@ -67,7 +52,7 @@ class ExamForm extends Component {
                 <input type="number" required={true} placeholder="Number of Hours"
                     value={this.state.numHours} onChange={(e) => this.setState({ numHours: e.target.value })} />
                 <br /><br />
-                <input className="key-findings" type="text" required={true} placeholder="Key Findings"
+                <input className="key-findings-input" type="text" required={true} placeholder="Key Findings"
                     value={this.state.keyFindings} onChange={(e) => this.setState({ keyFindings: e.target.value })} />
                 <br /><br />
                 <input type="text" required={true} placeholder="Brixia Scores"
