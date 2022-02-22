@@ -39,7 +39,6 @@ class ExamForm extends Component {
 
 
         console.log(typeof(this.state.brixiaScores))*/
-
         const exam = this.state
         console.log(exam)
         fetch("http://localhost:3001/exams", {
@@ -49,16 +48,9 @@ class ExamForm extends Component {
             mode: "no-cors",
             body: JSON.stringify(exam)
             
-
         }).then(() => {
             console.log("exam added successfully")
-            
         })
-
-    }
-
-    brixiaScoresParsing() {
-
     }
 
     render() {
