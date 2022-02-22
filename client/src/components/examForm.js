@@ -48,26 +48,30 @@ class ExamForm extends Component {
 
     render() {
         return (
-            <div className="form-inputs">
-                <input type="number" required={true} placeholder="Number of Hours"
-                    value={this.state.numHours} onChange={(e) => this.setState({ numHours: e.target.value })} />
+            <form class='submission-form'>
+                <label>Number of hours since the exam</label>
+                <input type="number" required={true} 
+                    onChange={(e) => this.setState({ numHours: e.target.value })} />
                 <br /><br />
-                <input className="key-findings-input" type="text" required={true} placeholder="Key Findings"
+                <label>Key Findings</label>
+                <textarea className="key-findings-input" type="text" required={true} 
                     value={this.state.keyFindings} onChange={(e) => this.setState({ keyFindings: e.target.value })} />
                 <br /><br />
-                <input type="text" required={true} placeholder="Brixia Scores"
-                    value={this.state.brixiaScores} onChange={(e) => this.setState({ brixiaScores: e.target.value })} />
+                <label>Brixia Scores</label>
+                <input type="text" required={true} 
+                    onChange={(e) => this.setState({ brixiaScores: e.target.value })} />
                 <br /><br />
-                <input type="text" required={true} placeholder="X-ray Image Link"
-                    value={this.state.xRayImageLink} onChange={(e) => this.setState({ xRayImageLink: e.target.value })} />
+                <label>X-ray Image Link</label>
+                <input type="text" required={true} 
+                    onChange={(e) => this.setState({ xRayImageLink: e.target.value })} />
                 <br /><br />
-                <input type="text" required={true} placeholder="Patient ID"
-                    value={this.state.patientID} onChange={(e) => this.setState({ patientID: e.target.value })} />
+                <label>Patient ID</label>
+                <input type="text" required={true}
+                    onChange={(e) => this.setState({ patientID: e.target.value })} />
                 <br /><br />
-                <button type="submit"
+                <button id='addBtn' type="submit"
                     value="submit" onClick={this.handleOnSubmit}>submit</button>
-                <button className="state-button" onClick={() => console.log(this.state)}> STATE WITH CURRENT VALUES </button>
-            </div>
+            </form>
         )
     }
 }
