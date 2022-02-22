@@ -1,5 +1,23 @@
 const express = require('express')
 const router = express.Router()
+const cors = require('cors')
+
+
+
+const whitelist = ["http://localhost:3000"]
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error("Not allowed by CORS"))
+    }
+  },
+  credentials: true,
+}
+router.use(cors(corsOptions))
+
+
 
 // get exam schema from ../models/exam
 const Exam = require('../models/exam')

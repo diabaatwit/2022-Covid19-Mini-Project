@@ -71,4 +71,17 @@ GET http://localhost:3001/exams/61f98fd80d94af134b0639af
 
 ###
 
+<<<<<<< HEAD
 DELETE http://localhost:3001/exams/6212e5c8e9315f89380c5993
+=======
+DELETE http://localhost:3001/exams/6211c9d9eeacc147f9b832b4
+
+###
+
+PATCH http://localhost:3001/exams/62030cdd58a7c8a7e8557c58
+Content-Type: application/json
+
+{
+    "brixiaScores": "202013"
+}
+>>>>>>> 5502757c70f2603a295c7ceeb784780fc8fb8f70

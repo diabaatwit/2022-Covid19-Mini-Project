@@ -1,11 +1,13 @@
 import React, {useState} from "react";
-import Header from "../components/WebsiteHeader";
-import ExamForm from "../components/examForm";
+import AdminControl from "../components/admin";
+import Table from "../components/TableExams";
 
 function Admin() {
   return (
-    <div> Admin Page
-    <ExamForm />
+    <div>
+      <AdminControl />
+      <Table />
+
     </div>
   );
 }

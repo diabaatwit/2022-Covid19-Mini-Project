@@ -24,6 +24,7 @@ class ExamForm extends Component {
 
     handleOnSubmit = (e) => {
 
+<<<<<<< HEAD
         /*const scores = []
         console.log(typeof(scores))
         for (let i in this.state.brixiaScores){
@@ -40,9 +41,17 @@ class ExamForm extends Component {
 
         console.log(typeof(this.state.brixiaScores))*/
         const exam = this.state
-        console.log(exam)
-        fetch("http://localhost:3001/exams", {
+=======
+        this.fetching()
+        
+    }
 
+    async fetching() {
+        const exam = JSON.stringify(this.state)
+>>>>>>> 5502757c70f2603a295c7ceeb784780fc8fb8f70
+        console.log(exam)
+
+<<<<<<< HEAD
             method: "POST",
             headers: { "Content-Type": "application/json" },
             mode: "no-cors",
@@ -51,30 +60,48 @@ class ExamForm extends Component {
         }).then(() => {
             console.log("exam added successfully")
         })
+=======
+        const options = {
+
+            method: "POST",
+            mode: "cors",
+            headers: { "Content-Type": "application/json"},
+            body: exam
+            
+        }
+
+        await fetch("http://localhost:3001/exams", options)
+        .then(response => response.text())
+        .catch(error => console.log('error', error)); 
+>>>>>>> 5502757c70f2603a295c7ceeb784780fc8fb8f70
     }
 
     render() {
         return (
-            <div className="form-inputs">
-                <input type="number" required={true} placeholder="Number of Hours"
-                    value={this.state.numHours} onChange={(e) => this.setState({ numHours: e.target.value })} />
+            <form class='submission-form'>
+                <label>Number of hours since the exam</label>
+                <input type="number" required={true} 
+                    onChange={(e) => this.setState({ numHours: e.target.value })} />
                 <br /><br />
-                <input className="key-findings" type="text" required={true} placeholder="Key Findings"
+                <label>Key Findings</label>
+                <textarea className="key-findings-input" type="text" required={true} 
                     value={this.state.keyFindings} onChange={(e) => this.setState({ keyFindings: e.target.value })} />
                 <br /><br />
-                <input type="text" required={true} placeholder="Brixia Scores"
-                    value={this.state.brixiaScores} onChange={(e) => this.setState({ brixiaScores: e.target.value })} />
+                <label>Brixia Scores</label>
+                <input type="text" required={true} 
+                    onChange={(e) => this.setState({ brixiaScores: e.target.value })} />
                 <br /><br />
-                <input type="text" required={true} placeholder="X-ray Image Link"
-                    value={this.state.xRayImageLink} onChange={(e) => this.setState({ xRayImageLink: e.target.value })} />
+                <label>X-ray Image Link</label>
+                <input type="text" required={true} 
+                    onChange={(e) => this.setState({ xRayImageLink: e.target.value })} />
                 <br /><br />
-                <input type="text" required={true} placeholder="Patient ID"
-                    value={this.state.patientID} onChange={(e) => this.setState({ patientID: e.target.value })} />
+                <label>Patient ID</label>
+                <input type="text" required={true}
+                    onChange={(e) => this.setState({ patientID: e.target.value })} />
                 <br /><br />
-                <button type="submit"
+                <button id='addBtn' type="submit"
                     value="submit" onClick={this.handleOnSubmit}>submit</button>
-                <button className="state-button" onClick={() => console.log(this.state)}> STATE WITH CURRENT VALUES </button>
-            </div>
+            </form>
         )
     }
 }
