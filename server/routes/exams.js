@@ -1,5 +1,23 @@
 const express = require('express')
 const router = express.Router()
+const cors = require('cors')
+
+
+//Give write access to server
+const whitelist = ["http://localhost:3000"]
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error("Not allowed by CORS"))
+    }
+  },
+  credentials: true,
+}
+router.use(cors(corsOptions))
+
+
 
 // get exam schema from ../models/exam
 const Exam = require('../models/exam')
@@ -37,6 +55,7 @@ router.post('/', async (req, res) => {
     try {
         // add the exam
         const newExam = await exam.save()
+        res.header("Access-Control-Allow-Origin", "*")
         console.log(newExam)
         res.status(201).json(newExam)
     } catch (err) {

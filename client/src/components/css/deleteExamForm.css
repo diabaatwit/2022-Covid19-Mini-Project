@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+/* Default styles for the browser */
+
+#submitBtn {
+	border: 0;
+	background: #343050;
+	padding: .5rem;
+	color: white;
+	margin: 1rem 0;
+	width: auto;
+	text-transform: uppercase;
+	
+}
+
+input {
+	display: block;
+	width: 100%;
+	border: 2px solid#2980B9;
+	padding: .5rem;
+	font-size: 18px;
+	border-radius: 5px;
+}
