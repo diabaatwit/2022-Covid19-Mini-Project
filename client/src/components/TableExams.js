@@ -7,11 +7,24 @@ import ReadOnlyRow from './ReadOnlyRow';
 class Table extends Component {
   constructor(props) {
     super(props);
+    this.handleEditClick = this.handleEditClick.bind(this);
     this.state = {
       exams: [],
       isLoading: false,
       isError: false,
       searchTerm: '',
+      recordId: '',
+      editRecordData: {
+        patientID: '',
+        _id: '',
+        xRayImageLink: '',
+        keyFindings: '',
+        brixiaScores: '',
+        age: '',
+        sex: '',
+        bmi: '',
+        zipCode: '',
+      },
       record: {
         patientID: '',
         _id: '',
@@ -21,11 +34,8 @@ class Table extends Component {
         age: '',
         sex: '',
         bmi: '',
-        zipCode: ''
-      },
-      recordId: null,
-
-      
+        zipCode: '',
+      }
     }
     
   }
@@ -45,6 +55,19 @@ class Table extends Component {
     });
   }
 
+  handleEditFormChange(event){
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...this.state.editRecordData};
+    newFormData[fieldName] = fieldValue;
+    this.setState({
+      editRecordData: newFormData
+    })
+  }
+
   handleAddFormSubmit(event){
     event.preventDefault();
 
@@ -61,6 +84,26 @@ class Table extends Component {
 
     //This is what we need to send to the server
   }
+
+  handleEditClick(event,exam){
+    event.preventDefault();
+    const newRecordId = exam._id;
+    this.setState({
+        recordId: newRecordId
+      });
+    
+      const recordValues = {
+        _id: this.state.record._id,
+        xRayImageLink: this.state.record.xRayImageLink,
+        keyFindings: this.state.record.keyFindings,
+        brixiaScores: this.state.record.brixiaScores,
+        age: this.state.record.age,
+        sex: this.state.record.sex,
+        bmi: this.state.record.bmi,
+        zipCode: this.state.record.zipCode
+      }
+  }
+
 
   onClick() {
     this.setState({
@@ -108,10 +151,11 @@ class Table extends Component {
 
         return( 
           <Fragment>
-            { this.state.editRecordId === exam._id? (
+            { this.state.recordId === exam._id? (
             <EditableRow />
             ) : (
-            <ReadOnlyRow exam={exam} />
+            <ReadOnlyRow exam={exam} 
+            handleEditClick={this.handleEditClick}/>
             )}
             
             

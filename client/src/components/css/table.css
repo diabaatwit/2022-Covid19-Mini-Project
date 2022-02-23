@@ -48,7 +48,7 @@
   }
   
   form td:last-child {
-	display: flex;
+	
 	justify-content: space-evenly;
   }
   
@@ -58,9 +58,11 @@
 }
 
 img{
-	max-width: 120px;
+	max-width: 100%;
+	max-height: 4em;
 	flex: 1;
 	border-radius: 10px;
+	
 }
 .key-findings div{
 	flex: 3;

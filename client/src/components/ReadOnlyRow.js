@@ -1,6 +1,6 @@
 import React from 'react'
 import './css/table.css'
-const ReadOnlyRow = ({ exam }) => {
+const ReadOnlyRow = ({ exam, handleEditClick }) => {
 
         return(
             <tr>
@@ -15,6 +15,9 @@ const ReadOnlyRow = ({ exam }) => {
                 <td>{exam.sex || "F"}</td>
                 <td>{exam.bmi || "64.1"}</td>
                 <td>{exam.zipcode || "01234"}</td>
+                <td>
+                  <button type ="button" onClick={(event)=> handleEditClick(event, exam)}>Edit</button>
+                </td>
               </tr>
         );
     
