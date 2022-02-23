@@ -8,7 +8,7 @@
 }
 
 html{
-    background-color: #D4D5D4;
+    background-color: #FEFEFF;
 }
 
 header{
@@ -81,9 +81,7 @@ header nav .button:hover{
     filter: brightness(1.05);
 }
 
-#root{
-    background-color: #D4D5D4;
-}
+
 
 #Main-Logo{
     color: #7ED5DE;

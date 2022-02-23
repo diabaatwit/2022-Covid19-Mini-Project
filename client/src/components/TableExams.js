@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom';
 import './css/table.css'
+import EditableRow from './EditableRow';
+import ReadOnlyRow from './ReadOnlyRow';
 
 class Table extends Component {
   constructor(props) {
@@ -9,13 +11,56 @@ class Table extends Component {
       exams: [],
       isLoading: false,
       isError: false,
-      isSelected: false,
       searchTerm: '',
+      record: {
+        patientID: '',
+        _id: '',
+        xRayImageLink: '',
+        keyFindings: '',
+        brixiaScores: '',
+        age: '',
+        sex: '',
+        bmi: '',
+        zipCode: ''
+      },
+      recordId: null,
+
       
     }
-    this.onClick = this.onClick.bind(this);
+    
   }
 /* responsible for toggling the stlye on an exam card */
+
+  handleAddFormChange(event){
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute('name')
+    const fieldValue = event.target.value;
+
+    const newFormData = {...this.state.record};
+    newFormData[fieldName] = fieldValue;
+
+    this.setState({
+      record: newFormData
+    });
+  }
+
+  handleAddFormSubmit(event){
+    event.preventDefault();
+
+    const newRecord = {
+        _id: this.state.record._id,
+        xRayImageLink: this.state.record.xRayImageLink,
+        keyFindings: this.state.record.keyFindings,
+        brixiaScores: this.state.record.brixiaScores,
+        age: this.state.record.age,
+        sex: this.state.record.sex,
+        bmi: this.state.record.bmi,
+        zipCode: this.state.record.zipCode
+    }
+
+    //This is what we need to send to the server
+  }
 
   onClick() {
     this.setState({
@@ -59,12 +104,27 @@ class Table extends Component {
        (val.keyFindings.toLowerCase()).includes(this.state.searchTerm.toLowerCase())){
         return val
       }
-    }).map(exam => { 
-      return (
-          /*My problem is here: this is responsible for toggling the class
-          refer to line 20 for onClick function, and 12 for the state property.*/
-        <div className ={ this.state.isSelected ? "exam-card-highlight": "exam-card"} key={exam._id} onClick={this.onClick}>
+    }).map(exam => {
+
+        return( 
+          <Fragment>
+            { this.state.editRecordId === exam._id? (
+            <EditableRow />
+            ) : (
+            <ReadOnlyRow exam={exam} />
+            )}
+            
+            
+          </Fragment>
           
+        )
+
+    })
+  }
+
+  /**
+   * <div className ="exam-card" key={exam._id}>
+
           <div className="card-item xray-box">
             <img className="xray" src={exam.xRayImageLink} alt="xRayImage"/>
           </div>
@@ -77,11 +137,17 @@ class Table extends Component {
           <div className="spacer"/>
           <div className="card-item key-findings"><span>{exam.keyFindings}</span></div>
         </div>
-        
-      )
-    })
-  }
-
+  */
+/**
+ *
+ *  <div className = "header-exam">
+           <div id="img-header">IMG</div>
+           <div id="brixia-header">Brixia<br/> Scores</div>
+           <div id="exam-header"> Exam ID</div>
+           <div id="patient-header"> Patient ID</div>
+           <div id="key-header"> Key Findings</div>
+          </div>
+ */
   render() {
     const { exams, isLoading, isError } = this.state
     //const [searchTerm, setSearchTerm] = useState('')
@@ -99,28 +165,111 @@ class Table extends Component {
       ? (
         //input tracking searchTerms
         <div class="container">
-          <div id="search-container"> 
+          <div id="search-container">
             <p id="search-label">Search:</p>
-            <input className="search-bar" type="text" 
-            value={this.state.searchTerm} 
+            <input className="search-bar" type="text"
+            value={this.state.searchTerm}
             onChange={event => {
               this.setState({ searchTerm: event.target.value} )} }/>
           </div>
-          
-          <div className = "header-exam">
-           <div id="img-header">IMG</div>
-           <div id="brixia-header">Brixia<br/> Scores</div>
-           <div id="exam-header"> Exam ID</div>
-           <div id="patient-header"> Patient ID</div>
-           <div id="key-header"> Key Findings</div>
-          </div>
-          
-          <div class="list-exam">
-          
-          {this.examRecordCard()}
-            
 
+
+
+          <div className="app-container">
+          <h2>Create Exam</h2>
+          <form onSubmit={this.handleAddFormSubmit}>
+            <input
+            type="text"
+            name="patientID"
+            required="required"
+            placeholder="Patient ID"
+            onChange={this.handleAddFormChange}
+              />
+              <input
+            type="text"
+            name="_id"
+            required="required"
+            placeholder="Exam ID"
+            onChange={this.handleAddFormChange}
+              />
+              <input
+            type="text"
+            name="xRayImageLink"
+            required="required"
+            placeholder="X-ray URL"
+            onChange={this.handleAddFormChange}
+              />
+              <input
+            type="text"
+            name="keyFindings"
+            required="required"
+            placeholder="Key Findings"
+            onChange={this.handleAddFormChange}
+              />
+              <input
+            type="text"
+            name="brixiaScores"
+            required="required"
+            placeholder="Brixia Scores"
+            onChange={this.handleAddFormChange}
+              />
+              <input
+            type="text"
+            name="age"
+            required="required"
+            placeholder="Age"
+            onChange={this.handleAddFormChange}
+              />
+              <input
+            type="text"
+            name="sex"
+            required="required"
+            placeholder="Sex"
+            onChange={this.handleAddFormChange}
+              />
+              <input
+            type="text"
+            name="bmi"
+            required="required"
+            placeholder="BMI"
+            onChange={this.handleAddFormChange}
+              />
+              <input
+            type="text"
+            name="zipcode"
+            required="required"
+            placeholder="Zipcode"
+            onChange={this.handleAddFormChange}
+              />
+              <button type="submit">Add</button>
+
+
+          </form>
+
+          <form>
+            <table>
+              <thead>
+                <tr>
+                  <th>Patient name</th>
+                  <th>Exam ID</th>
+                  <th colSpan={2}>Key Findings</th>
+                  <th> Brixia Score</th>
+                  <th>Age</th>
+                  <th>Sex</th>
+                  <th>BMI</th>
+                  <th>Zipcode</th>
+                  <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                  {this.examRecordCard()}
+                </tbody>
+            </table>
+          </form>
           </div>
+
+
+
 
         </div>
       ) : (
