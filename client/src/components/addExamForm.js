@@ -19,6 +19,7 @@ class AddExamForm extends Component {
             brixiaScores: "",
             patientID: "61f69f239180161fg9453e13",
         }
+        
         this.handleOnSubmit = this.handleOnSubmit.bind(this);
     }
 
