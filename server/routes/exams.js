@@ -3,7 +3,7 @@ const router = express.Router()
 const cors = require('cors')
 
 
-
+//Give write access to server
 const whitelist = ["http://localhost:3000"]
 const corsOptions = {
   origin: function (origin, callback) {

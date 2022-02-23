@@ -1,11 +1,11 @@
 import React, {useState} from "react";
-import ExamForm from "../components/examForm";
+import AddExamForm from "../components/addExamForm";
 import AdminControl from "../components/admin";
 
 function AddExam() {
   return (
     <div>
-      <ExamForm />
+      <AddExamForm />
     </div>
   );
 }

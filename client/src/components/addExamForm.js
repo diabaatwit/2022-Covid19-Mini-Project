@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './examForm.css'
+import './css/addExamForm.css'
 
 
 //Five boxes for info
@@ -9,7 +9,7 @@ import './examForm.css'
 //helpful URL: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events
 
 
-class ExamForm extends Component {
+class AddExamForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -24,43 +24,14 @@ class ExamForm extends Component {
 
     handleOnSubmit = (e) => {
 
-<<<<<<< HEAD
-        /*const scores = []
-        console.log(typeof(scores))
-        for (let i in this.state.brixiaScores){
-            scores[i] = this.state.brixiaScores.charAt(i)
-        }
-
-
-        //const scores = [(this.state.brixiaScores).split(',')]
-        console.log(scores)
-        console.log(typeof(scores))
-
-        this.setState({brixiaScores: scores})
-
-
-        console.log(typeof(this.state.brixiaScores))*/
-        const exam = this.state
-=======
         this.fetching()
         
     }
 
     async fetching() {
         const exam = JSON.stringify(this.state)
->>>>>>> 5502757c70f2603a295c7ceeb784780fc8fb8f70
         console.log(exam)
 
-<<<<<<< HEAD
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            mode: "no-cors",
-            body: JSON.stringify(exam)
-            
-        }).then(() => {
-            console.log("exam added successfully")
-        })
-=======
         const options = {
 
             method: "POST",
@@ -73,7 +44,6 @@ class ExamForm extends Component {
         await fetch("http://localhost:3001/exams", options)
         .then(response => response.text())
         .catch(error => console.log('error', error)); 
->>>>>>> 5502757c70f2603a295c7ceeb784780fc8fb8f70
     }
 
     render() {
@@ -106,4 +76,4 @@ class ExamForm extends Component {
     }
 }
 
-export default ExamForm;
+export default AddExamForm;

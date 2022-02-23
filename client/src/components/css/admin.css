@@ -36,3 +36,29 @@
     right: 5%;
     top: 20%;	
 }
+
+#deleteBtn {
+	border: 0;
+	background: #3476D1;
+	padding: .5rem;
+	color: white;
+	margin: 1rem 0;
+	width: auto;
+	text-transform: uppercase;
+    position:absolute;
+    right: 5%;
+    top: 26%;	
+}
+
+#updateBtn {
+	border: 0;
+	background: #3476D1;
+	padding: .5rem;
+	color: white;
+	margin: 1rem 0;
+	width: auto;
+	text-transform: uppercase;
+    position:absolute;
+    right: 5%;
+    top: 32%;	
+}

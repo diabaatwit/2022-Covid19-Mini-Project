@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import './table.css'
+import './css/table.css'
 
 class Table extends Component {
   constructor(props) {
