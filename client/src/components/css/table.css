@@ -1,9 +1,12 @@
+.container{
+	margin: 1% 3% 10% 3%;
+}
 .app-container {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
 	padding: 1rem;
-	margin: 1% 3% 10% 3%;
+	
 
   }
 
@@ -72,23 +75,76 @@ img{
 }
 
 /*search function*/
+
+#search-nav{
+	align-items: center;
+	display: flex;
+}
+
 #search-container{
 	display:flex;
 	padding: .5em;
+	padding-right: 50em;
+	align-items:flex-start;
+	flex:3;
 }
 
 #search-label{
 	font-weight: 100;
 	font-size: 1.7em;
-	flex: 1;
+	
 	font-family: 'Roboto', sans-serif;
-
+	
 }
 
 .search-bar{
-	border: solid 1px #66686D;
+	border: solid 1px #a4a5a8;
 	border-radius: 5px;
-	background-color: #AFAEB2;
-	flex: 4;
+	background-color: #ECECF2;
 	
+	min-width: 430px;
+	margin-left: 1em;
+	
+}
+
+
+#edit-buttons{
+	display: flex;
+	float: right;
+	flex:1;
+}
+
+#edit-list,#create-exam{
+	
+	border: 0;
+	font-size: 20px;
+	margin-left: 1em;
+	white-space: nowrap;
+	align-self: center;
+	cursor: pointer;
+	padding: 10px;
+	border-radius: 7px;
+	
+	flex: 1;
+	
+}
+
+#edit-list{
+	background-color: transparent;
+	color: #4d88da;
+	padding: 10px 15px 10px 15px;
+}
+
+#edit-list:hover{
+	background-color: #ECECF2;
+}
+
+#create-exam{
+	background-color: #3577D1;
+	color: #FEFEFF;
+	
+}
+
+#create-exam:hover{
+	background-color: #255fdf;
 }

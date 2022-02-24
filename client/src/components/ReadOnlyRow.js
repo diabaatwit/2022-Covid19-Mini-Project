@@ -14,7 +14,7 @@ const ReadOnlyRow = ({ exam, handleEditClick }) => {
                 <td>{exam.age || "44"}</td>
                 <td>{exam.sex || "F"}</td>
                 <td>{exam.bmi || "64.1"}</td>
-                <td>{exam.zipcode || "01234"}</td>
+                <td>{exam.zipCode || "01234"}</td>
                 <td>
                   <button type ="button" onClick={(event)=> handleEditClick(event, exam)}>Edit</button>
                 </td>

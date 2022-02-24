@@ -7,6 +7,7 @@ import ReadOnlyRow from './ReadOnlyRow';
 class Table extends Component {
   constructor(props) {
     super(props);
+    this.presentExams = React.createRef();
     this.handleEditClick = this.handleEditClick.bind(this);
     this.state = {
       exams: [],
@@ -14,17 +15,8 @@ class Table extends Component {
       isError: false,
       searchTerm: '',
       recordId: '',
-      editRecordData: {
-        patientID: '',
-        _id: '',
-        xRayImageLink: '',
-        keyFindings: '',
-        brixiaScores: '',
-        age: '',
-        sex: '',
-        bmi: '',
-        zipCode: '',
-      },
+      editRecordData: {},
+
       record: {
         patientID: '',
         _id: '',
@@ -93,15 +85,21 @@ class Table extends Component {
       });
     
       const recordValues = {
-        _id: this.state.record._id,
-        xRayImageLink: this.state.record.xRayImageLink,
-        keyFindings: this.state.record.keyFindings,
-        brixiaScores: this.state.record.brixiaScores,
-        age: this.state.record.age,
-        sex: this.state.record.sex,
-        bmi: this.state.record.bmi,
-        zipCode: this.state.record.zipCode
+        patientID: exam.patientID,
+        _id: exam._id,
+        xRayImageLink: exam.xRayImageLink,
+        keyFindings: exam.keyFindings,
+        brixiaScores: exam.brixiaScores,
+        age: exam.age,
+        sex: exam.sex,
+        bmi: exam.bmi,
+        zipCode: exam.zipCode
       }
+
+      this.setState({
+        editRecordData: recordValues
+      })
+      
   }
 
 
@@ -139,6 +137,7 @@ class Table extends Component {
 /**Rendering an exam card */
   examRecordCard = () => {
   //filtering the exam list by what was entered in the search box, which is stored under state searchTerm
+    let examCount = 0;
     return this.state.exams.filter((val)=>{
       if(this.state.searchTerm=="") {
         return val
@@ -152,7 +151,7 @@ class Table extends Component {
         return( 
           <Fragment>
             { this.state.recordId === exam._id? (
-            <EditableRow />
+            <EditableRow editRecordData={this.editRecordData} handleEditFormChange={this.handleEditFormChange} />
             ) : (
             <ReadOnlyRow exam={exam} 
             handleEditClick={this.handleEditClick}/>
@@ -209,107 +208,124 @@ class Table extends Component {
       ? (
         //input tracking searchTerms
         <div class="container">
-          <div id="search-container">
-            <p id="search-label">Search:</p>
-            <input className="search-bar" type="text"
-            value={this.state.searchTerm}
-            onChange={event => {
-              this.setState({ searchTerm: event.target.value} )} }/>
+          <div>
+            <h1>Exam List</h1>
+            <h3>{this.presentExams.current}</h3>
+          </div>
+          <div id="search-nav">
+            <div id="search-container">
+              <p id="search-label">Search:</p>
+              <input className="search-bar" type="text"
+              value={this.state.searchTerm}
+              onChange={event => {
+                this.setState({ searchTerm: event.target.value} )} }/>
+            </div>
+            
+              <div id="edit-buttons">
+                <button id='edit-list'>Edit List</button>
+                <button id='create-exam'>Create Exam</button>
+              </div>
+            
           </div>
 
+        <div>
 
+        </div>
 
           <div className="app-container">
-          <h2>Create Exam</h2>
-          <form onSubmit={this.handleAddFormSubmit}>
-            <input
-            type="text"
-            name="patientID"
-            required="required"
-            placeholder="Patient ID"
-            onChange={this.handleAddFormChange}
-              />
-              <input
-            type="text"
-            name="_id"
-            required="required"
-            placeholder="Exam ID"
-            onChange={this.handleAddFormChange}
-              />
-              <input
-            type="text"
-            name="xRayImageLink"
-            required="required"
-            placeholder="X-ray URL"
-            onChange={this.handleAddFormChange}
-              />
-              <input
-            type="text"
-            name="keyFindings"
-            required="required"
-            placeholder="Key Findings"
-            onChange={this.handleAddFormChange}
-              />
-              <input
-            type="text"
-            name="brixiaScores"
-            required="required"
-            placeholder="Brixia Scores"
-            onChange={this.handleAddFormChange}
-              />
-              <input
-            type="text"
-            name="age"
-            required="required"
-            placeholder="Age"
-            onChange={this.handleAddFormChange}
-              />
-              <input
-            type="text"
-            name="sex"
-            required="required"
-            placeholder="Sex"
-            onChange={this.handleAddFormChange}
-              />
-              <input
-            type="text"
-            name="bmi"
-            required="required"
-            placeholder="BMI"
-            onChange={this.handleAddFormChange}
-              />
-              <input
-            type="text"
-            name="zipcode"
-            required="required"
-            placeholder="Zipcode"
-            onChange={this.handleAddFormChange}
-              />
-              <button type="submit">Add</button>
+            <div className="create-exam">
+              <h2>New Exam:</h2>
+              
+              <form onSubmit={this.handleAddFormSubmit}>
+                <input
+                type="text"
+                name="patientID"
+                required="required"
+                placeholder="Patient ID"
+                onChange={this.handleAddFormChange}
+                  />
+                  <input
+                type="text"
+                name="_id"
+                required="required"
+                placeholder="Exam ID"
+                onChange={this.handleAddFormChange}
+                  />
+                  <input
+                type="text"
+                name="xRayImageLink"
+                required="required"
+                placeholder="X-ray URL"
+                onChange={this.handleAddFormChange}
+                  />
+                  <input
+                type="text"
+                name="keyFindings"
+                required="required"
+                placeholder="Key Findings"
+                onChange={this.handleAddFormChange}
+                  />
+                  <input
+                type="text"
+                name="brixiaScores"
+                required="required"
+                placeholder="Brixia Scores"
+                onChange={this.handleAddFormChange}
+                  />
+                  <input
+                type="text"
+                name="age"
+                required="required"
+                placeholder="Age"
+                onChange={this.handleAddFormChange}
+                  />
+                  <input
+                type="text"
+                name="sex"
+                required="required"
+                placeholder="Sex"
+                onChange={this.handleAddFormChange}
+                  />
+                  <input
+                type="text"
+                name="bmi"
+                required="required"
+                placeholder="BMI"
+                onChange={this.handleAddFormChange}
+                  />
+                  <input
+                type="text"
+                name="zipCode"
+                required="required"
+                placeholder="Zipcode"
+                onChange={this.handleAddFormChange}
+                  />
+                  <button type="submit">Add</button>
 
 
-          </form>
+              </form>
+            </div>
 
-          <form>
-            <table>
-              <thead>
-                <tr>
-                  <th>Patient name</th>
-                  <th>Exam ID</th>
-                  <th colSpan={2}>Key Findings</th>
-                  <th> Brixia Score</th>
-                  <th>Age</th>
-                  <th>Sex</th>
-                  <th>BMI</th>
-                  <th>Zipcode</th>
-                  <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                  {this.examRecordCard()}
-                </tbody>
-            </table>
-          </form>
+            <form>
+              <table ref={ this.presentExams}>
+                <thead>
+                  <tr>
+                    <th>Patient name</th>
+                    <th>Exam ID</th>
+                    <th colSpan={2}>Key Findings</th>
+                    <th> Brixia Score</th>
+                    <th>Age</th>
+                    <th>Sex</th>
+                    <th>BMI</th>
+                    <th>Zipcode</th>
+                    <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody >
+                    {this.examRecordCard()}
+                  </tbody>
+              </table>
+            </form>
           </div>
 
 
