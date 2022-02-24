@@ -52,7 +52,7 @@ class Table extends Component {
   examRecordCard = () => {
   //filtering the exam list by what was entered in the search box, which is stored under state searchTerm
     return this.state.exams.filter((val)=>{
-      if(this.state.searchTerm=="") {
+      if(this.state.searchTerm==="") {
         return val
       }else if ((val._id).includes(this.state.searchTerm) ||
        (val.patientID).includes(this.state.searchTerm) ||
