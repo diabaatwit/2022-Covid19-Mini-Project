@@ -1,5 +1,5 @@
 import React from 'react'
-import './css/table.css'
+import '../css/table.css'
 const ReadOnlyRow = ({ exam, handleEditClick }) => {
 
         return(

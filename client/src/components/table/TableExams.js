@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom';
-import './css/table.css'
+import '../css/table.css'
 import EditableRow from './EditableRow';
 import ReadOnlyRow from './ReadOnlyRow';
 import SearchBar from './SearchBar';
