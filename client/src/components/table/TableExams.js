@@ -13,6 +13,7 @@ class Table extends Component {
     super(props);
     this.presentExams = React.createRef();
     this.handleEditClick = this.handleEditClick.bind(this);
+    this.handleEditFormChange = this.handleEditClick.bind(this);
     this.setSearchTerm.bind(this);
     this.state = {
       exams: [],
@@ -75,10 +76,9 @@ class Table extends Component {
 
   handleEditFormChange(event){
     event.preventDefault();
-
     const fieldName = event.target.getAttribute("name");
     const fieldValue = event.target.value;
-
+    
     const newFormData = { ...this.state.editRecordData};
     newFormData[fieldName] = fieldValue;
     this.setState({
@@ -103,12 +103,13 @@ class Table extends Component {
     //This is what we need to send to the server
   }
 
-  handleEditClick(event,exam){
+  handleEditClick(event, exam, key){
     event.preventDefault();
-    const newRecordId = exam._id;
+    const newRecordId = key;
     this.setState({
         recordId: newRecordId
       });
+
     
       const recordValues = {
         patientID: exam.patientID,
@@ -121,7 +122,7 @@ class Table extends Component {
         bmi: exam.bmi,
         zipCode: exam.zipCode
       }
-
+      //console.log(recordValues)
       this.setState({
         editRecordData: recordValues
       })
@@ -163,7 +164,7 @@ class Table extends Component {
 
 
 /**Rendering an exam card */
-  examRecordCard = () => {
+  examsRender = () => {
   //filtering the exam list by what was entered in the search box, which is stored under state searchTerm
 
         const examToUse = (!this.state.searchTerm)? this.state.exams: this.state.filteredExams;
@@ -172,7 +173,14 @@ class Table extends Component {
           //   { this.state.recordId === exam._id? (
           //   <EditableRow editRecordData={this.editRecordData} handleEditFormChange={this.handleEditFormChange} />
           //   ) : (
-            <TableRender EXAMS={examToUse} handleEditClick={this.handleEditClick}/>
+
+            <TableRender 
+            EXAMS={examToUse} 
+            handleEditClick={this.handleEditClick}
+            handleEditFormChange ={this.handleEditFormChange}
+            recordId={this.state.recordId} 
+            editRecordData={this.state.editRecordData}
+            />
             
           //   )}
           // </Fragment>
@@ -246,7 +254,7 @@ class Table extends Component {
 
           <div className="app-container">
 
-            {this.examRecordCard()}
+            {this.examsRender()}
 
             {/* <div className="create-exam">
               <h2>New Exam:</h2>
