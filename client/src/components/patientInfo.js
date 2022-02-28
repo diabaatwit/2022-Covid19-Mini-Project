@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
+import './css/examPage.css'
 
 class PatientInfo extends Component {
 
@@ -79,11 +81,66 @@ class PatientInfo extends Component {
         }
     
         return  patients.length > 0 ? (
-            //input tracking searchTerms
-            <div>
-              {this.patientData()}
-    
-            </div>
+          <div id="exampage-container">
+            <div id="returnhome-link">
+                <img src={require('../images/arrow-icon2.png')} alt="Arrow Icon" />
+                <Link to ="/"> Back to Home Page</Link>
+            </div><br/>
+            <div id="exampage-label">Patient Details</div>
+            <div id="cards-container">
+                  {/* Patient Card Title*/}
+                  <div class="card-container">
+                  <div class="card-title-container">
+                        <div>
+                          <img src={require('../images/patient-icon.png')} alt="Patient Icon" />
+                        </div>
+                        <div>
+                          <p>Patient</p>
+                        </div>
+                  </div>
+                  {/* Patient Card */}
+                  <div class="card-data-container">
+                    <div class='row'>
+                      <div class='column'>
+                        <div class='title-column'>
+                          Patient ID
+                        </div>
+                        <div class='title-column'>
+                          Age
+                        </div>
+                        <div class='title-column'>
+                          Sex
+                        </div>
+                        <div class='title-column'>
+                          BMI
+                        </div>
+                        <div class='title-column'>
+                          Zip Code
+                        </div>
+                    </div>
+                    <div class='column'>
+                      <div class='data-column'>
+                        {this.state.patients[0]._id}
+                      </div>
+                      <div class='data-column'>
+                        {this.state.patients[0].age}
+                      </div>
+                      <div class='data-column'>
+                        {this.state.patients[0].sex}
+                      </div>
+                      <div class='data-column'>
+                        {this.state.patients[0].bmi}
+                      </div>
+                      <div class='data-column'>
+                        {this.state.patients[0].zipCode}
+                      </div>
+                      </div>
+                    </div>  
+                  </div>
+                </div>
+            </div><br/>
+            {/* <div>{this.patientData()}</div> */}
+          </div>
           ) : (
             <div>No patients</div>
           )

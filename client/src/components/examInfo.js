@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import './css/examPage.css'
+
 class ExamInfo extends Component {
     constructor(props) {
         super(props);
@@ -43,9 +44,12 @@ class ExamInfo extends Component {
     
         return  exams.length > 0 ? (
             <div id="exampage-container">
-              <div id="exampage-label"> Exam Details <br/>
+              <div id="returnhome-link">
+                <img src={require('../images/arrow-icon2.png')} alt="Arrow Icon" />
+                <Link to ="/"> Back to Exam List</Link>
               </div>
-              <div id="cards-container"><br/>
+              <div id="exampage-label">Exam Details</div>
+              <div id="cards-container">
                 {/* Patient Card */}
                 <div class="card-container">
                   <div class="card-title-container">
@@ -144,7 +148,7 @@ class ExamInfo extends Component {
                 {/* X-Ray Image Card */}
                 <div class="xray-card">
                   <img class="xray-image" src={this.state.exams[0].xRayImageLink} alt="xRayImage"/>
-                  <div id="examimage-link"><Link to={this.state.exams[0].xRayImageLink} target="_blank" rel="noopener noreferrer"><span>View Full Image</span></Link></div>
+                  <div id="examimage-link"><a href= {this.state.exams[0].xRayImageLink} target="_blank" rel="noopener noreferrer"><span>View Full Image</span></a></div>
                 </div>
               </div>   
             </div>
