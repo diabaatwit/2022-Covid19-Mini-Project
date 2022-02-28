@@ -67,9 +67,14 @@ img{
 	border-radius: 10px;
 	
 }
+th{
+	white-space: nowrap;
+}
+.exam-count p{
+	margin-left: 3px;
+}
 .key-findings div{
 	flex: 3;
-	overflow-wrap: break-word;
 	margin-left: 30px;
 	font-size: 18px
 }
@@ -148,3 +153,5 @@ img{
 #create-exam:hover{
 	background-color: #255fdf;
 }
+
+

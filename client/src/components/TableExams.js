@@ -3,14 +3,20 @@ import { Link } from 'react-router-dom';
 import './css/table.css'
 import EditableRow from './EditableRow';
 import ReadOnlyRow from './ReadOnlyRow';
+import SearchBar from './SearchBar';
+import { TableCount } from './TableCount';
+import { TableRender } from './TableRender';
+
 
 class Table extends Component {
   constructor(props) {
     super(props);
     this.presentExams = React.createRef();
     this.handleEditClick = this.handleEditClick.bind(this);
+    this.setSearchTerm.bind(this);
     this.state = {
       exams: [],
+      filteredExams: [],
       isLoading: false,
       isError: false,
       searchTerm: '',
@@ -31,6 +37,26 @@ class Table extends Component {
     }
     
   }
+
+  setSearchTerm = (term) =>{
+    this.setState({searchTerm: term})
+
+    const newExams = this.state.exams.filter((val)=>{
+      if(this.state.searchTerm=="") {
+        return val
+      }else if ((val._id).includes(this.state.searchTerm) ||
+       (val.patientID).includes(this.state.searchTerm) ||
+       (val.keyFindings.toLowerCase()).includes(this.state.searchTerm.toLowerCase())){
+        return val
+      }
+    })
+
+    this.setState({
+      filteredExams: newExams
+    })
+    
+  }
+
 /* responsible for toggling the stlye on an exam card */
 
   handleAddFormChange(event){
@@ -134,35 +160,26 @@ class Table extends Component {
     }
   }
 
+
+
 /**Rendering an exam card */
   examRecordCard = () => {
   //filtering the exam list by what was entered in the search box, which is stored under state searchTerm
-    let examCount = 0;
-    return this.state.exams.filter((val)=>{
-      if(this.state.searchTerm=="") {
-        return val
-      }else if ((val._id).includes(this.state.searchTerm) ||
-       (val.patientID).includes(this.state.searchTerm) ||
-       (val.keyFindings.toLowerCase()).includes(this.state.searchTerm.toLowerCase())){
-        return val
-      }
-    }).map(exam => {
 
+        const examToUse = (!this.state.searchTerm)? this.state.exams: this.state.filteredExams;
         return( 
-          <Fragment>
-            { this.state.recordId === exam._id? (
-            <EditableRow editRecordData={this.editRecordData} handleEditFormChange={this.handleEditFormChange} />
-            ) : (
-            <ReadOnlyRow exam={exam} 
-            handleEditClick={this.handleEditClick}/>
-            )}
+          // <Fragment>
+          //   { this.state.recordId === exam._id? (
+          //   <EditableRow editRecordData={this.editRecordData} handleEditFormChange={this.handleEditFormChange} />
+          //   ) : (
+            <TableRender EXAMS={examToUse} handleEditClick={this.handleEditClick}/>
             
-            
-          </Fragment>
+          //   )}
+          // </Fragment>
           
         )
 
-    })
+
   }
 
   /**
@@ -209,17 +226,12 @@ class Table extends Component {
         //input tracking searchTerms
         <div class="container">
           <div>
-            <h1>Exam List</h1>
-            <h3>{this.presentExams.current}</h3>
+            
+          <TableCount exams={this.state.exams}/>
+
           </div>
           <div id="search-nav">
-            <div id="search-container">
-              <p id="search-label">Search:</p>
-              <input className="search-bar" type="text"
-              value={this.state.searchTerm}
-              onChange={event => {
-                this.setState({ searchTerm: event.target.value} )} }/>
-            </div>
+              <SearchBar setSearchTerm = {this.setSearchTerm}/>
             
               <div id="edit-buttons">
                 <button id='edit-list'>Edit List</button>
@@ -233,7 +245,10 @@ class Table extends Component {
         </div>
 
           <div className="app-container">
-            <div className="create-exam">
+
+            {this.examRecordCard()}
+
+            {/* <div className="create-exam">
               <h2>New Exam:</h2>
               
               <form onSubmit={this.handleAddFormSubmit}>
@@ -325,7 +340,7 @@ class Table extends Component {
                     {this.examRecordCard()}
                   </tbody>
               </table>
-            </form>
+            </form> */}
           </div>
 
 
