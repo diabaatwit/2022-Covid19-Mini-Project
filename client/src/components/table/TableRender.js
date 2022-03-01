@@ -21,7 +21,7 @@ export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, recor
     
     //Ensures that if the same data is past through, it remembers the output instead of recomputing 
     const columns = useMemo(() => COLUMNS, [])
-    const data = useMemo(() => EXAMS, [])
+    const data = EXAMS
 
     const tableInstance = useTable({
         columns,
