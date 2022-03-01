@@ -6,23 +6,27 @@ const examSchema = new mongoose.Schema({
 
     numHours: {
         type: Number,
-        //required: true
+        required: true
     },
     xRayImageLink: {
         type: String,
-        //required: true
+        required: true
     },
     keyFindings: {
         type: String,
-        //required: true
+        required: true
     },
     brixiaScores: {
         type: String,
-        //required: true
+        required: true
+    },
+    date: {
+        type: String,
+        required: true
     },
     patientID: {
         type: String,
-        //required: true
+        required: true
     }
 })
 

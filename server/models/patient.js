@@ -39,6 +39,10 @@ const patientSchema = new mongoose.Schema({
     sex: {
         type: String,
         required: true
+    },
+    BMI: {
+        type: String,
+        required: true
     }
 })
 
