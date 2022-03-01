@@ -3,7 +3,7 @@ import {useTable} from 'react-table'
 import {COLUMNS} from './columns'
 
 
-export const TableCount = ({exams}) => {
+export const TableCount = ({exams,filteredExams}) => {
 
     const columns = useMemo(() => COLUMNS, [])
     const data = useMemo(() => exams, [])
@@ -15,7 +15,7 @@ export const TableCount = ({exams}) => {
   return (
     <div className='exam-count'>
         <h1>Exam List</h1>
-        <p style={{fontSize: "20px", color: "grey"}}>{rows.length} Exams</p>
+        <p style={{fontSize: "20px", color: "grey"}}>{filteredExams.length||rows.length} Exams</p>
     </div>
   )
 }

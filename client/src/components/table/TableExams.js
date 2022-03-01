@@ -206,7 +206,7 @@ class Table extends Component {
         <div class="container">
           <div>
             
-          <TableCount exams={this.state.exams}/>
+          <TableCount exams={this.state.exams} filteredExams={this.state.filteredExams}/>
 
           </div>
           <div id="search-nav">
