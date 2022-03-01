@@ -55,8 +55,8 @@ class Table extends Component {
   }
 
   /**
-   * @param {String} term what's currently typed into the <SearchBar>
    * Responsible for filtering the exam list based on what's typed into the searchbar
+   * @param {String} term what's currently typed into the <SearchBar>
    */
   setSearchTerm = (term) =>{
     this.setState({searchTerm: term})
@@ -78,9 +78,8 @@ class Table extends Component {
   }
 
   /**
-   * 
-   * @param {Object} event passes an event object  from an onChange
-   * Called when an onChange event happens in a <ExamForm> form 
+   * Called when an onChange event happens in a <ExamForm> form
+   * @param {Object} event passes an event object  from an onChange 
    */
   handleAddFormChange(event){
     event.preventDefault();
@@ -97,9 +96,8 @@ class Table extends Component {
   }
 
   /**
-   * 
-   * @param {Object} event passes an event object from a Submit
    * Responsible for submitting the form to the database for new exams from <ExamForm>
+   * @param {Object} event passes an event object from a Submit
    */
   handleAddFormSubmit(event){
     event.preventDefault();
@@ -123,9 +121,8 @@ class Table extends Component {
   }
 
   /**
-   * 
+   * Responsible for keeping track of the information changed during inline edits
    * @param {Object} event object from TableRender Inline edits
-   * responsible for keeping track of the information changed during inline edits
    */
   handleEditFormChange(event){
     event.preventDefault();
@@ -140,7 +137,7 @@ class Table extends Component {
   }
 
   /**
-   * 
+   * Triggered when a row's edit button is clicked on
    * @param {Object} event an event from an onClick
    * @param {Object} exam the exam from this row
    * @param {String} key the key is the examID for an exam wished to be edited
@@ -169,20 +166,20 @@ class Table extends Component {
     })
   }
   /**
-   * stops inline edits by resetting the recordId needed to render an editable row
+   * Stops inline edits by resetting the recordId needed to render an editable row
    * in <TableRender>
    */
   cancelEdit(){
     this.setState({recordId: ''})
   }
   /**
-   * cancels a new exam form
+   * Cancels a new exam form
    */
   cancelExam(){
     this.setState({isNewExamVisable: false})
   }
   /**
-   * allows for an exam form to render
+   * Allows for an exam form to render
    */
   createExam(){
     this.setState({isNewExamVisable: true})
@@ -196,7 +193,7 @@ class Table extends Component {
   }
 
   /**
-   * fetches exams from the server
+   * Fetches exams from the server
    */
   async componentDidMount() {
     this.setState({ isLoading: true })
@@ -212,7 +209,7 @@ class Table extends Component {
   }
 
   /**
-   * sets up the table
+   * Sets up the table
    * @returns The table view
    */
   examsRender = () => {
@@ -232,7 +229,7 @@ class Table extends Component {
     )
   }
   /**
-   * brings all the components togethre to create the table view and tools
+   * Brings all the components togethre to create the table view and tools
    * @returns All the rendered elements for a table component
    */
   render() {

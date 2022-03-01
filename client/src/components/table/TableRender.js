@@ -6,7 +6,7 @@ import { FiX, FiSave } from "react-icons/fi"
 import { Link } from 'react-router-dom';
 
 /**
- * 
+ * This Component is responsible for rendering the table to be used in TableExams.js
  * @param {Object} EXAMS contains all exams from Table Exams
  * @param {Function} handleEditClick handles when the edit button is clicked
  * @param {Function} handleEditFormChange handles the onChange event for editable table view
@@ -15,7 +15,6 @@ import { Link } from 'react-router-dom';
  * @param {Function} cancelEdit handles the onClick event for the Xmark button on editable rows
  * @param {Boolean} isEditing true or false depending on if someone has clicked on the <AdminControls>'s edit list button
  * @returns The rendered table displaying all the data
- * This Component is responsible for rendering the table to be used in TableExams.js
  */
 export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, recordId, editRecordData, cancelEdit, isEditing }) => {
     

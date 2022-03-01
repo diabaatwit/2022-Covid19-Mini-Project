@@ -1,3 +1,6 @@
+/**
+ * Responsible for column layout
+ */
 export const COLUMNS = [
     {
         Header: 'Patient name',
