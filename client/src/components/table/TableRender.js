@@ -1,7 +1,8 @@
 import React, {useMemo} from 'react'
 import {useTable} from 'react-table'
 import {COLUMNS} from './columns'
-
+import { FaEdit } from "react-icons/fa" 
+import { FiX } from "react-icons/fi"
 
 export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, recordId, editRecordData }) => {
 
@@ -43,8 +44,8 @@ export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, recor
                     prepareRow(row)
 
                     return (recordId === row.cells[1].value)? //swap to button view once there is a recordID available for this row
-                     
-                        <tr {...row.getRowProps()}>
+                        //edit view
+                        <tr className="edit-view"{...row.getRowProps()}>
                             {row.cells.map( cell => {
 
                                 
@@ -60,9 +61,9 @@ export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, recor
                                         />
                                     </td>
                                  :
-                                    <td><button type ="button" onClick={()=> {
+                                    <td><button className="cancel" type ="button" onClick={()=> {
                                         console.log(row.cells[1].value)
-                                    }}>Edit</button></td>
+                                    }}><FiX/></button></td>
                                     /**
                                      * If I know the cell then there must be data linking it to it's column, if I know the column I know the
                                      * accessor, if I know that then I must be able to access the index of editRecordData that I want
@@ -79,6 +80,7 @@ export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, recor
                             
                         </tr>
                     :
+                        //read view
                         <tr {...row.getRowProps()}>
                             {row.cells.map( cell => {
 
@@ -96,11 +98,11 @@ export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, recor
                                     return (cell.column.id !== 'button')?//if the column id is not button render regular cell view
                                     <td {...cell.getCellProps()}>{(cell.value)?cell.render('Cell'):1234}</td>
                                     :
-                                    <td><button type ="button" onClick={(event)=> {
+                                    <td><button className="icon-button" type ="button" onClick={(event)=> {
                                         const rowKey = row.getRowProps().key.split('');
                                         const index = rowKey[rowKey.length-1]
                                         handleEditClick(event, data[index], row.cells[1].value )
-                                    }}>Edit</button></td>
+                                    }}><FaEdit/></button></td>
                                     
                                 }
                                     //checking to see what returns what 

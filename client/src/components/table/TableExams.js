@@ -17,6 +17,9 @@ class Table extends Component {
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleEditFormChange = this.handleEditClick.bind(this);
     this.cancelExam = this.cancelExam.bind(this);
+    this.handleAddFormChange = this.handleAddFormChange.bind(this);
+    this.handleAddFormSubmit = this.handleAddFormSubmit.bind(this);
+
     this.setSearchTerm.bind(this);
     this.state = {
       exams: [],
@@ -78,18 +81,6 @@ class Table extends Component {
     });
   }
 
-  handleEditFormChange(event){
-    event.preventDefault();
-    const fieldName = event.target.getAttribute("name");
-    const fieldValue = event.target.value;
-    
-    const newFormData = { ...this.state.editRecordData};
-    newFormData[fieldName] = fieldValue;
-    this.setState({
-      editRecordData: newFormData
-    })
-  }
-
   handleAddFormSubmit(event){
     event.preventDefault();
 
@@ -104,8 +95,24 @@ class Table extends Component {
         zipCode: this.state.record.zipCode
     }
 
+    console.log(newRecord)
+
     //This is what we need to send to the server
   }
+
+  handleEditFormChange(event){
+    event.preventDefault();
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+    
+    const newFormData = { ...this.state.editRecordData};
+    newFormData[fieldName] = fieldValue;
+    this.setState({
+      editRecordData: newFormData
+    })
+  }
+
+
 
   handleEditClick(event, exam, key){
     event.preventDefault();

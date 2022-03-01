@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .container{
-	margin: 1% 3% 10% 3%;
+	margin: 4% 3% 10% 3%;
 }
 .app-container {
 	display: flex;
@@ -23,8 +25,10 @@
 	
   }
   
- td{
+ .app-container td{
 	border-bottom: 1px solid #E7E7E7;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.1em;
  }
 
  
@@ -42,7 +46,31 @@
   thead th:last-child{
 	border-radius: 0px 10px 10px 0px;
 }
+
+.create-exam h2{
+	margin-bottom: 10px;
+}
+.create-exam thead th:first-child{
+	border-radius: 10px 0px 0px 0px;
+	
+}
+
+.create-exam thead th:last-child{
+  border-radius: 0px 10px 0px 0px;
+}
   
+.create-exam tbody td:first-child{
+	border-radius: 0 0px 0 10px;
+	
+}
+
+.create-exam tbody td:last-child{
+  border-radius: 0px 0px 10px 0;
+}
+.create-exam tbody td{
+	background-color:rgb(196, 198, 204);
+}
+
 
   
   form {
@@ -55,7 +83,62 @@
 	justify-content: space-evenly;
   }
   
+.icon-button{
+	border: none;
+	background-color: transparent;
+	display: block;
+  width: 100%;
+  border: none;
+  padding: 14px 28px;
+  font-size: 25px;
+  cursor: pointer;
+  text-align: center;
 
+}
+#add,.cancel{
+	border: none;
+	background-color: transparent;
+	display: block;
+  width: 100%;
+  border: none;
+  font-size: 34px;
+  cursor: pointer;
+  text-align: center;
+
+}
+
+#add{
+	font-size: 36px;
+	
+}
+#add svg,.cancel svg{
+	
+	transition: transform 200ms;
+}
+.cancel{
+	transition: transform 100s;
+}
+.cancel svg:hover{
+	color: red;
+	transform: rotate(90deg);
+}
+#add svg:hover{
+	color: green;
+	
+	transform: rotate(90deg);
+	
+	
+}
+.edit-view{
+	box-shadow: 0 0 20px rgba(0,0,0,0.3);
+	border-radius: 10px;
+}
+
+.icon-button:hover{
+
+	color: #255fdf;
+
+}
 .key-findings{
 	display:flex;
 }
@@ -67,9 +150,21 @@ img{
 	border-radius: 10px;
 	
 }
+/*selects the first element of each tr with the attr row i.e patient name*/
+tr[role=row] td:first-child{
+	color: #3476D1;
+	font-weight:bold;
+}
+thead th:first-child, thead th:first-child, tbody td:first-child,thead td:first-child{
+	padding:15px 20px 15px 20px;
+}
+td{
+	padding-right: 25px;
+}
 th{
 	white-space: nowrap;
 }
+
 .exam-count p{
 	margin-left: 3px;
 }
