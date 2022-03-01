@@ -8,6 +8,7 @@ import ReadOnlyRow from './ReadOnlyRow';
 import SearchBar from './SearchBar';
 import { TableCount } from './TableCount';
 import { TableRender } from './TableRender';
+import '../css/site.css'
 
 
 class Table extends Component {
