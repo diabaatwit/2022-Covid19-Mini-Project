@@ -102,7 +102,7 @@ class Table extends Component {
         bmi: this.state.record.bmi,
         zipCode: this.state.record.zipCode
     }
-
+    this.cancelExam();
     console.log(newRecord)
 
     //This is what we need to send to the server
@@ -234,14 +234,16 @@ class Table extends Component {
                 toggleEdit = {this.toggleEdit}
                 createExam = {this.createExam}
                 isEditing = {this.state.isEditing}
+                isNewExamVisable = {this.state.isNewExamVisable}
               />
           </div>
           
           {this.state.isNewExamVisable && 
-          <ExamForm 
-            handleAddFormChange = {this.handleAddFormChange}
-            handleAddFormSubmit = {this.handleAddFormSubmit}
-            cancelExam = {this.cancelExam}/>}
+            <ExamForm 
+              handleAddFormChange = {this.handleAddFormChange}
+              handleAddFormSubmit = {this.handleAddFormSubmit}
+              cancelExam = {this.cancelExam}/>
+          }
         <div>
         
         </div>

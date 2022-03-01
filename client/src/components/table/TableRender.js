@@ -114,11 +114,11 @@ export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, recor
                                     ://regular cell
                                     <td {...cell.getCellProps()}>{(cell.value)?cell.render('Cell'):1234}</td>
                                     ://button
-                                    <td><button className="icon-button" type ="button" onClick={(event)=> {
+                                    <td>{isEditing &&<button className="icon-button" type ="button" onClick={(event)=> {
                                         const rowKey = row.getRowProps().key.split('');
                                         const index = rowKey[rowKey.length-1]
                                         handleEditClick(event, data[index], row.cells[1].value )
-                                    }}>{isEditing && <FaEdit/>}</button></td> //if they are editing show edit
+                                    }}> <FaEdit/></button>}</td> //if they are editing show edit
                                     
                                 }
                                     //checking to see what returns what 

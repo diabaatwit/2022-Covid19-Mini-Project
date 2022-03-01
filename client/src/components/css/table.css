@@ -75,7 +75,20 @@ table {
 	background-color:rgb(196, 198, 204);
 }
 
+#create-exam{
+	background-color: #3577D1;
+	color: #FEFEFF;
+	
+}
 
+#create-exam:hover{
+	background-color: #255fdf;
+}
+
+.new-exam-active{
+	background-color: #255fdf !important;
+	
+}
   
   form {
 	display: flex;
@@ -119,6 +132,7 @@ table {
   text-align: center;
 
 }
+
 #add,.cancel{
 	border: none;
 	background-color: transparent;
@@ -190,9 +204,11 @@ img:hover{
 .key-findings{
 	display:flex;
 }
-
+.image-container{
+	max-width: 108.58px;
+}
 img{
-	max-width: 100%;
+	max-width: 108.58px;
 	max-height: 4em;
 	flex: 1;
 	border-radius: 10px;
@@ -301,15 +317,6 @@ th{
 	background-color: #ECECF2;
 }
 
-#create-exam{
-	background-color: #3577D1;
-	color: #FEFEFF;
-	
-}
-
-#create-exam:hover{
-	background-color: #255fdf;
-}
 
 .cancel-edit{
 	color: rgb(247, 76, 76) !important;
