@@ -19,7 +19,7 @@ class Table extends Component {
     //there should be some way to iterate over this
     this.presentExams = React.createRef();
     this.handleEditClick = this.handleEditClick.bind(this);
-    this.handleEditFormChange = this.handleEditClick.bind(this);
+    this.handleEditFormChange = this.handleEditFormChange.bind(this);
     this.cancelExam = this.cancelExam.bind(this);
     this.handleAddFormChange = this.handleAddFormChange.bind(this);
     this.handleAddFormSubmit = this.handleAddFormSubmit.bind(this);
@@ -101,17 +101,16 @@ class Table extends Component {
    */
   handleAddFormSubmit(event){
     event.preventDefault();
-
     const newRecord = {
-      patientID: this.state.record.patientID,
-      _id: this.state.record._id,
-      xRayImageLink: this.state.record.xRayImageLink,
-      keyFindings: this.state.record.keyFindings,
-      brixiaScores: this.state.record.brixiaScores,
-      age: this.state.record.age,
-      sex: this.state.record.sex,
-      bmi: this.state.record.bmi,
-      zipCode: this.state.record.zipCode
+      patientID: this.state.editRecordData.patientID,
+      _id: this.state.editRecordData._id,
+      xRayImageLink: this.state.editRecordData.xRayImageLink,
+      keyFindings: this.state.editRecordData.keyFindings,
+      brixiaScores: this.state.editRecordData.brixiaScores,
+      age: this.state.editRecordData.age,
+      sex: this.state.editRecordData.sex,
+      bmi: this.state.editRecordData.bmi,
+      zipCode: this.state.editRecordData.zipCode
     }
     this.cancelExam();
     console.log(newRecord)
@@ -160,7 +159,7 @@ class Table extends Component {
       bmi: exam.bmi,
       zipCode: exam.zipCode
     }
-
+    console.log(recordValues)
     this.setState({
       editRecordData: recordValues
     })
@@ -220,6 +219,7 @@ class Table extends Component {
         EXAMS={examToUse} 
         handleEditClick={this.handleEditClick}
         handleEditFormChange ={this.handleEditFormChange}
+        handleAddFormSubmit = {this.handleAddFormSubmit}
         recordId={this.state.recordId} 
         editRecordData={this.state.editRecordData}
         cancelEdit={this.cancelEdit}

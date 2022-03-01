@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
  * @param {Boolean} isEditing true or false depending on if someone has clicked on the <AdminControls>'s edit list button
  * @returns The rendered table displaying all the data
  */
-export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, recordId, editRecordData, cancelEdit, isEditing }) => {
+export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, handleAddFormSubmit, recordId, editRecordData, cancelEdit, isEditing }) => {
     
     //Ensures that if the same data is past through, it remembers the output instead of recomputing 
     const columns = useMemo(() => COLUMNS, [])
@@ -38,126 +38,127 @@ export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, recor
 
     //returns the table
     return (
+        <form onSubmit={(event)=>{handleAddFormSubmit(event)}}>
+            <table {...getTableProps()}>
+                <thead>
+                    {headerGroups.map(headerGroup => (
 
-        <table {...getTableProps()}>
-            <thead>
-                {headerGroups.map(headerGroup => (
-
-                    <tr {...headerGroup.getHeaderGroupProps()}>
-                        {headerGroup.headers.map( column => (
-                            <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-                        ))}
-                    </tr>
-                ))}
-
-            </thead>
-            <tbody {...getTableBodyProps()}>
-                {rows.map(row => {
-                    prepareRow(row)
-                    
-                    /**
-                     * the idea here is that only one view for a given row will need to be shown.
-                     * So if someone clicks the edit button on a read only row, it will store that 
-                     * exams ID. This table then checks to see first if there are any IDs it needs to be aware of,
-                     * if there is, it renders an editable version of that row instead. 
-                     * 
-                     * for each cell it will check to see if it needs to be either an image (with a valid url),
-                     * patientID, ExamID, or button. 
-                     */
-                    return (recordId === row.cells[1].value)? //swap to button view once there is a recordID available for this row
-                        //edit view
-                        <tr className="edit-view"{...row.getRowProps()}>
-                            {row.cells.map( cell => {
-
-
-                                return (cell.column.id !== 'button')?//if the column id is not button, render regular cell view
-                                //editable cells
-                                    <td {...cell.getCellProps()}>
-                                        <input 
-                                            type="text"
-                                            name={cell.column.id}
-                                            required="required"
-                                            placeholder="Enter Data"
-                                            value={editRecordData[cell.column.id]}
-                                            onChange={handleEditFormChange}
-                                        />
-                                    </td>
-                                ://renders the X and save icons
-                                    <td>
-                                        <div class="button-options-container">
-                                            <button className="cancel button-options"
-                                                    type ="button" onClick={()=>cancelEdit()}><FiX/>
-                                            </button>
-                                            <button class="save"><FiSave/></button>
-                                        </div>
-                                    </td>
-                                    /**
-                                    * If I know the cell then there must be data linking it to it's column, if I know the column I know the
-                                    * accessor, if I know that then I must be able to access the index of editRecordData that I want
-                                    * by prinitng out these calls, I can see what each string of commands gives me.
-                                    */
-                                    //(event)=>handleEditFormChange(event,editRecordData)
-                                    //console.log(row.cells[1].value) //row id
-                                    //console.log(editRecordData)
-                                    //()=> {console.log(cell.column.id)}
-                                    //console.log(row.getRowProps().key, + "" + JSON.stringify(data[0]))
-
-                            })}
-
+                        <tr {...headerGroup.getHeaderGroupProps()}>
+                            {headerGroup.headers.map( column => (
+                                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                            ))}
                         </tr>
-                    ://read view
-                        <tr {...row.getRowProps()}>
-                            {row.cells.map( cell => {
+                    ))}
 
-                                //try to see if the image is a valid url, if not catch then render a regular cell view
-                                try { 
-                                    new URL(cell.value); 
-                                return(
-                                    //photo cell
-                                    <td {...cell.getCellProps()}>
-                                        <a href={cell.value} target="_blank">
-                                            <div className='image-container'>
-                                                <img className="x-ray" src={cell.value} alt="xRayImage"/>
+                </thead>
+                <tbody {...getTableBodyProps()}>
+                    {rows.map(row => {
+                        prepareRow(row)
+                        
+                        /**
+                         * the idea here is that only one view for a given row will need to be shown.
+                         * So if someone clicks the edit button on a read only row, it will store that 
+                         * exams ID. This table then checks to see first if there are any IDs it needs to be aware of,
+                         * if there is, it renders an editable version of that row instead. 
+                         * 
+                         * for each cell it will check to see if it needs to be either an image (with a valid url),
+                         * patientID, ExamID, or button. 
+                         */
+                        return (recordId === row.cells[1].value)? //swap to button view once there is a recordID available for this row
+                            //edit view
+                            <tr className="edit-view"{...row.getRowProps()}>
+                                {row.cells.map( cell => {
+
+
+                                    return (cell.column.id !== 'button')?//if the column id is not button, render regular cell view
+                                    //editable cells
+                                        <td {...cell.getCellProps()}>
+                                            <input 
+                                                type="text"
+                                                name={cell.column.id}
+                                                required="required"
+                                                placeholder="Enter Data"
+                                                value={editRecordData[cell.column.id]}
+                                                onChange={(event)=>{ handleEditFormChange(event);}}
+                                            />
+                                        </td>
+                                    ://renders the X and save icons
+                                        <td>
+                                            <div class="button-options-container">
+                                                <button className="cancel button-options"
+                                                        type ="button" onClick={()=>cancelEdit()}><FiX/>
+                                                </button>
+                                                <button class="save" type="submit" ><FiSave/></button>
                                             </div>
-                                        </a>
-                                    </td>
-                                )
-                                } catch (_){ 
+                                        </td>
+                                        /**
+                                        * If I know the cell then there must be data linking it to it's column, if I know the column I know the
+                                        * accessor, if I know that then I must be able to access the index of editRecordData that I want
+                                        * by prinitng out these calls, I can see what each string of commands gives me.
+                                        */
+                                        //(event)=>handleEditFormChange(event,editRecordData)
+                                        //console.log(row.cells[1].value) //row id
+                                        //console.log(editRecordData)
+                                        //()=> {console.log(cell.column.id)}
+                                        //console.log(row.getRowProps().key, + "" + JSON.stringify(data[0]))
 
-                                    return (cell.column.id !== 'button')?//if the column id is not button render regular cell view
-                                     //Read Cells
-                                        (cell.column.id === 'patientID' || cell.column.id === '_id')?// now is it a paitient Id or _id for links
+                                })}
 
-                                         //Linked Cell
-                                            <td {...cell.getCellProps()}><Link to={
-                                            {pathname: (cell.column.id === 'patientID')? '/patient/'+ cell.value : '/exam/' + cell.value}
-                                            }>{cell.render('Cell')}</Link></td>
+                            </tr>
+                        ://read view
+                            <tr {...row.getRowProps()}>
+                                {row.cells.map( cell => {
 
-                                        ://regular cell
-                                            <td {...cell.getCellProps()}>{(cell.value)?cell.render('Cell'):1234}</td>
-                                    ://Edit button
-                                        <td>{isEditing && //if there are no edits don't render edit button
-                                        <button className="icon-button" type ="button" onClick={(event)=> {
-                                        const rowKey = row.getRowProps().key.split('');
-                                        const index = rowKey[rowKey.length-1]
-                                        handleEditClick(event, data[index], row.cells[1].value )
-                                        }}> <FaEdit/></button>}</td>
+                                    //try to see if the image is a valid url, if not catch then render a regular cell view
+                                    try { 
+                                        new URL(cell.value); 
+                                    return(
+                                        //photo cell
+                                        <td {...cell.getCellProps()}>
+                                            <a href={cell.value} target="_blank">
+                                                <div className='image-container'>
+                                                    <img className="x-ray" src={cell.value} alt="xRayImage"/>
+                                                </div>
+                                            </a>
+                                        </td>
+                                    )
+                                    } catch (_){ 
 
-                                }
-                                //checking to see what returns what 
-                                //console.log(row.getRowProps().key, + "" + JSON.stringify(data[0]))
-                                //()=>{console.log(row.getRowProps().key)}
-                                //onClick={(event)=> handleEditClick(event, row.getRowProps())}
+                                        return (cell.column.id !== 'button')?//if the column id is not button render regular cell view
+                                        //Read Cells
+                                            (cell.column.id === 'patientID' || cell.column.id === '_id')?// now is it a paitient Id or _id for links
 
-                            })}
+                                            //Linked Cell
+                                                <td {...cell.getCellProps()}><Link to={
+                                                {pathname: (cell.column.id === 'patientID')? '/patient/'+ cell.value : '/exam/' + cell.value}
+                                                }>{cell.render('Cell')}</Link></td>
 
-                        </tr>
+                                            ://regular cell
+                                                <td {...cell.getCellProps()}>{(cell.value)?cell.render('Cell'):1234}</td>
+                                        ://Edit button
+                                            <td>{isEditing && //if there are no edits don't render edit button
+                                            <button className="icon-button" type ="button" onClick={(event)=> {
+                                            const rowKey = row.getRowProps().key.split('');
+                                            const index = rowKey[rowKey.length-1]
+                                            handleEditClick(event, data[index], row.cells[1].value )
+                                            }}> <FaEdit/></button>}</td>
+
+                                    }
+                                    //checking to see what returns what 
+                                    //console.log(row.getRowProps().key, + "" + JSON.stringify(data[0]))
+                                    //()=>{console.log(row.getRowProps().key)}
+                                    //onClick={(event)=> handleEditClick(event, row.getRowProps())}
+
+                                })}
+
+                            </tr>
 
 
-                    })
-                }
+                        })
+                    }
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </form>
     )
 }
