@@ -2,9 +2,10 @@ import React, {useMemo} from 'react'
 import {useTable} from 'react-table'
 import {COLUMNS} from './columns'
 import { FaEdit } from "react-icons/fa" 
-import { FiX } from "react-icons/fi"
+import { FiX, FiSave } from "react-icons/fi"
+import { Link } from 'react-router-dom';
 
-export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, recordId, editRecordData }) => {
+export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, recordId, editRecordData, cancelEdit }) => {
 
     const columns = COLUMNS
     const data = EXAMS
@@ -61,9 +62,12 @@ export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, recor
                                         />
                                     </td>
                                  :
-                                    <td><button className="cancel" type ="button" onClick={()=> {
-                                        console.log(row.cells[1].value)
-                                    }}><FiX/></button></td>
+                                    <td>
+                                        <div class="button-options-container">
+                                    <button className="cancel button-options" type ="button" onClick={()=>cancelEdit()}><FiX/></button>
+                                    <button class="save"><FiSave/></button>
+                                    </div>
+                                    </td>
                                     /**
                                      * If I know the cell then there must be data linking it to it's column, if I know the column I know the
                                      * accessor, if I know that then I must be able to access the index of editRecordData that I want
@@ -88,16 +92,28 @@ export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, recor
                                 try { 
                                     new URL(cell.value); 
                                     return(
-     
+                                        //photo cell
                                     <td {...cell.getCellProps()}>
+                                        <a href={cell.value} target="_blank">
+                                        <div className='image-container'>
                                             <img className="x-ray" src={cell.value} alt="xRayImage"/>
+                                        </div>
+                                        </a>
                                     </td>
                                     )
                                 } catch (_){ 
                                     
                                     return (cell.column.id !== 'button')?//if the column id is not button render regular cell view
+                                    (cell.column.id === 'patientID' || cell.column.id === '_id')?// now is it a paitient Id or _id for links
+                                    
+                                        
+                                    <td {...cell.getCellProps()}><Link to={
+                                        {pathname: (cell.column.id === 'patientID')? '/patient/'+ cell.value : '/exam/' + cell.value}
+                                    }>{cell.render('Cell')}</Link></td>
+                                      
+                                    ://regular cell
                                     <td {...cell.getCellProps()}>{(cell.value)?cell.render('Cell'):1234}</td>
-                                    :
+                                    ://button
                                     <td><button className="icon-button" type ="button" onClick={(event)=> {
                                         const rowKey = row.getRowProps().key.split('');
                                         const index = rowKey[rowKey.length-1]

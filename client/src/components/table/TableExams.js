@@ -20,6 +20,7 @@ class Table extends Component {
     this.cancelExam = this.cancelExam.bind(this);
     this.handleAddFormChange = this.handleAddFormChange.bind(this);
     this.handleAddFormSubmit = this.handleAddFormSubmit.bind(this);
+    this.cancelEdit = this.cancelEdit.bind(this);
 
     this.setSearchTerm.bind(this);
     this.state = {
@@ -140,7 +141,9 @@ class Table extends Component {
       })
       
   }
-
+  cancelEdit(){
+    this.setState({recordId: ''})
+  }
   cancelExam(){
     this.setState({isNewExamVisable: false})
   }
@@ -179,6 +182,7 @@ class Table extends Component {
             handleEditFormChange ={this.handleEditFormChange}
             recordId={this.state.recordId} 
             editRecordData={this.state.editRecordData}
+            cancelEdit={this.cancelEdit}
             />
             
           //   )}
