@@ -9,11 +9,13 @@ import SearchBar from './SearchBar';
 import { TableCount } from './TableCount';
 import { TableRender } from './TableRender';
 import '../css/site.css'
+import { AdminControls } from './AdminControls';
 
 
 class Table extends Component {
   constructor(props) {
     super(props);
+    //there should be some way to iterate over this
     this.presentExams = React.createRef();
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleEditFormChange = this.handleEditClick.bind(this);
@@ -21,8 +23,10 @@ class Table extends Component {
     this.handleAddFormChange = this.handleAddFormChange.bind(this);
     this.handleAddFormSubmit = this.handleAddFormSubmit.bind(this);
     this.cancelEdit = this.cancelEdit.bind(this);
-
+    this.createExam = this.createExam.bind(this);
+    this.toggleEdit = this.toggleEdit.bind(this);
     this.setSearchTerm.bind(this);
+    
     this.state = {
       exams: [],
       filteredExams: [],
@@ -31,7 +35,6 @@ class Table extends Component {
       searchTerm: '',
       recordId: '',
       editRecordData: {},
-
       record: {
         patientID: '',
         _id: '',
@@ -44,6 +47,8 @@ class Table extends Component {
         zipCode: '',
       },
       isNewExamVisable: false,
+      isEditing: false,
+      editingStatus: 'Edit List'
     }
     
   }
@@ -87,6 +92,7 @@ class Table extends Component {
     event.preventDefault();
 
     const newRecord = {
+        patientID: this.state.record.patientID,
         _id: this.state.record._id,
         xRayImageLink: this.state.record.xRayImageLink,
         keyFindings: this.state.record.keyFindings,
@@ -147,6 +153,13 @@ class Table extends Component {
   cancelExam(){
     this.setState({isNewExamVisable: false})
   }
+  createExam(){
+    this.setState({isNewExamVisable: true})
+  }
+  toggleEdit(){
+    this.setState({isEditing: !this.state.isEditing})
+    this.setState({editingStatus: (!this.state.isEditing)? 'Cancel' : 'Edit List' }) ;
+  }
 
 
 /* fetching exams */
@@ -183,6 +196,7 @@ class Table extends Component {
             recordId={this.state.recordId} 
             editRecordData={this.state.editRecordData}
             cancelEdit={this.cancelEdit}
+            isEditing={this.state.isEditing}
             />
             
           //   )}
@@ -215,12 +229,12 @@ class Table extends Component {
           </div>
           <div id="search-nav">
               <SearchBar setSearchTerm = {this.setSearchTerm}/>
-            
-              <div id="edit-buttons">
-                <button id='edit-list'>Edit List</button>
-                <button id='create-exam' onClick={()=>{this.setState({isNewExamVisable: true})}}>Create Exam</button>
-              </div>
-              
+              <AdminControls
+                editingStatus = {this.state.editingStatus}
+                toggleEdit = {this.toggleEdit}
+                createExam = {this.createExam}
+                isEditing = {this.state.isEditing}
+              />
           </div>
           
           {this.state.isNewExamVisable && 

@@ -5,7 +5,7 @@ import { FaEdit } from "react-icons/fa"
 import { FiX, FiSave } from "react-icons/fi"
 import { Link } from 'react-router-dom';
 
-export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, recordId, editRecordData, cancelEdit }) => {
+export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, recordId, editRecordData, cancelEdit, isEditing }) => {
 
     const columns = COLUMNS
     const data = EXAMS
@@ -118,7 +118,7 @@ export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, recor
                                         const rowKey = row.getRowProps().key.split('');
                                         const index = rowKey[rowKey.length-1]
                                         handleEditClick(event, data[index], row.cells[1].value )
-                                    }}><FaEdit/></button></td>
+                                    }}>{isEditing && <FaEdit/>}</button></td> //if they are editing show edit
                                     
                                 }
                                     //checking to see what returns what 

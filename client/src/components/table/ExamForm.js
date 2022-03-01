@@ -1,7 +1,7 @@
 import React from 'react'
 import {FiX,FiPlus} from 'react-icons/fi'
 
-export const ExamForm = ({handleAddFormChange, handleAddFormSubmit,cancelExam}) => {
+export const ExamForm = ({handleAddFormChange, handleAddFormSubmit,cancelExam,isEditing}) => {
   return (
     //this is not very dynamic but I'm not very worried about that right now
     <div className="create-exam">
@@ -12,7 +12,8 @@ export const ExamForm = ({handleAddFormChange, handleAddFormSubmit,cancelExam}) 
                 <tr>
                   <th>Patient name</th>
                   <th>Exam ID</th>
-                  <th colSpan={2}>Key Findings</th>
+                  <th>Key Findings</th>
+                  <th>X-Ray URL</th>
                   <th> Brixia Score</th>
                   <th>Age</th>
                   <th>Sex</th>

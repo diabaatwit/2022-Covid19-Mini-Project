@@ -87,6 +87,10 @@ table {
 	justify-content: space-evenly;
   }
   
+
+.app-container td{
+	cursor: default
+}
 .save{
 	border: none;
 	background-color: transparent;
@@ -205,6 +209,11 @@ img{
 tr[role=row] td:first-child a{
 	color: #3476D1;
 	font-weight:bold;
+	transition: color 200ms;
+}
+tr[role=row] td:first-child a:hover{
+	color: #1851b9;
+	
 }
 thead th:first-child, thead th:first-child, tbody td:first-child,thead td:first-child{
 	padding:15px 20px 15px 20px;
@@ -278,12 +287,14 @@ th{
 	
 	flex: 1;
 	
+	
 }
 
 #edit-list{
 	background-color: transparent;
 	color: #4d88da;
 	padding: 10px 15px 10px 15px;
+	min-width: 101.16px;
 }
 
 #edit-list:hover{
@@ -300,4 +311,11 @@ th{
 	background-color: #255fdf;
 }
 
+.cancel-edit{
+	color: rgb(247, 76, 76) !important;
+	background-color: rgb(238, 238, 238) !important;
+}
 
+.cancel-edit:hover{
+	background-color: rgb(216, 216, 216) !important;
+}
