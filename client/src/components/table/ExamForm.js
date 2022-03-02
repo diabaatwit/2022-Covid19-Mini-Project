@@ -12,7 +12,7 @@ export const ExamForm = ({handleAddFormChange, handleAddFormSubmit,cancelExam}) 
   return (
     //this is not very dynamic but I'm not very worried about that right now
     <div className="create-exam">
-      <form onSubmit={handleAddFormSubmit}>
+      <form onSubmit={(event)=>handleAddFormSubmit(event,true)}>
         <table>
           <thead>
             <tr><h2>New Exam:</h2></tr>

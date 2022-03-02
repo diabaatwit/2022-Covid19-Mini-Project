@@ -1,7 +1,7 @@
 import React, {useMemo} from 'react'
 import {useTable} from 'react-table'
 import {COLUMNS} from './columns'
-import { FaEdit } from "react-icons/fa" 
+import { FaEdit, FaTrashAlt } from "react-icons/fa" 
 import { FiX, FiSave } from "react-icons/fi"
 import { Link } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
  * @param {Boolean} isEditing true or false depending on if someone has clicked on the <AdminControls>'s edit list button
  * @returns The rendered table displaying all the data
  */
-export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, handleAddFormSubmit, recordId, editRecordData, cancelEdit, isEditing }) => {
+export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, handleAddFormSubmit, recordId, editRecordData, cancelEdit, isEditing, deleteExam }) => {
     
     //Ensures that if the same data is past through, it remembers the output instead of recomputing 
     const columns = useMemo(() => COLUMNS, [])
@@ -38,16 +38,29 @@ export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, handl
 
     //returns the table
     return (
-        <form onSubmit={(event)=>{handleAddFormSubmit(event)}}>
+        /**
+         * @param false returns false because it is not a form (<ExamForm>)
+         */
+        <form onSubmit={(event)=>{handleAddFormSubmit(event,false)}}>
             <table {...getTableProps()}>
                 <thead>
                     {headerGroups.map(headerGroup => (
-
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map( column => (
-                                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                            (recordId)?
+                            //is column in edit view
+                                    <th {...column.getHeaderProps()}>{column.render('Header')}</th>                 
+                            ://is column x-ray
+                            (column.id === 'xRayImageLink')?
+                                    <th {...column.getHeaderProps()}>{"Key Findings"}</th>
+                            ://is column key findings
+                            (column.id === 'keyFindings')?
+                                    <th {...column.getHeaderProps()}></th>
+                            ://render normal
+                                    <th {...column.getHeaderProps()}>{column.render('Header')}</th>
                             ))}
                         </tr>
+                        
                     ))}
 
                 </thead>
@@ -74,6 +87,7 @@ export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, handl
                                     //editable cells
                                         <td {...cell.getCellProps()}>
                                             <input 
+                                                disabled={cell.column.id==="_id"}
                                                 type="text"
                                                 name={cell.column.id}
                                                 required="required"
@@ -84,7 +98,7 @@ export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, handl
                                         </td>
                                     ://renders the X and save icons
                                         <td>
-                                            <div class="button-options-container">
+                                            <div className="button-options-container">
                                                 <button className="cancel button-options"
                                                         type ="button" onClick={()=>cancelEdit()}><FiX/>
                                                 </button>
@@ -136,12 +150,28 @@ export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, handl
                                             ://regular cell
                                                 <td {...cell.getCellProps()}>{(cell.value)?cell.render('Cell'):1234}</td>
                                         ://Edit button
-                                            <td>{isEditing && //if there are no edits don't render edit button
-                                            <button className="icon-button" type ="button" onClick={(event)=> {
-                                            const rowKey = row.getRowProps().key.split('');
-                                            const index = rowKey[rowKey.length-1]
-                                            handleEditClick(event, data[index], row.cells[1].value )
-                                            }}> <FaEdit/></button>}</td>
+                                            <td>{
+                                                    isEditing && //if there are no edits don't render edit button
+                                                <div className="button-options-container">
+                                                    <button className="icon-button" type ="button" onClick={(event)=> {
+                                                        const rowKey = row.getRowProps().key.split('');
+                                                        const index = rowKey[rowKey.length-1]
+                                                        handleEditClick(event, data[index], row.cells[1].value )
+                                                    }}> 
+                                                        <FaEdit/>
+                                                    </button>
+                                                    <button 
+                                                        className='icon-button trash-button'
+                                                        onClick={(event)=>{
+                                                        const rowKey = row.getRowProps().key.split('');
+                                                        const index = rowKey[rowKey.length-1]
+                                                        deleteExam(event,data[index])}
+                                                    }>
+                                                        <FaTrashAlt/>
+                                                    </button>
+                                                </div>
+                                                    }
+                                            </td>
 
                                     }
                                     //checking to see what returns what 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import TableExams from './table/TableExams'
 
 class PatientInfo extends Component {
 
@@ -82,7 +83,7 @@ class PatientInfo extends Component {
             //input tracking searchTerms
             <div>
               {this.patientData()}
-    
+              <TableExams/>
             </div>
           ) : (
             <div>No patients</div>

@@ -124,14 +124,15 @@ table {
 	border: none;
 	background-color: transparent;
 	display: block;
-  width: 100%;
-  border: none;
-  padding: 14px 28px;
-  font-size: 25px;
-  cursor: pointer;
-  text-align: center;
+	width: 100%;
+	border: none;
+	padding: 14px 15px;
+	font-size: 25px;
+	cursor: pointer;
+	text-align: center;
 
 }
+
 
 #add,.cancel{
 	border: none;
@@ -176,6 +177,9 @@ table {
 
 	color: #255fdf;
 
+}
+.trash-button:hover{
+	color:red 
 }
 
 .image-container{

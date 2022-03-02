@@ -11,11 +11,11 @@ export const COLUMNS = [
         accessor: '_id'
     },
     {
-        Header: 'Key Findings',
+        Header: 'X-Ray URL',
         accessor: 'xRayImageLink'
     },
     {
-        Header: '',
+        Header: 'Key Findings',
         accessor: 'keyFindings'
     },
     {

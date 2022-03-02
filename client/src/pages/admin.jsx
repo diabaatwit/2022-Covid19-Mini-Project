@@ -5,7 +5,7 @@ import Table from "../components/table/TableExams";
 function Admin() {
   return (
     <div>
-      <AdminControl />
+
       <Table />
 
     </div>

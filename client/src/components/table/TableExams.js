@@ -26,6 +26,7 @@ class Table extends Component {
     this.cancelEdit = this.cancelEdit.bind(this);
     this.createExam = this.createExam.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
+    this.deleteExam = this.deleteExam.bind(this);
     this.setSearchTerm.bind(this);
 
     this.state = {
@@ -47,9 +48,15 @@ class Table extends Component {
         bmi: '',
         zipCode: '',
       },
+      notify: {
+        isOpen: false,
+        message: '',
+        type: ''
+      },
       isNewExamVisable: false, //checks to see if a <ExamForm> is present
       isEditing: false, //checks to see if the edit list button has been pressed
-      editingStatus: 'Edit List' //The edit button's text value from <ExamForm>
+      editingStatus: 'Edit List', //The edit button's text value from <ExamForm>
+      
     }
 
   }
@@ -99,24 +106,26 @@ class Table extends Component {
    * Responsible for submitting the form to the database for new exams from <ExamForm>
    * @param {Object} event passes an event object from a Submit
    */
-  handleAddFormSubmit(event){
+  handleAddFormSubmit(event,isNewForm){ //newForm refering to <ExamForm>
     event.preventDefault();
+    console.log(event)
+    const formType = (isNewForm)? this.state.record : this.state.editRecordData;
     const newRecord = {
-      patientID: this.state.editRecordData.patientID,
-      _id: this.state.editRecordData._id,
-      xRayImageLink: this.state.editRecordData.xRayImageLink,
-      keyFindings: this.state.editRecordData.keyFindings,
-      brixiaScores: this.state.editRecordData.brixiaScores,
-      age: this.state.editRecordData.age,
-      sex: this.state.editRecordData.sex,
-      bmi: this.state.editRecordData.bmi,
-      zipCode: this.state.editRecordData.zipCode
+      patientID: formType.patientID,
+      _id: formType._id,
+      xRayImageLink: formType.xRayImageLink,
+      keyFindings: formType.keyFindings,
+      brixiaScores: formType.brixiaScores,
+      age: formType.age,
+      sex: formType.sex,
+      bmi: formType.bmi,
+      zipCode: formType.zipCode
     }
-    this.cancelExam();
     console.log(newRecord)
-
+    this.cancelExam();
+    
     //This is what we need to send to the server
-    //code goes here
+    //code goes here <---------------------------------
   }
 
   /**
@@ -159,11 +168,30 @@ class Table extends Component {
       bmi: exam.bmi,
       zipCode: exam.zipCode
     }
-    console.log(recordValues)
     this.setState({
       editRecordData: recordValues
     })
   }
+  /**
+   * deletes an exam entry from the database
+   * @param {Object} exam exam entry to delete
+   */
+  deleteExam(event, exam){
+    event.preventDefault()
+
+    this.setState({notify: {
+      isOpen: true,
+      message: 'Deleted Successfully',
+      type: 'success'
+    }})
+    if(window.confirm("Are you sure you want to delete this exam?")){
+      console.log(exam)
+      //Code Goes here <-------------------------------
+    }
+      
+    
+  }
+
   /**
    * Stops inline edits by resetting the recordId needed to render an editable row
    * in <TableRender>
@@ -198,10 +226,18 @@ class Table extends Component {
     this.setState({ isLoading: true })
     const response = await fetch('http://localhost:3001/exams'); //path
     if (response.ok) {
-      const exams = await response.json() //
+      let newExams = await response.json()
+      if(window.location.pathname.split("/")[1]==='patient'){
+         newExams = newExams.filter((exam)=>{
+          return window.location.pathname.split("/")[2]===exam.patientID
+         })
+      }
+        //
+      
       // console.log(exams)
       // console.log(typeof(exams))
-      this.setState({ exams, isLoading: false })
+      this.setState({ exams: newExams })
+      this.setState({ isLoading: false })
     } else {
       this.setState({ isError: true, isLoading: false })
     }
@@ -216,14 +252,15 @@ class Table extends Component {
     const examToUse = (!this.state.searchTerm)? this.state.exams: this.state.filteredExams; 
     return( 
       <TableRender 
-        EXAMS={examToUse} 
-        handleEditClick={this.handleEditClick}
-        handleEditFormChange ={this.handleEditFormChange}
+        EXAMS =  {examToUse} 
+        handleEditClick =  {this.handleEditClick}
+        handleEditFormChange =  {this.handleEditFormChange}
         handleAddFormSubmit = {this.handleAddFormSubmit}
-        recordId={this.state.recordId} 
-        editRecordData={this.state.editRecordData}
-        cancelEdit={this.cancelEdit}
-        isEditing={this.state.isEditing}
+        recordId  = {this.state.recordId} 
+        editRecordData  = {this.state.editRecordData}
+        cancelEdit  = {this.cancelEdit}
+        isEditing =  {this.state.isEditing}
+        deleteExam  = {this.deleteExam}
       />
 
     )
@@ -245,21 +282,27 @@ class Table extends Component {
 
     return exams.length > 0
     ? (
+      //Table Render after succesfully loading exams
+      //<Notification notify = {this.state.notify}/>
       <div class="container">
 
+        
         <div>       
-          <TableCount exams={this.state.exams} filteredExams={this.state.filteredExams}/>
+          
+          <TableCount examCount={(!this.state.searchTerm)? this.state.exams: this.state.filteredExams}/>
         </div>
 
         <div id="search-nav">
           <SearchBar setSearchTerm = {this.setSearchTerm}/>
+          { window.location.pathname.split("/")[1]==='admin' &&
+        
           <AdminControls //the create exam and edit list buttons
             editingStatus = {this.state.editingStatus}
             toggleEdit = {this.toggleEdit}
             createExam = {this.createExam}
             isEditing = {this.state.isEditing}
             isNewExamVisable = {this.state.isNewExamVisable}
-          />
+          />}
         </div>
         
         {this.state.isNewExamVisable && //render the form if the create exam button was pressed
