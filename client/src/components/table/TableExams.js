@@ -105,8 +105,9 @@ class Table extends Component {
   /**
    * Responsible for submitting the form to the database for new exams from <ExamForm>
    * @param {Object} event passes an event object from a Submit
+   * @param {Boolean} isNewForm true is <ExamForm> false means that an exam was edited
    */
-  handleAddFormSubmit(event,isNewForm){ //newForm refering to <ExamForm>
+  handleAddFormSubmit(event,isNewForm){ //newForm refering to <ExamForm> so 
     event.preventDefault();
     console.log(event)
     const formType = (isNewForm)? this.state.record : this.state.editRecordData;
