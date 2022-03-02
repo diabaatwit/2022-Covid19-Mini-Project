@@ -23,7 +23,7 @@ class UpdateExamForm extends Component {
     }
 
     async componentDidMount() {
-        const response = await fetch(`http://localhost:3001/exams/6217d19117d57d20dec0a052`)
+        const response = await fetch(`http://localhost:3001/exams/62030cdd58a7c8a7e8557c58`)
         if(response.ok) {
             const exam = await response.json();//returns an array
             this.setState({
@@ -64,7 +64,7 @@ class UpdateExamForm extends Component {
         return (
           <div>
               <form class='submission-form'>
-                <label> Current Working Exam ID: 6217d19117d57d20dec0a052. Update then click SUBMIT </label>
+                <label> Current Working Exam ID: 62030cdd58a7c8a7e8557c58. Update then click SUBMIT </label>
                 <label>Number of hours since the exam</label>
                 <input type="number" required={true} value={this.state.numHours} 
                     onChange={(e) => this.setState({ numHours: e.target.value })} />
