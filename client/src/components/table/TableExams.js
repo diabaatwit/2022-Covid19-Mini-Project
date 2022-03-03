@@ -27,6 +27,7 @@ class Table extends Component {
     this.createExam = this.createExam.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
     this.deleteExam = this.deleteExam.bind(this);
+    this.refreshPage = this.refreshPage.bind(this);
     this.setSearchTerm.bind(this);
 
     this.state = {
@@ -47,11 +48,6 @@ class Table extends Component {
         sex: '',
         bmi: '',
         zipCode: '',
-      },
-      notify: {
-        isOpen: false,
-        message: '',
-        type: ''
       },
       isNewExamVisable: false, //checks to see if a <ExamForm> is present
       isEditing: false, //checks to see if the edit list button has been pressed
@@ -107,7 +103,7 @@ class Table extends Component {
    * @param {Object} event passes an event object from a Submit
    * @param {Boolean} isNewForm true is <ExamForm> false means that an exam was edited
    */
-  handleAddFormSubmit(event,isNewForm){ //newForm refering to <ExamForm> so 
+  async handleAddFormSubmit(event,isNewForm){ //newForm refering to <ExamForm> so 
     event.preventDefault();
     console.log(event)
     const formType = (isNewForm)? this.state.record : this.state.editRecordData;
@@ -117,16 +113,41 @@ class Table extends Component {
       xRayImageLink: formType.xRayImageLink,
       keyFindings: formType.keyFindings,
       brixiaScores: formType.brixiaScores,
-      age: formType.age,
+      /*age: formType.age,
       sex: formType.sex,
       bmi: formType.bmi,
-      zipCode: formType.zipCode
+      zipCode: formType.zipCode*/
     }
-    console.log(newRecord)
-    this.cancelExam();
+    console.log(newRecord);
     
     //This is what we need to send to the server
     //code goes here <---------------------------------
+    //Add PATCH and POST
+    const serverMethod = (isNewForm)? "POST" : "PATCH"; //if its a new form, we must POST it, otherwise PATCH (edit) it
+
+    const options = {
+
+        method: serverMethod,
+        mode: "cors",
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify(newRecord)
+        
+    }
+
+    if(isNewForm) { //POST
+      await fetch("http://localhost:3001/exams", options)
+      .then(response => response.text())
+      .catch(error => console.log('error', error)); 
+    }
+  
+    else { //PATCH
+      await fetch(`http://localhost:3001/exams/${newRecord._id}`, options)
+      .then(response => response.text())
+      .catch(error => console.log('error', error)); 
+    }
+
+    this.cancelExam();
+    this.refreshPage();
   }
 
   /**
@@ -177,20 +198,26 @@ class Table extends Component {
    * deletes an exam entry from the database
    * @param {Object} exam exam entry to delete
    */
-  deleteExam(event, exam){
+  async deleteExam(event, exam){
     event.preventDefault()
 
-    this.setState({notify: {
+    /*this.setState({notify: {
       isOpen: true,
       message: 'Deleted Successfully',
       type: 'success'
-    }})
+    }})*/
     if(window.confirm("Are you sure you want to delete this exam?")){
       console.log(exam)
-      //Code Goes here <-------------------------------
+
+      const options = {
+        method: "DELETE",
+      }  
+
+      await fetch(`http://localhost:3001/exams/${exam._id}`, options)
+      .then(response => response.text())
+      .catch(error => console.log('error', error)); 
     }
-      
-    
+    this.refreshPage();
   }
 
   /**
@@ -218,6 +245,13 @@ class Table extends Component {
   toggleEdit(){
     this.setState({isEditing: !this.state.isEditing})
     this.setState({editingStatus: (!this.state.isEditing)? 'Cancel' : 'Edit List' }) ;
+  }
+
+  /**
+  * Refreshes the page
+  */
+  refreshPage() {
+    window.location.reload(false);
   }
 
   /**
