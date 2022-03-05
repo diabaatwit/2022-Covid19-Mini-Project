@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+div{
+	transition: all 700ms;
+}
 .container{
 	margin: 4% 3% 10% 3%;
+	max-width: 1804px;
 }
 .app-container {
 	display: flex;
@@ -9,6 +13,10 @@
 	gap: 10px;
 	padding: 1rem;
   }
+
+  .app-container td:last-child, .app-container td:nth-child(1), .app-container td,th{
+	transition: all 1000ms; 
+ }
 
 
 table {
@@ -22,11 +30,11 @@ table {
 	padding: 8px;
 	
   }
-  
+
  .app-container td{
-	border-bottom: 1px solid #E7E7E7;
+	cursor: default;
 	font-family: 'Roboto', sans-serif;
-	font-size: 1.1em;
+	font-size: clamp(1.1rem,1.2vw,1.5rem);
  }
 
  .app-container tr:hover{
@@ -101,9 +109,7 @@ table {
   }
   
 
-.app-container td{
-	cursor: default
-}
+
 .save{
 	border: none;
 	background-color: transparent;
@@ -210,10 +216,12 @@ img:hover{
 }
 .image-container{
 	max-width: 108.58px;
+	min-height: 63px;
 }
 img{
 	max-width: 108.58px;
 	max-height: 4em;
+	min-height: 63px;
 	flex: 1;
 	border-radius: 10px;
 	
@@ -226,6 +234,13 @@ img{
 	color: rgb(76, 135, 245);
 }
 /*selects the first element of each tr with the attr row i.e patient name*/
+
+.app-container tr[role=row]{
+
+	border-bottom: lightgray solid 1px;
+
+}
+
 tr[role=row] td:first-child a{
 	color: #3476D1;
 	font-weight:bold;
@@ -235,6 +250,7 @@ tr[role=row] td:first-child a:hover{
 	color: #1851b9;
 	
 }
+
 thead th:first-child, thead th:first-child, tbody td:first-child,thead td:first-child{
 	padding:15px 20px 15px 20px;
 }
@@ -254,19 +270,23 @@ th{
 	font-size: 18px
 }
 
+#edit-buttons{
+	margin-left: auto;
+}
 /*search function*/
 
 #search-nav{
 	align-items: center;
 	display: flex;
+	min-width: 1088px;
 }
 
 #search-container{
 	display:flex;
 	padding: .5em;
-	padding-right: 50em;
+	/* padding-right: 50em; */
 	align-items:flex-start;
-	flex:3;
+	
 }
 
 #search-label{
@@ -282,17 +302,13 @@ th{
 	border-radius: 5px;
 	background-color: #ECECF2;
 	
-	min-width: 430px;
+	min-width: 100%;
 	margin-left: 1em;
 	
 }
 
 
-#edit-buttons{
-	display: flex;
-	float: right;
-	flex:1;
-}
+
 
 #edit-list,#create-exam{
 	
@@ -329,4 +345,102 @@ th{
 
 .cancel-edit:hover{
 	background-color: rgb(216, 216, 216) !important;
+}
+.key-exam{
+	
+	display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+	padding-bottom: 1px;
+	
+}
+	
+@media screen and (min-width: 1219px) and (max-width: 1460px){
+	div{
+		transition: all 700ms;
+	}
+	
+	.app-container td:last-child, .app-container td:nth-child(1), .app-container td,th{
+		transition: all 1000ms; 
+	 }
+	.app-container td{
+		cursor: default;
+		font-family: 'Roboto', sans-serif;
+		font-size: 20px;
+		inline-size: 150px;
+    	overflow-wrap: break-word;
+    	hyphens: manual;
+		max-width: 100px;
+		transition: all 700ms;
+	 }
+	 .app-container td:nth-child(1){
+		max-width: 20px;
+		
+	 }
+	 .app-container td:last-child{
+		max-width: 80px; 
+	 }
+
+	th{
+		width: 10px !important
+	}
+	.key-exam{
+	
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		padding-bottom: 1px;
+		
+	}
+		
+
+
+	
+	
+	
+	
+}
+
+@media screen and (max-width: 1218px){
+	div{
+		transition: all 700ms;
+	}
+	.container{
+		transform: scale(.81);
+		margin: 0% 0% 10% -6%;
+		
+	}
+	.app-container td{
+		cursor: default;
+		font-family: 'Roboto', sans-serif;
+		font-size: 20px;
+		inline-size: 150px;
+    	overflow-wrap: break-word;
+    	hyphens: manual;
+		max-width: 100px;
+
+	 }
+	 .app-container td:nth-child(1){
+		max-width: 20px;
+		
+	 }
+	 .app-container td:last-child{
+		max-width: 80px; 
+	 }
+
+	th{
+		width: 10px !important
+	}
+	.key-exam{
+	
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		padding-bottom: 1px;
+		
+	}
+	
 }
