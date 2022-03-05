@@ -32,7 +32,7 @@ export const COLUMNS = [
     },
     {
         Header: 'BMI',
-        accessor: 'bmi'
+        accessor: 'BMI'
     },
     {
         Header: 'Zipcode',
