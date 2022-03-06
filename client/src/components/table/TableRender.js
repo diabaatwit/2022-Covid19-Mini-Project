@@ -148,7 +148,7 @@ export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, handl
                                                 }>{cell.render('Cell')}</Link></td>
 
                                             ://regular cell
-                                                <td className={(cell.column.id === 'keyFindings')? 'key-exam': null}{...cell.getCellProps()}>{(cell.value)?cell.render('Cell'):1234}</td>
+                                                <td className={(cell.column.id === 'keyFindings')? 'key-exam': null}{...cell.getCellProps()}>{cell.render('Cell')}</td>
                                         ://Edit button
                                             <td>{
                                                     isEditing && //if there are no edits don't render edit button
