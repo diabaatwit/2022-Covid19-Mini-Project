@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 div{
-	transition: all 700ms;
+	transition: transform 700ms, margin 700ms, width 700ms, max-width 700ms;;
 }
-.container{
+.patient-table-container{
 	margin: 4% 3% 10% 3%;
 	max-width: 1804px;
 }
@@ -15,7 +15,7 @@ div{
   }
 
   .app-container td:last-child, .app-container td:nth-child(1), .app-container td,th{
-	transition: all 1000ms; 
+	transition: width 700ms; 
  }
 
 
@@ -44,6 +44,7 @@ table {
   th {
 	background-color: #ECECF2;
 	font-size: 20px;
+	
   }
 
  
@@ -56,8 +57,9 @@ table {
 	border-radius: 0px 10px 10px 0px;
 }
 
-.create-exam{
+.create-exam {
 	margin-top: 10px;
+	min-width: 1090px;
 }
 .create-exam h2{
 	margin-bottom: 10px;
@@ -79,7 +81,7 @@ table {
 .create-exam tbody td:last-child{
   border-radius: 0px 0px 10px 0;
 }
-.create-exam tbody td{
+.create-exam tbody tr{
 	background-color:rgb(196, 198, 204);
 }
 
@@ -235,7 +237,7 @@ img{
 }
 /*selects the first element of each tr with the attr row i.e patient name*/
 
-.app-container tr[role=row]{
+.app-container tbody tr[role=row]{
 
 	border-bottom: lightgray solid 1px;
 
@@ -358,11 +360,11 @@ th{
 	
 @media screen and (min-width: 1219px) and (max-width: 1460px){
 	div{
-		transition: all 700ms;
+		transition: transform 700ms, margin 700ms, width 700ms, max-width 700ms;
 	}
 	
 	.app-container td:last-child, .app-container td:nth-child(1), .app-container td,th{
-		transition: all 1000ms; 
+		transition: width 700ms; 
 	 }
 	.app-container td{
 		cursor: default;
@@ -372,7 +374,7 @@ th{
     	overflow-wrap: break-word;
     	hyphens: manual;
 		max-width: 100px;
-		transition: all 700ms;
+		transition: width 700ms;
 	 }
 	 .app-container td:nth-child(1){
 		max-width: 20px;
@@ -394,21 +396,15 @@ th{
 		padding-bottom: 1px;
 		
 	}
-		
-
-
-	
-	
-	
 	
 }
 
 @media screen and (max-width: 1218px){
 	div{
-		transition: all 700ms;
+		transition: transform 700ms, margin 700ms, width 700ms, max-width 700ms;
 	}
-	.container{
-		transform: scale(.81);
+	.patient-table-container{
+		transform: scale(.80);
 		margin: 0% 0% 10% -6%;
 		
 	}
@@ -444,3 +440,6 @@ th{
 	}
 	
 }
+
+
+

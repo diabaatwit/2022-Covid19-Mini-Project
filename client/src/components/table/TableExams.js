@@ -319,7 +319,7 @@ class Table extends Component {
     ? (
       //Table Render after succesfully loading exams
       //<Notification notify = {this.state.notify}/>
-      <div class="container">
+      <div class="patient-table-container">
 
         
         <div>       
