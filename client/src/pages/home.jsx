@@ -1,5 +1,5 @@
 import React from "react";
-import Table from "../components/TableExams";
+import Table from "../components/table/TableExams";
 
 function Home() {
   return (

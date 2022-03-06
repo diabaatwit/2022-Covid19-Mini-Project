@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import Table from './table/TableExams';
 import './css/examPage.css'
 
 class PatientInfo extends Component {
@@ -129,7 +130,7 @@ class PatientInfo extends Component {
                         {this.state.patients[0].sex}
                       </div>
                       <div class='data-column'>
-                        {this.state.patients[0].bmi}
+                        {this.state.patients[0].BMI}
                       </div>
                       <div class='data-column'>
                         {this.state.patients[0].zipCode}
@@ -140,6 +141,7 @@ class PatientInfo extends Component {
                 </div>
             </div><br/>
             {/* <div>{this.patientData()}</div> */}
+            <Table />
           </div>
           ) : (
             <div>No patients</div>

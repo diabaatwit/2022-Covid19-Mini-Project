@@ -4,29 +4,25 @@ const mongoose = require('mongoose')
 // patient schema that will help us connecting to the db.
 const examSchema = new mongoose.Schema({
 
-    numHours: {
-        type: Number,
-        required: true
+    date: {
+        type: String,
+        //required: true
     },
     xRayImageLink: {
         type: String,
-        required: true
+        //required: true
     },
     keyFindings: {
         type: String,
-        required: true
+        //required: true
     },
     brixiaScores: {
         type: String,
-        required: true
-    },
-    date: {
-        type: String,
-        required: true
+        //required: true
     },
     patientID: {
         type: String,
-        required: true
+        //required: true
     }
 })
 

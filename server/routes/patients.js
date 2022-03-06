@@ -1,8 +1,27 @@
 const express = require('express')
 const router = express.Router()
 
+const cors = require('cors')
+
+
+//Give write access to server
+const whitelist = ["http://localhost:3000"]
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error("Not allowed by CORS"))
+    }
+  },
+  credentials: true,
+}
+router.use(cors(corsOptions))
+
 // get patient schema from ../models/patient
 const Patient = require('../models/patient')
+
+
 
 // Getting all patients
 router.get('/', async (req, res) => {

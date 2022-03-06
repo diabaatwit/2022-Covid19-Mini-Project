@@ -1,252 +1,446 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-.container{
-	
-	padding: 10px;
-	margin-left: 5%;
-	margin-top: 6%;
-	margin-right: 50%;
-	margin-bottom: auto;
-	min-width: 593px;
-}
 
-.list-exam{
-	border: solid 1px black;
-	border-radius: .2em;
-	padding: .3em;
-	box-shadow: 0 0 3px rgba(0,0,0,0.4);
+div{
+	transition: transform 700ms, margin 700ms, width 700ms, max-width 700ms;;
 }
-
-.exam-card{
-	
+.patient-table-container{
+	margin: 4% 3% 10% 3%;
+	max-width: 1804px;
+}
+.app-container {
 	display: flex;
-	align-content: center;
-	height: 4em;
-	padding: 0.1em;
-	background-color: #242730;
-	margin-bottom: .2em;
-	position: relative;
-	border: solid 2px rgb(15, 6, 27);
-	border-radius: .2em;
-	cursor: pointer;
-	transition: background-color 225ms ease-out, 
-	border 100ms ease-out, border-radius 100ms ease-out, height 80ms ease-out;
-	box-shadow: 0 0 5px rgba(0,0,0,0.4);
+	flex-direction: column;
+	gap: 10px;
+	padding: 1rem;
+	min-width: 1080px;
+  }
+
+  .app-container td:last-child, .app-container td:nth-child(1), .app-container td,th{
+	transition: width 700ms; 
+ }
+
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+  }
+  
+  th,
+  td {
+	text-align: left;
+	padding: 8px;
 	
-}
+  }
 
-.exam-card:hover{
-
-	background-color: #2b385e;
-	border: solid 3px #6095b9;
-	border-radius: .3em;
-	height:4.3em;
-}
-
-.exam-card-highlight{
-	background-color: #3c5c72;
-	border: solid 2px #2e3855;
-	border-radius: .2em;
-	height:3.6em;
-	display: flex;
-	align-content: center;	
-	padding: 0.1em;
-	margin-bottom: .2em;
-	position: relative;
-	cursor: pointer;
-	transition: background-color 225ms ease-out, 
-	border 100ms ease-out, border-radius 100ms ease-out, height 80ms ease-out;
-	box-shadow: 0 0 5px rgba(0,0,0,1);
-}
-
-.exam-card-highlight:hover{
-
-	background-color: #3a6480;
-	border: solid 3px #599dca;
-	border-radius: .3em;
-	height:3.9em;
-}
-
-.xray{
-	max-width: 100%;
-	max-height: 100%;
-}
-
-
-
-
-.card-item{
-	font-family: 'Roboto Mono', monospace;
-	color:rgb(228, 228, 228);
-	padding: .3em;
-	overflow: hidden;
-	/*border: solid 2px black;
-	background-color: gray;*/
-	
-}
-
-.spacer{
-	
-	margin-top: 1%;
-	max-height: 70%;
-   	border-left: solid 2px rgb(100, 100, 100);
-}
-
-.card-item span{
-	text-align:justify;
-	vertical-align: middle;
-	font-size: clamp(0.7em,.8vw,1.1em);
-}
-
-
-/*making sure the text gets broken up*/
-.exam-id,.patient-id{
-	overflow-wrap: break-word;
-	font-weight: bold;
-
-}
-.key-findings{
-	text-overflow: ellipsis;
-
-  	white-space: nowrap;
-  	overflow: hidden;
-	
-}
-
-/*card sizing*/
-.key-findings{
-	flex: 4;
-}
-.patient-id,.exam-id{
-	flex: 3;
-}
-
-.brixia-scores{
-	flex: 2;
-}
-.age,.sex,.bmi,.zip-code{
-	flex:1;
-}
-.xray-box{
-	flex-grow:0;
-	flex-shrink:0;
-	flex-basis: 40px;
-	
-}
-
-a{
-	color: #00d8ff;
-	text-decoration-line: underline;
-}
-/*header stuff*/
-
-.header-exam{
-	display: flex;
-	border-top: solid 1px #242730;
-}
-#key-header, #patient-header,#exam-header{
-	flex: 3;
-}
-
-#brixia-header{
-	flex: 1.8;
-	
-
-}
-
-#age-header,#sex-header,#zip-header,#bmi-header{
-	flex: 1;
-}
-
-.header-exam{
-	display: flex;
-	padding: .4em;
-	padding-left: 1em; 
-}
-.header-exam div{
-	flex: 1;
-	font-weight: bold;
+ .app-container td{
+	cursor: default;
 	font-family: 'Roboto', sans-serif;
-}
+	font-size: clamp(1.1rem,1.2vw,1.5rem);
+ }
+
+ .app-container tr:hover{
+	 background-color: rgb(245, 245, 245);
+ }
+ 
+  th {
+	background-color: #ECECF2;
+	font-size: 20px;
 	
-/*search bar*/
+  }
+
+ 
+  thead th:first-child{
+	  border-radius: 10px 0px 0px 10px;
+	  
+  }
+
+  thead th:last-child{
+	border-radius: 0px 10px 10px 0px;
+}
+
+.create-exam {
+	margin-top: 10px;
+	min-width: 1090px;
+}
+.create-exam h2{
+	margin-bottom: 10px;
+}
+.create-exam thead th:first-child{
+	border-radius: 10px 0px 0px 0px;
+	
+}
+
+.create-exam thead th:last-child{
+  border-radius: 0px 10px 0px 0px;
+}
+  
+.create-exam tbody td:first-child{
+	border-radius: 0 0px 0 10px;
+	
+}
+
+.create-exam tbody td:last-child{
+  border-radius: 0px 0px 10px 0;
+}
+.create-exam tbody tr{
+	background-color:rgb(196, 198, 204);
+}
+
+#create-exam{
+	background-color: #3577D1;
+	color: #FEFEFF;
+	
+}
+
+#create-exam:hover{
+	background-color: #255fdf;
+}
+
+.new-exam-active{
+	background-color: #255fdf !important;
+	
+}
+  
+  form {
+	display: flex;
+	gap: 5px;
+  }
+  
+  form td:last-child {
+	
+	justify-content: space-evenly;
+  }
+  
+
+
+.save{
+	border: none;
+	background-color: transparent;
+	width: 100%;
+	border: none;
+	font-size: 27px;
+	cursor: pointer;
+	text-align: center;
+	transition: color 100ms;
+}
+.save:hover{
+	color:#255fdf
+}
+.button-options-container{
+	display: flex;
+}
+.icon-button{
+	border: none;
+	background-color: transparent;
+	display: block;
+	width: 100%;
+	border: none;
+	padding: 14px 15px;
+	font-size: 25px;
+	cursor: pointer;
+	text-align: center;
+
+}
+
+
+#add,.cancel{
+	border: none;
+	background-color: transparent;
+	display: block;
+  width: 100%;
+  border: none;
+  font-size: 34px;
+  cursor: pointer;
+  text-align: center;
+
+}
+
+#add{
+	font-size: 36px;
+	
+}
+#add svg,.cancel svg{
+	
+	transition: transform 200ms;
+}
+.cancel{
+	transition: transform 100s;
+}
+.cancel svg:hover{
+	color: red;
+	transform: rotate(90deg);
+}
+#add svg:hover{
+	color: green;
+	
+	transform: rotate(90deg);
+	
+	
+}
+.edit-view{
+	box-shadow: 0 0 20px rgba(0,0,0,0.3);
+	border-radius: 10px;
+}
+
+.icon-button:hover{
+
+	color: #255fdf;
+
+}
+.trash-button:hover{
+	color:red 
+}
+
+.image-container{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+	cursor: pointer;
+	border-radius: 15px;
+	transition: border-radius 200ms;
+}
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+img{
+	transition: transform 200ms;
+}
+img:hover{
+	transform: scale(1.3);
+}
+.image-container:hover{
+	border-radius: 5px;
+}
+.key-findings{
+	display:flex;
+}
+.image-container{
+	max-width: 108.58px;
+	min-height: 63px;
+}
+img{
+	max-width: 108.58px;
+	max-height: 4em;
+	min-height: 10px;
+	flex: 1;
+	border-radius: 10px;
+	
+}
+:any-link{
+	color: black;
+	transition: color 200ms;
+}
+:any-link:hover{
+	color: rgb(76, 135, 245);
+}
+/*selects the first element of each tr with the attr row i.e patient name*/
+
+.app-container tbody tr[role=row]{
+
+	border-bottom: lightgray solid 1px;
+
+}
+
+tr[role=row] td:first-child a{
+	color: #3476D1;
+	font-weight:bold;
+	transition: color 200ms;
+}
+tr[role=row] td:first-child a:hover{
+	color: #1851b9;
+	
+}
+
+thead th:first-child, thead th:first-child, tbody td:first-child,thead td:first-child{
+	padding:15px 20px 15px 20px;
+}
+td{
+	padding-right: 25px;
+}
+th{
+	white-space: nowrap;
+}
+
+.exam-count p{
+	margin-left: 3px;
+}
+.key-findings div{
+	flex: 3;
+	margin-left: 30px;
+	font-size: 18px
+}
+
+#edit-buttons{
+	margin-left: auto;
+}
+/*search function*/
+
+#search-nav{
+	align-items: center;
+	display: flex;
+	min-width: 1110px;
+}
 
 #search-container{
 	display:flex;
 	padding: .5em;
+	/* padding-right: 50em; */
+	align-items:flex-start;
+	
 }
 
 #search-label{
 	font-weight: 100;
 	font-size: 1.7em;
-	flex: 1;
+	
 	font-family: 'Roboto', sans-serif;
-
+	
 }
 
 .search-bar{
-	border: solid 1px #66686D;
+	border: solid 1px #a4a5a8;
 	border-radius: 5px;
-	background-color: #AFAEB2;
-	flex: 4;
+	background-color: #ECECF2;
+	
+	min-width: 100%;
+	margin-left: 1em;
 	
 }
 
-/*exam page* by diana*/ 
 
-#exampage-container{
-	display:flex;
-	padding: .5em;
-}
 
-#exampage-label{
-	font-weight: 100;
-	font-size: 1.7em;
+
+#edit-list,#create-exam{
+	
+	border: 0;
+	font-size: 20px;
+	margin-left: 1em;
+	white-space: nowrap;
+	align-self: center;
+	cursor: pointer;
+	padding: 10px;
+	border-radius: 7px;
+	
 	flex: 1;
-	font-family: 'Roboto', sans-serif;
-
-}
-
-
-/* exam page details */
-.exampage-details {
-	border-top: solid 2px #242730;
-	padding: .4em;
-	padding-left: 1em; 
-
-	font-weight: bold;
-	font-family: 'Roboto', sans-serif;
-	line-height: 2em;
-}
-
-#key-findings {
-	line-height: normal;
-}
-
-.exampage-xraycard{
-	border: solid 1px black;
-	border-radius: .2em;
-	padding: .5em;
-	box-shadow: 0 0 3px rgba(0,0,0,0.4);
-	height: 20em;
-	width: 18em;
-	background-color: #242730;
-}
-
-.xray-image{
-	max-width:100%;
-	max-height:90%;
-	margin: auto;
-	display: block;
-}
-
-#examimage-link {
-	color: white;
-	font-weight: bold;
-	font-family: 'Roboto', sans-serif;
-	line-height: 2.5em;
-	text-align: center;
-	position: sticky;
-
+	
 	
 }
+
+#edit-list{
+	background-color: transparent;
+	color: #4d88da;
+	padding: 10px 15px 10px 15px;
+	min-width: 101.16px;
+}
+
+#edit-list:hover{
+	background-color: #ECECF2;
+}
+
+
+.cancel-edit{
+	color: rgb(247, 76, 76) !important;
+	background-color: rgb(238, 238, 238) !important;
+}
+
+.cancel-edit:hover{
+	background-color: rgb(216, 216, 216) !important;
+}
+.key-exam{
+	
+	display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+	padding-bottom: 1px;
+	
+}
+	
+@media screen and (min-width: 1219px) and (max-width: 1460px){
+	div{
+		transition: transform 700ms, margin 700ms, width 700ms, max-width 700ms;
+	}
+	
+	.app-container td:last-child, .app-container td:nth-child(1), .app-container td,th{
+		transition: width 700ms; 
+	 }
+	.app-container td{
+		cursor: default;
+		font-family: 'Roboto', sans-serif;
+		font-size: 20px;
+		inline-size: 150px;
+    	overflow-wrap: break-word;
+    	hyphens: manual;
+		max-width: 100px;
+		transition: width 700ms;
+	 }
+	 .app-container td:nth-child(1){
+		max-width: 20px;
+		
+	 }
+	 .app-container td:last-child{
+		max-width: 80px; 
+	 }
+
+	th{
+		width: 10px !important
+	}
+	.key-exam{
+	
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		padding-bottom: 1px;
+		
+	}
+	
+}
+
+@media screen and (max-width: 1218px){
+	div{
+		transition: transform 700ms, margin 700ms, width 700ms, max-width 700ms;
+	}
+	.patient-table-container{
+		transform: scale(.80);
+		margin: 0% 0% 10% -6%;
+		
+	}
+	.app-container td{
+		cursor: default;
+		font-family: 'Roboto', sans-serif;
+		font-size: 20px;
+		inline-size: 150px;
+    	overflow-wrap: break-word;
+    	hyphens: manual;
+		max-width: 100px;
+
+	 }
+	 .app-container td:nth-child(1){
+		max-width: 20px;
+		
+	 }
+	 .app-container td:last-child{
+		max-width: 80px; 
+	 }
+
+	th{
+		width: 10px !important
+	}
+	.key-exam{
+	
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		padding-bottom: 1px;
+		
+	}
+	
+}
+
+
+
