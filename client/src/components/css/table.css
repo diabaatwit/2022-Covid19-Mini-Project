@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-div{
-	transition: transform 250ms, margin 700ms, width 700ms, max-width 700ms;;
-}
+
 .patient-table-container{
 	margin: 4% 3% 10% 3%;
 	max-width: 1804px;
@@ -16,7 +14,7 @@ div{
   }
 
   .app-container td:last-child, .app-container td:nth-child(1), .app-container td,th{
-	transition: width 700ms; 
+	transition: width 700ms;
  }
 
 
@@ -24,12 +22,12 @@ table {
 	border-collapse: collapse;
 	width: 100%;
   }
-  
+
   th,
   td {
 	text-align: left;
 	padding: 8px;
-	
+
   }
 
  .app-container td{
@@ -41,17 +39,17 @@ table {
  .app-container tr:hover{
 	 background-color: rgb(245, 245, 245);
  }
- 
+
   th {
 	background-color: #ECECF2;
 	font-size: 20px;
-	
+
   }
 
- 
+
   thead th:first-child{
 	  border-radius: 10px 0px 0px 10px;
-	  
+
   }
 
   thead th:last-child{
@@ -67,16 +65,16 @@ table {
 }
 .create-exam thead th:first-child{
 	border-radius: 10px 0px 0px 0px;
-	
+
 }
 
 .create-exam thead th:last-child{
   border-radius: 0px 10px 0px 0px;
 }
-  
+
 .create-exam tbody td:first-child{
 	border-radius: 0 0px 0 10px;
-	
+
 }
 
 .create-exam tbody td:last-child{
@@ -89,7 +87,7 @@ table {
 #create-exam{
 	background-color: #3577D1;
 	color: #FEFEFF;
-	
+
 }
 
 #create-exam:hover{
@@ -98,19 +96,19 @@ table {
 
 .new-exam-active{
 	background-color: #255fdf !important;
-	
+
 }
-  
+
   form {
 	display: flex;
 	gap: 5px;
   }
-  
+
   form td:last-child {
-	
+
 	justify-content: space-evenly;
   }
-  
+
 
 
 .save{
@@ -157,10 +155,10 @@ table {
 
 #add{
 	font-size: 36px;
-	
+
 }
 #add svg,.cancel svg{
-	
+
 	transition: transform 200ms;
 }
 .cancel{
@@ -172,10 +170,10 @@ table {
 }
 #add svg:hover{
 	color: green;
-	
+
 	transform: rotate(90deg);
-	
-	
+
+
 }
 .edit-view{
 	box-shadow: 0 0 20px rgba(0,0,0,0.3);
@@ -188,7 +186,7 @@ table {
 
 }
 .trash-button:hover{
-	color:red 
+	color:red
 }
 
 .image-container{
@@ -227,7 +225,7 @@ img{
 	min-height: 63px;
 	flex: 1;
 	border-radius: 10px;
-	
+
 }
 :any-link{
 	color: black;
@@ -251,7 +249,7 @@ tr[role=row] td:first-child a{
 }
 tr[role=row] td:first-child a:hover{
 	color: #1851b9;
-	
+
 }
 
 thead th:first-child, thead th:first-child, tbody td:first-child,thead td:first-child{
@@ -289,32 +287,32 @@ th{
 	padding: .5em;
 	/* padding-right: 50em; */
 	align-items:flex-start;
-	
+
 }
 
 #search-label{
 	font-weight: 100;
 	font-size: 1.7em;
-	
+
 	font-family: 'Roboto', sans-serif;
-	
+
 }
 
 .search-bar{
 	border: solid 1px #a4a5a8;
 	border-radius: 5px;
 	background-color: #ECECF2;
-	
+
 	min-width: 100%;
 	margin-left: 1em;
-	
+
 }
 
 
 
 
 #edit-list,#create-exam{
-	
+
 	border: 0;
 	font-size: 20px;
 	margin-left: 1em;
@@ -323,10 +321,10 @@ th{
 	cursor: pointer;
 	padding: 10px;
 	border-radius: 7px;
-	
+
 	flex: 1;
-	
-	
+
+
 }
 
 #edit-list{
@@ -350,22 +348,20 @@ th{
 	background-color: rgb(216, 216, 216) !important;
 }
 .key-exam{
-	
+
 	display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
 	padding-bottom: 1px;
-	
+
 }
-	
+
 @media screen and (min-width: 1219px) and (max-width: 1460px){
-	div{
-		transition: transform 250ms, margin 700ms, width 700ms, max-width 700ms;
-	}
 	
+
 	.app-container td:last-child, .app-container td:nth-child(1), .app-container td,th{
-		transition: width 700ms; 
+		transition: width 700ms;
 	 }
 	.app-container td{
 		cursor: default;
@@ -379,35 +375,33 @@ th{
 	 }
 	 .app-container td:nth-child(1){
 		max-width: 20px;
-		
+
 	 }
 	 .app-container td:last-child{
-		max-width: 80px; 
+		max-width: 80px;
 	 }
 
 	th{
 		width: 10px !important
 	}
 	.key-exam{
-	
+
 		display: -webkit-box;
 		-webkit-line-clamp: 3;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 		padding-bottom: 1px;
-		
+
 	}
-	
+
 }
 
 @media screen and (max-width: 1218px){
-	div{
-		transition: transform 250ms, margin 700ms, width 700ms, max-width 700ms;
-	}
+	
 	.patient-table-container{
 		transform: scale(.80);
 		margin: 0% 0% 10% -6%;
-		
+
 	}
 	.app-container td{
 		cursor: default;
@@ -421,25 +415,25 @@ th{
 	 }
 	 .app-container td:nth-child(1){
 		max-width: 20px;
-		
+
 	 }
 	 .app-container td:last-child{
-		max-width: 80px; 
+		max-width: 80px;
 	 }
 
 	th{
 		width: 10px !important
 	}
 	.key-exam{
-	
+
 		display: -webkit-box;
 		-webkit-line-clamp: 3;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 		padding-bottom: 1px;
-		
+
 	}
-	
+
 }
 
 
