@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 div{
-	transition: transform 700ms, margin 700ms, width 700ms, max-width 700ms;;
+	transition: transform 250ms, margin 700ms, width 700ms, max-width 700ms;;
 }
 .patient-table-container{
 	margin: 4% 3% 10% 3%;
@@ -361,7 +361,7 @@ th{
 	
 @media screen and (min-width: 1219px) and (max-width: 1460px){
 	div{
-		transition: transform 700ms, margin 700ms, width 700ms, max-width 700ms;
+		transition: transform 250ms, margin 700ms, width 700ms, max-width 700ms;
 	}
 	
 	.app-container td:last-child, .app-container td:nth-child(1), .app-container td,th{
@@ -402,7 +402,7 @@ th{
 
 @media screen and (max-width: 1218px){
 	div{
-		transition: transform 700ms, margin 700ms, width 700ms, max-width 700ms;
+		transition: transform 250ms, margin 700ms, width 700ms, max-width 700ms;
 	}
 	.patient-table-container{
 		transform: scale(.80);
