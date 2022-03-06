@@ -243,8 +243,9 @@ class Table extends Component {
       await fetch(`http://localhost:3001/exams/${exam._id}`, options)
         .then(response => response.text())
         .catch(error => console.log('error', error));
+        this.refreshPage();
     }
-    this.refreshPage();
+    
   }
 
   /**
