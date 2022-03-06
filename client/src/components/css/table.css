@@ -12,6 +12,7 @@ div{
 	flex-direction: column;
 	gap: 10px;
 	padding: 1rem;
+	min-width: 1080px;
   }
 
   .app-container td:last-child, .app-container td:nth-child(1), .app-container td,th{
@@ -280,7 +281,7 @@ th{
 #search-nav{
 	align-items: center;
 	display: flex;
-	min-width: 1030px;
+	min-width: 1110px;
 }
 
 #search-container{
