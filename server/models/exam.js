@@ -4,8 +4,8 @@ const mongoose = require('mongoose')
 // patient schema that will help us connecting to the db.
 const examSchema = new mongoose.Schema({
 
-    numHours: {
-        type: Number,
+    date: {
+        type: String,
         //required: true
     },
     xRayImageLink: {

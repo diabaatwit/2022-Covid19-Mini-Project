@@ -46,7 +46,7 @@ router.get('/:id', getExam, (req, res) => {
 // adding an exam
 router.post('/', async (req, res) => {
     const exam = new Exam({
-      numHours: req.body.numHours,
+      date: req.body.date,
       xRayImageLink: req.body.xRayImageLink,
       keyFindings: req.body.keyFindings,
       brixiaScores: req.body.brixiaScores,
@@ -68,10 +68,10 @@ router.post('/', async (req, res) => {
 // Updating an exam
 router.patch('/:id', getExam, async (req, res) => {
 
-    // if numHours in the request body is not null, which means we want to update it,
-    // then update numHours, and same with all other attributes.
-    if (req.body.numHours != null) {
-      res.exam[0].numHours = req.body.numHours
+    // if date in the request body is not null, which means we want to update it,
+    // then update date, and same with all other attributes.
+    if (req.body.date != null) {
+      res.exam[0].date = req.body.date
     }
     if (req.body.xRayImageLink != null) {
       res.exam[0].xRayImageLink = req.body.xRayImageLink

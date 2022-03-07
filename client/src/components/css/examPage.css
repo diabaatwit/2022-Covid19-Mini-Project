@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* Exam Page Details */
+#exampage-container{
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-right: 50%;
+    margin-bottom: auto;
+    min-width: 300px;
+    display: inline-block;
+}
+#exampage-label{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 1.5em;
+    padding-bottom: 0.5em;
+    padding-left: 0.2em;
+    margin-top: 2%;
+}
+#cards-container{
+    display: flex;
+    gap: 10px;
+}
+.exampage-details {
+    border-top: solid 2px #242730;
+    padding: .4em;
+    padding-left: 1em; 
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    line-height: 2em;
+}
+/* Exam & Patient Cards*/
+.card-title-container {
+    background-color: #E5E5E5;
+    color: #24245b;
+    border-bottom: 3px solid #DADADA;
+    border-radius: 12px 12px 0 0;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    height: 1em;
+    min-width: 430px;
+    width: auto;
+    padding: 0.5em;
+    font-size: 25px;
+    line-height: 30px;
+    font-weight: 325;
+    letter-spacing: 1px;
+}
+.card-data-container {
+    background-color: #E5E5E5;
+    border-radius: 0 0 12px 12px;
+    min-height: 250px;
+    min-width: 430px;
+    max-width: 430px;
+    padding: 1.5em 0em 0em 1.5em;
+    font-weight: 100;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+}
+  
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: content;
+    flex: 1;
+}
+.title-column {
+    font-weight: 600;
+    font-size: 15px;
+    min-width: 125px;
+    min-height: 40px;
+}
+.data-column {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    min-width: 275px;
+    min-height: 40px;
+    padding-right: 10px;
+}
+#brixia-background{
+    background-color: #7CE078;
+    border-radius: .3em;
+    width: fit-content;
+    font-size: 14px;
+    padding: .2em;
+}
+#key-findings {
+    line-height: 20px;
+    
+}
+/* X-Ray Card*/
+.xray-card{
+    border: solid 1px black;
+    background-color: #242730;
+    box-shadow: 0 0 3px rgba(0,0,0,0.4);
+    border-radius: 12px;
+    min-height: 308px;
+    max-height: 308px;
+    min-width: 430px;
+    max-width: 430px;
+    font-weight: 100;
+    padding: 0.5em;
+}
+.xray-image{
+    max-width: 100%;
+    max-height: 88%;
+    margin: auto;
+    display: block;
+    border-radius: .2em;
+    padding: .5em;
+}
+#examimage-link {
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.5em;
+    text-align: center;
+    position: relative;
+    font-size: 16px;
+}
+
+/* unvisited link */
+#returnhome-link a{
+    color: #24245b;
+    font-family: 'Roboto', sans-serif;
+    font-style: bold;
+    font-size: 17px;
+    line-height: 20px;
+    padding-left: 0.2em;
+    text-decoration: none;
+  }
+  
+/* visited link */
+#returnhome-link a:visited {
+    color: #24245b;
+    text-decoration: none;
+  }

@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 
+div{
+	transition: transform 700ms, margin 500ms, width 700ms, max-width 700ms;;
+
 .patient-table-container{
 	margin: 4% 3% 10% 3%;
 	max-width: 1804px;
@@ -14,7 +17,9 @@
   }
 
   .app-container td:last-child, .app-container td:nth-child(1), .app-container td,th{
-	transition: width 700ms;
+
+	transition: width 700ms; 
+
  }
 
 
@@ -28,6 +33,7 @@ table {
 	text-align: left;
 	padding: 8px;
 
+	
   }
 
  .app-container td{
@@ -39,17 +45,17 @@ table {
  .app-container tr:hover{
 	 background-color: rgb(245, 245, 245);
  }
-
+ 
   th {
 	background-color: #ECECF2;
 	font-size: 20px;
-
+	
   }
 
-
+ 
   thead th:first-child{
 	  border-radius: 10px 0px 0px 10px;
-
+	  
   }
 
   thead th:last-child{
@@ -62,9 +68,12 @@ table {
 }
 .create-exam h2{
 	margin-bottom: 10px;
+
+
 }
 .create-exam thead th:first-child{
 	border-radius: 10px 0px 0px 0px;
+
 
 }
 
@@ -88,14 +97,34 @@ table {
 	background-color: #3577D1;
 	color: #FEFEFF;
 
+
 }
+.save:hover{
+	color:#255fdf
+}
+.button-options-container{
+	display: flex;
+}
+.icon-button{
+	border: none;
+	background-color: transparent;
+	display: block;
+	width: 100%;
+	border: none;
+	padding: 14px 15px;
+	font-size: 25px;
+	cursor: pointer;
+	text-align: center;
+
 
 #create-exam:hover{
 	background-color: #255fdf;
+
 }
 
 .new-exam-active{
 	background-color: #255fdf !important;
+
 
 }
 
@@ -163,6 +192,7 @@ table {
 }
 .cancel{
 	transition: transform 100s;
+
 }
 .cancel svg:hover{
 	color: red;
@@ -170,6 +200,7 @@ table {
 }
 #add svg:hover{
 	color: green;
+
 
 	transform: rotate(90deg);
 
@@ -187,6 +218,7 @@ table {
 }
 .trash-button:hover{
 	color:red
+
 }
 
 .image-container{
@@ -197,6 +229,7 @@ table {
 	cursor: pointer;
 	border-radius: 15px;
 	transition: border-radius 200ms;
+
 }
 .fill img {
     flex-shrink: 0;
@@ -234,6 +267,7 @@ img{
 :any-link:hover{
 	color: rgb(76, 135, 245);
 }
+
 /*selects the first element of each tr with the attr row i.e patient name*/
 
 .app-container tbody tr[role=row]{
@@ -295,13 +329,14 @@ th{
 	font-size: 1.7em;
 
 	font-family: 'Roboto', sans-serif;
-
+	
 }
 
 .search-bar{
 	border: solid 1px #a4a5a8;
 	border-radius: 5px;
 	background-color: #ECECF2;
+
 
 	min-width: 100%;
 	margin-left: 1em;
@@ -313,6 +348,7 @@ th{
 
 #edit-list,#create-exam{
 
+
 	border: 0;
 	font-size: 20px;
 	margin-left: 1em;
@@ -321,7 +357,6 @@ th{
 	cursor: pointer;
 	padding: 10px;
 	border-radius: 7px;
-
 	flex: 1;
 
 
@@ -346,6 +381,7 @@ th{
 
 .cancel-edit:hover{
 	background-color: rgb(216, 216, 216) !important;
+
 }
 .key-exam{
 
@@ -354,6 +390,7 @@ th{
     -webkit-box-orient: vertical;
     overflow: hidden;
 	padding-bottom: 1px;
+
 
 }
 

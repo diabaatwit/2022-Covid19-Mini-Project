@@ -28,12 +28,11 @@ DELETE http://localhost:3001/patients/620ac34662cf3a2d42355a79
 
 ###
 
-PATCH http://localhost:3001/patients/6209a0f0efb1b5f366f63993
+PATCH http://localhost:3001/patients/620c0e0d0b84b4932b007809
 Content-Type: application/json
 
 {
-    "name": "James Zhang",
-    "sex": "M"
+    "BMI": "71.5"
 }
 
 
@@ -71,4 +70,13 @@ GET http://localhost:3001/exams/61f98fd80d94af134b0639af
 
 ###
 
-DELETE http://localhost:3001/exams/621526e35d38663c24683633
+DELETE http://localhost:3001/exams/62245fcdbb443d7c1947fb90
+
+###
+
+PATCH http://localhost:3001/exams/620c0e0d0b84b4932b007809
+Content-Type: application/json
+
+{
+    "date": "Jan-18-2022"
+}

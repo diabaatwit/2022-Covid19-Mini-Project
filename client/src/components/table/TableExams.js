@@ -41,14 +41,12 @@ class Table extends Component {
       editRecordData: {}, //the edited copy of an editable row
       record: { //record to be sent via <ExamForm>
         patientID: '',
-        _id: '',
+
+        date: '',
         xRayImageLink: '',
         keyFindings: '',
         brixiaScores: '',
-        age: '',
-        sex: '',
-        BMI: '',
-        zipCode: '',
+
       },
       isNewExamVisable: false, //checks to see if a <ExamForm> is present
       isEditing: false, //checks to see if the edit list button has been pressed
@@ -108,29 +106,45 @@ class Table extends Component {
     event.preventDefault();
     console.log(event)
     const formType = (isNewForm) ? this.state.record : this.state.editRecordData;
+
+
     const newExamRecord = {
       patientID: formType.patientID,
+      date: formType.date,
+      xRayImageLink: formType.xRayImageLink,
+      keyFindings: formType.keyFindings,
+      brixiaScores: formType.brixiaScores,
+    }
+
+    const editExamRecord = {
+      patientID: formType.patientID,
+
       _id: formType._id,
       xRayImageLink: formType.xRayImageLink,
       keyFindings: formType.keyFindings,
       brixiaScores: formType.brixiaScores,
     }
 
-    const newPatientRecord = {
+
+    const editPatientRecord = {
+
       age: formType.age,
       sex: formType.sex,
       BMI: formType.BMI,
       zipCode: formType.zipCode
     }
-    console.log(newExamRecord);
-    console.log(newPatientRecord)
+
+
+
 
     //This is what we need to send to the server
     //code goes here <---------------------------------
     //Add PATCH and POST
     const serverMethod = (isNewForm) ? "POST" : "PATCH"; //if its a new form, we must POST it, otherwise PATCH (edit) it
 
-    const options = {
+
+    const newExamOptions = {
+
 
       method: serverMethod,
       mode: "cors",
@@ -139,21 +153,34 @@ class Table extends Component {
 
     }
 
-    const patientOptions = {
+
+    const editExamOptions = {
+
       method: serverMethod,
       mode: "cors",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newPatientRecord)
+      body: JSON.stringify(editExamRecord)
+
+    }
+
+    const editPatientOptions = {
+      method: serverMethod,
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(editPatientRecord)
     }
 
     if (isNewForm) { //POST
-      await fetch("http://localhost:3001/exams", options)
+      await fetch("http://localhost:3001/exams", newExamOptions)
+
         .then(response => response.text())
         .catch(error => console.log('error', error));
     }
 
     else { //PATCH
-      console.log(newExamRecord.patientID)
+
+      console.log(editExamRecord.patientID)
+
       /*await fetch(`http://localhost:3001/patients/${newExamRecord.patientID}`, patientOptions)
         .then(response => response.text())
         .catch(error => console.log('error', error));
@@ -163,8 +190,10 @@ class Table extends Component {
 
       
         Promise.all(
-          fetch(`http://localhost:3001/exams/${newExamRecord._id}`, options),
-          fetch(`http://localhost:3001/patients/${newExamRecord.patientID}`, patientOptions)
+
+          fetch(`http://localhost:3001/exams/${editExamRecord._id}`, editExamOptions),
+          fetch(`http://localhost:3001/patients/${editExamRecord.patientID}`, editPatientOptions)
+
 
         ).catch((err) => {
           console.log('error', err)
@@ -243,9 +272,11 @@ class Table extends Component {
       await fetch(`http://localhost:3001/exams/${exam._id}`, options)
         .then(response => response.text())
         .catch(error => console.log('error', error));
+
         this.refreshPage();
     }
     
+
   }
 
   /**
