@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Table from './table/TableExams';
 import './css/examPage.css'
 
+
 class PatientInfo extends Component {
 
     constructor(props) {
@@ -82,6 +83,7 @@ class PatientInfo extends Component {
         }
     
         return  patients.length > 0 ? (
+
           <div id="exampage-container">
             <div id="returnhome-link">
                 <img src={require('../images/arrow-icon2.png')} alt="Arrow Icon" />
@@ -143,6 +145,7 @@ class PatientInfo extends Component {
             {/* <div>{this.patientData()}</div> */}
             <Table />
           </div>
+
           ) : (
             <div>No patients</div>
           )

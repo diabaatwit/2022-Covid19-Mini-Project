@@ -17,11 +17,13 @@ export const ExamForm = ({handleAddFormChange, handleAddFormSubmit,cancelExam}) 
           <thead>
             <tr><h2>New Exam:</h2></tr>
             <tr>
+
               <th>Patient ID</th>
               <th>Date</th>
               <th>X-Ray URL</th>
               <th>Key Findings</th>
               <th> Brixia Score</th>
+
               <th></th>
               <th></th>
             </tr>
@@ -41,9 +43,11 @@ export const ExamForm = ({handleAddFormChange, handleAddFormSubmit,cancelExam}) 
               <td>
               <input
               type="text"
+
               name="date"
               required="required"
               placeholder="Date"
+
               onChange={handleAddFormChange}
               /></td>
               <td>
@@ -70,7 +74,9 @@ export const ExamForm = ({handleAddFormChange, handleAddFormSubmit,cancelExam}) 
               placeholder="Brixia Scores"
               onChange={handleAddFormChange}
               /></td>
+
               
+
               <td>
                 <button className="cancel" type="button" onClick={()=>cancelExam()}><FiX/></button></td>
               <td>

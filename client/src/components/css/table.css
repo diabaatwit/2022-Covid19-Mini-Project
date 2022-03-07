@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+
 div{
-	transition: transform 700ms, margin 700ms, width 700ms, max-width 700ms;;
-}
+	transition: transform 700ms, margin 500ms, width 700ms, max-width 700ms;;
+
 .patient-table-container{
 	margin: 4% 3% 10% 3%;
 	max-width: 1804px;
@@ -16,7 +17,9 @@ div{
   }
 
   .app-container td:last-child, .app-container td:nth-child(1), .app-container td,th{
+
 	transition: width 700ms; 
+
  }
 
 
@@ -24,11 +27,12 @@ table {
 	border-collapse: collapse;
 	width: 100%;
   }
-  
+
   th,
   td {
 	text-align: left;
 	padding: 8px;
+
 	
   }
 
@@ -64,19 +68,22 @@ table {
 }
 .create-exam h2{
 	margin-bottom: 10px;
+
+
 }
 .create-exam thead th:first-child{
 	border-radius: 10px 0px 0px 0px;
-	
+
+
 }
 
 .create-exam thead th:last-child{
   border-radius: 0px 10px 0px 0px;
 }
-  
+
 .create-exam tbody td:first-child{
 	border-radius: 0 0px 0 10px;
-	
+
 }
 
 .create-exam tbody td:last-child{
@@ -89,28 +96,48 @@ table {
 #create-exam{
 	background-color: #3577D1;
 	color: #FEFEFF;
-	
+
+
 }
+.save:hover{
+	color:#255fdf
+}
+.button-options-container{
+	display: flex;
+}
+.icon-button{
+	border: none;
+	background-color: transparent;
+	display: block;
+	width: 100%;
+	border: none;
+	padding: 14px 15px;
+	font-size: 25px;
+	cursor: pointer;
+	text-align: center;
+
 
 #create-exam:hover{
 	background-color: #255fdf;
+
 }
 
 .new-exam-active{
 	background-color: #255fdf !important;
-	
+
+
 }
-  
+
   form {
 	display: flex;
 	gap: 5px;
   }
-  
+
   form td:last-child {
-	
+
 	justify-content: space-evenly;
   }
-  
+
 
 
 .save{
@@ -157,14 +184,15 @@ table {
 
 #add{
 	font-size: 36px;
-	
+
 }
 #add svg,.cancel svg{
-	
+
 	transition: transform 200ms;
 }
 .cancel{
 	transition: transform 100s;
+
 }
 .cancel svg:hover{
 	color: red;
@@ -172,10 +200,11 @@ table {
 }
 #add svg:hover{
 	color: green;
-	
+
+
 	transform: rotate(90deg);
-	
-	
+
+
 }
 .edit-view{
 	box-shadow: 0 0 20px rgba(0,0,0,0.3);
@@ -188,7 +217,8 @@ table {
 
 }
 .trash-button:hover{
-	color:red 
+	color:red
+
 }
 
 .image-container{
@@ -199,6 +229,7 @@ table {
 	cursor: pointer;
 	border-radius: 15px;
 	transition: border-radius 200ms;
+
 }
 .fill img {
     flex-shrink: 0;
@@ -224,10 +255,10 @@ img:hover{
 img{
 	max-width: 108.58px;
 	max-height: 4em;
-	min-height: 10px;
+	min-height: 63px;
 	flex: 1;
 	border-radius: 10px;
-	
+
 }
 :any-link{
 	color: black;
@@ -236,6 +267,7 @@ img{
 :any-link:hover{
 	color: rgb(76, 135, 245);
 }
+
 /*selects the first element of each tr with the attr row i.e patient name*/
 
 .app-container tbody tr[role=row]{
@@ -251,7 +283,7 @@ tr[role=row] td:first-child a{
 }
 tr[role=row] td:first-child a:hover{
 	color: #1851b9;
-	
+
 }
 
 thead th:first-child, thead th:first-child, tbody td:first-child,thead td:first-child{
@@ -289,13 +321,13 @@ th{
 	padding: .5em;
 	/* padding-right: 50em; */
 	align-items:flex-start;
-	
+
 }
 
 #search-label{
 	font-weight: 100;
 	font-size: 1.7em;
-	
+
 	font-family: 'Roboto', sans-serif;
 	
 }
@@ -304,17 +336,19 @@ th{
 	border: solid 1px #a4a5a8;
 	border-radius: 5px;
 	background-color: #ECECF2;
-	
+
+
 	min-width: 100%;
 	margin-left: 1em;
-	
+
 }
 
 
 
 
 #edit-list,#create-exam{
-	
+
+
 	border: 0;
 	font-size: 20px;
 	margin-left: 1em;
@@ -323,10 +357,9 @@ th{
 	cursor: pointer;
 	padding: 10px;
 	border-radius: 7px;
-	
 	flex: 1;
-	
-	
+
+
 }
 
 #edit-list{
@@ -348,24 +381,24 @@ th{
 
 .cancel-edit:hover{
 	background-color: rgb(216, 216, 216) !important;
+
 }
 .key-exam{
-	
+
 	display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
 	padding-bottom: 1px;
-	
+
+
 }
-	
+
 @media screen and (min-width: 1219px) and (max-width: 1460px){
-	div{
-		transition: transform 700ms, margin 700ms, width 700ms, max-width 700ms;
-	}
 	
+
 	.app-container td:last-child, .app-container td:nth-child(1), .app-container td,th{
-		transition: width 700ms; 
+		transition: width 700ms;
 	 }
 	.app-container td{
 		cursor: default;
@@ -379,35 +412,33 @@ th{
 	 }
 	 .app-container td:nth-child(1){
 		max-width: 20px;
-		
+
 	 }
 	 .app-container td:last-child{
-		max-width: 80px; 
+		max-width: 80px;
 	 }
 
 	th{
 		width: 10px !important
 	}
 	.key-exam{
-	
+
 		display: -webkit-box;
 		-webkit-line-clamp: 3;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 		padding-bottom: 1px;
-		
+
 	}
-	
+
 }
 
 @media screen and (max-width: 1218px){
-	div{
-		transition: transform 700ms, margin 700ms, width 700ms, max-width 700ms;
-	}
+	
 	.patient-table-container{
 		transform: scale(.80);
 		margin: 0% 0% 10% -6%;
-		
+
 	}
 	.app-container td{
 		cursor: default;
@@ -421,25 +452,25 @@ th{
 	 }
 	 .app-container td:nth-child(1){
 		max-width: 20px;
-		
+
 	 }
 	 .app-container td:last-child{
-		max-width: 80px; 
+		max-width: 80px;
 	 }
 
 	th{
 		width: 10px !important
 	}
 	.key-exam{
-	
+
 		display: -webkit-box;
 		-webkit-line-clamp: 3;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 		padding-bottom: 1px;
-		
+
 	}
-	
+
 }
 
 

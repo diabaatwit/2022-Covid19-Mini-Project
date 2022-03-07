@@ -41,10 +41,12 @@ class Table extends Component {
       editRecordData: {}, //the edited copy of an editable row
       record: { //record to be sent via <ExamForm>
         patientID: '',
+
         date: '',
         xRayImageLink: '',
         keyFindings: '',
         brixiaScores: '',
+
       },
       isNewExamVisable: false, //checks to see if a <ExamForm> is present
       isEditing: false, //checks to see if the edit list button has been pressed
@@ -105,6 +107,7 @@ class Table extends Component {
     console.log(event)
     const formType = (isNewForm) ? this.state.record : this.state.editRecordData;
 
+
     const newExamRecord = {
       patientID: formType.patientID,
       date: formType.date,
@@ -115,13 +118,16 @@ class Table extends Component {
 
     const editExamRecord = {
       patientID: formType.patientID,
+
       _id: formType._id,
       xRayImageLink: formType.xRayImageLink,
       keyFindings: formType.keyFindings,
       brixiaScores: formType.brixiaScores,
     }
 
+
     const editPatientRecord = {
+
       age: formType.age,
       sex: formType.sex,
       BMI: formType.BMI,
@@ -129,12 +135,16 @@ class Table extends Component {
     }
 
 
+
+
     //This is what we need to send to the server
     //code goes here <---------------------------------
     //Add PATCH and POST
     const serverMethod = (isNewForm) ? "POST" : "PATCH"; //if its a new form, we must POST it, otherwise PATCH (edit) it
 
+
     const newExamOptions = {
+
 
       method: serverMethod,
       mode: "cors",
@@ -142,6 +152,7 @@ class Table extends Component {
       body: JSON.stringify(newExamRecord)
 
     }
+
 
     const editExamOptions = {
 
@@ -161,12 +172,15 @@ class Table extends Component {
 
     if (isNewForm) { //POST
       await fetch("http://localhost:3001/exams", newExamOptions)
+
         .then(response => response.text())
         .catch(error => console.log('error', error));
     }
 
     else { //PATCH
+
       console.log(editExamRecord.patientID)
+
       /*await fetch(`http://localhost:3001/patients/${newExamRecord.patientID}`, patientOptions)
         .then(response => response.text())
         .catch(error => console.log('error', error));
@@ -176,8 +190,10 @@ class Table extends Component {
 
       
         Promise.all(
+
           fetch(`http://localhost:3001/exams/${editExamRecord._id}`, editExamOptions),
           fetch(`http://localhost:3001/patients/${editExamRecord.patientID}`, editPatientOptions)
+
 
         ).catch((err) => {
           console.log('error', err)
@@ -256,8 +272,11 @@ class Table extends Component {
       await fetch(`http://localhost:3001/exams/${exam._id}`, options)
         .then(response => response.text())
         .catch(error => console.log('error', error));
+
+        this.refreshPage();
     }
-    this.refreshPage();
+    
+
   }
 
   /**
