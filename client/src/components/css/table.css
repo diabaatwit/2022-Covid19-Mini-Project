@@ -3,7 +3,7 @@
 
 div{
 	transition: transform 700ms, margin 500ms, width 700ms, max-width 700ms;;
-
+}
 .patient-table-container{
 	margin: 4% 3% 10% 3%;
 	max-width: 1804px;
@@ -116,7 +116,7 @@ table {
 	cursor: pointer;
 	text-align: center;
 
-
+}
 #create-exam:hover{
 	background-color: #255fdf;
 
