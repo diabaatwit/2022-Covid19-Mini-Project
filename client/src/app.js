@@ -2,8 +2,9 @@ import React from "react"
 import Header from "./components/WebsiteHeader"
 import Admin from "./pages/admin"
 import Home from "./pages/home";
-import Patient from "./pages/patient";
-import Exam from "./pages/exam";
+import PatientInfo from "./pages/patient";
+import ExamInfo from "./pages/exam";
+import ExamInfoEdit from "./pages/examEdit";
 
 import AddExam from "./pages/addExam";
 import DeleteExam from "./pages/deleteExam";
@@ -20,8 +21,9 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/admin" element={<Admin />} />
-                <Route path="/patient/:id" element={<Patient />} />
-                <Route path="/exam/:id" element={<Exam />} />
+                <Route path="/patient/:id" element={<PatientInfo />} />
+                <Route path="/exam/:id" element={<ExamInfo />} />
+                <Route path="/exam/:id/edit" element={<ExamInfoEdit />} />   {/*Added by Diana*/}
                 <Route path="/admin/add-exam" element={<AddExam />} />
                 <Route path="/admin/delete-exam" element={<DeleteExam />} />
                 <Route path="/admin/update-exam" element={<UpdateExam />} />

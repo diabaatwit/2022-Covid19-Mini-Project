@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import Table from './table/TableExams';
+import {FiArrowLeft} from 'react-icons/fi'
 import './css/examPage.css'
 
 
@@ -86,8 +87,7 @@ class PatientInfo extends Component {
 
           <div id="exampage-container">
             <div id="returnhome-link">
-                <img src={require('../images/arrow-icon2.png')} alt="Arrow Icon" />
-                <Link to ="/"> Back to Home Page</Link>
+                <Link to ="/"><FiArrowLeft/> Back to Home Page</Link>
             </div><br/>
             <div id="exampage-label">Patient Details</div>
             <div id="cards-container">

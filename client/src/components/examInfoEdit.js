@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import {FiArrowLeft} from 'react-icons/fi'
+import { FiArrowLeft, FiX,FiPlus } from 'react-icons/fi'
 import './css/examPage.css'
 
 class ExamInfo extends Component {
@@ -79,10 +79,8 @@ class ExamInfo extends Component {
         <div id="returnhome-link">
           <Link to="/"><FiArrowLeft/> Back to Exam List</Link>
         </div>
-        <div class='containerControl'>
-                <a href='/exam/{id}/edit'><button id='createBtn'>Edit</button></a>
-            </div>
         <div id="exampage-label">Exam Details</div>
+
         <div id="cards-container">
           {/* Patient Card */}
           <div class="card-container">
@@ -116,19 +114,49 @@ class ExamInfo extends Component {
                 </div>
                 <div class='column'>
                   <div class='data-column'>
-                    {this.state.exams[0].patientID}
+                    <input
+                      type="text"
+                      name="patientID"
+                      required="required"
+                      placeholder="Patient ID"
+                      value={this.state.exams[0].patientID}
+                    />
                   </div>
                   <div class='data-column'>
-                    {this.state.age}
+                    <input
+                      type="text"
+                      name="age"
+                      required="required"
+                      placeholder="Age"
+                      value={this.state.age}
+                      />
                   </div>
                   <div class='data-column'>
-                    {this.state.sex}
+                    <input
+                      type="text"
+                      name="sex"
+                      required="required"
+                      placeholder="Sex"
+                      value={this.state.sex}
+                      />
                   </div>
                   <div class='data-column'>
-                    {this.state.BMI}
+                    <input
+                      type="text"
+                      name="bmi"
+                      required="required"
+                      placeholder="BMI"
+                      value={this.state.BMI}
+                      />
                   </div>
                   <div class='data-column'>
-                    {this.state.zipCode}
+                    <input
+                        type="text"
+                        name="zipCode"
+                        required="required"
+                        placeholder="ZipCode"
+                        value={this.state.zipCode}
+                        />
                   </div>
                 </div>
               </div>
@@ -162,16 +190,42 @@ class ExamInfo extends Component {
                 </div>
                 <div class='column'>
                   <div class='data-column'>
-                    {this.state.exams[0]._id}
+                  <input
+                    type="text"
+                    name="_id"
+                    required="required"
+                    placeholder="Exam ID"
+                    value={this.state.exams[0]._id}
+                    />
                   </div>
                   <div class='data-column'>
-                    {this.state.exams[0].date}
+                    <input
+                    type="date"
+                    name="date"
+                    required="required"
+                    placeholder="Date"
+                    value={this.state.exams[0].date}
+                    />
                   </div>
                   <div class='data-column'>
-                    <p id="brixia-background">{this.state.exams[0].brixiaScores}</p>
+                    <p id="brixia-background">
+                      <input
+                        type="text"
+                        name="brixiaScores"
+                        required="required"
+                        placeholder="Brixia Scores"
+                        value={this.state.exams[0].brixiaScores}
+                        />
+                    </p>
                   </div>
                   <div class='data-column' id="key-findings">
-                    {this.state.exams[0].keyFindings}
+                    <input
+                        type="text"
+                        name="keyFindings"
+                        required="required"
+                        placeholder="Key Findings"
+                        value={this.state.exams[0].keyFindings}
+                        />
                   </div>
                 </div>
               </div>
