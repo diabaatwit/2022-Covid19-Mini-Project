@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import { FiArrowLeft, FiX,FiPlus } from 'react-icons/fi'
+import { FiArrowLeft } from 'react-icons/fi'
 import './css/examPage.css'
 
 class ExamInfo extends Component {
@@ -80,22 +80,23 @@ class ExamInfo extends Component {
           <Link to="/"><FiArrowLeft/> Back to Exam List</Link>
         </div>
         <div id="exampage-titlecontainer">Exam Details
-            <a href={'/exam/'+this.state.exams[0]._id+'/edit'}>
-              <button id='deleteBtn'>Delete</button>
-            </a>
+
             <a href={'/exam/'+this.state.exams[0]._id+'/edit'}>
               <button id='cancelBtn'>Cancel</button>
             </a>
             <a href={'/exam/'+this.state.exams[0]._id+'/edit'}>
-              <button id='editBtn'>Save</button>
+              <button id='saveBtn'>Save</button>
+            </a>
+            <a href={'/exam/'+this.state.exams[0]._id+'/edit'}>
+              <button id='delBtn'>Delete</button>
             </a>
         </div>
         <div id="cards-container">
           {/* Patient Card */}
           <div class="card-container">
             <div class="card-title-container">
-              <div>
-                <img src={require('../images/patient-icon.png')} alt="Patient Icon" />
+              <div class="icon-image">
+                <img class="icon" src={require('../images/patient-icon.png')} alt="Patient Icon" />
               </div>
               <div>
                 <p>Patient</p>
@@ -124,6 +125,7 @@ class ExamInfo extends Component {
                 <div class='column'>
                   <div class='data-column'>
                     <input
+                      class="inputField"
                       type="text"
                       name="patientID"
                       required="required"
@@ -133,6 +135,7 @@ class ExamInfo extends Component {
                   </div>
                   <div class='data-column'>
                     <input
+                      class="inputField"
                       type="text"
                       name="age"
                       required="required"
@@ -142,6 +145,7 @@ class ExamInfo extends Component {
                   </div>
                   <div class='data-column'>
                     <input
+                      class="inputField"  
                       type="text"
                       name="sex"
                       required="required"
@@ -151,6 +155,7 @@ class ExamInfo extends Component {
                   </div>
                   <div class='data-column'>
                     <input
+                      class="inputField"
                       type="text"
                       name="bmi"
                       required="required"
@@ -160,6 +165,7 @@ class ExamInfo extends Component {
                   </div>
                   <div class='data-column'>
                     <input
+                        class="inputField"
                         type="text"
                         name="zipCode"
                         required="required"
@@ -174,8 +180,8 @@ class ExamInfo extends Component {
           {/* Exam Card */}
           <div class="card-container">
             <div class="card-title-container">
-              <div>
-                <img src={require('../images/exam-icon.png')} alt="Exam Icon" />
+              <div class="icon-image">
+                <img class="icon" src={require('../images/exam-icon.png')} alt="Exam Icon" />
               </div>
               <div>
                 <p>Exam</p>
@@ -200,6 +206,7 @@ class ExamInfo extends Component {
                 <div class='column'>
                   <div class='data-column'>
                   <input
+                    class="inputField"
                     type="text"
                     name="_id"
                     required="required"
@@ -209,6 +216,7 @@ class ExamInfo extends Component {
                   </div>
                   <div class='data-column'>
                     <input
+                    class="inputField"
                     type="date"
                     name="date"
                     required="required"
@@ -217,8 +225,9 @@ class ExamInfo extends Component {
                     />
                   </div>
                   <div class='data-column'>
-                    <p id="brixia-background">
+                    <p>
                       <input
+                        class="inputField"
                         type="text"
                         name="brixiaScores"
                         required="required"
@@ -229,6 +238,7 @@ class ExamInfo extends Component {
                   </div>
                   <div class='data-column' id="key-findings">
                     <input
+                        class="inputFieldParagraph"
                         type="text"
                         name="keyFindings"
                         required="required"
@@ -244,8 +254,9 @@ class ExamInfo extends Component {
 
           {/* X-Ray Image Card */}
           <div class="xray-card">
+            <a href={this.state.exams[0].xRayImageLink} target="_blank" rel="noopener noreferrer">
             <img class="xray-image" src={this.state.exams[0].xRayImageLink} alt="xRayImage" />
-            <div id="examimage-link"><a href={this.state.exams[0].xRayImageLink} target="_blank" rel="noopener noreferrer"><span>View Full Image</span></a></div>
+            </a>
           </div>
         </div>
       </div>
