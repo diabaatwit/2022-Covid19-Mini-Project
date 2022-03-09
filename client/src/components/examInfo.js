@@ -19,6 +19,10 @@ class ExamInfo extends Component {
       BMI: ""
     }
   }
+  redirectTo(){
+    window.location.href="/exam/"+ this.state.exams[0]._id +"/edit";
+    console.log('it works');
+  }
 
   fetchData = async () => {
     try {
@@ -79,16 +83,17 @@ class ExamInfo extends Component {
         <div id="returnhome-link">
           <Link to="/"><FiArrowLeft/> Back to Exam List</Link>
         </div>
-        <div class='containerControl'>
-                <a href='/exam/{id}/edit'><button id='createBtn'>Edit</button></a>
-            </div>
-        <div id="exampage-label">Exam Details</div>
+        <div id="exampage-titlecontainer">Exam Details
+            <a href={'/exam/'+this.state.exams[0]._id+'/edit'}>
+              <button id='editBtn'>Edit</button>
+            </a>
+        </div>
         <div id="cards-container">
           {/* Patient Card */}
           <div class="card-container">
             <div class="card-title-container">
-              <div>
-                <img src={require('../images/patient-icon.png')} alt="Patient Icon" />
+              <div class="icon-image">
+                <img class="icon" src={require('../images/patient-icon.png')} alt="Patient Icon" />
               </div>
               <div>
                 <p>Patient</p>
@@ -137,8 +142,8 @@ class ExamInfo extends Component {
           {/* Exam Card */}
           <div class="card-container">
             <div class="card-title-container">
-              <div>
-                <img src={require('../images/exam-icon.png')} alt="Exam Icon" />
+              <div class="icon-image">
+                <img class="icon" src={require('../images/exam-icon.png')} alt="Exam Icon" />
               </div>
               <div>
                 <p>Exam</p>
@@ -181,8 +186,9 @@ class ExamInfo extends Component {
 
           {/* X-Ray Image Card */}
           <div class="xray-card">
+            <a href={this.state.exams[0].xRayImageLink} target="_blank" rel="noopener noreferrer">
             <img class="xray-image" src={this.state.exams[0].xRayImageLink} alt="xRayImage" />
-            <div id="examimage-link"><a href={this.state.exams[0].xRayImageLink} target="_blank" rel="noopener noreferrer"><span>View Full Image</span></a></div>
+            </a>
           </div>
         </div>
       </div>

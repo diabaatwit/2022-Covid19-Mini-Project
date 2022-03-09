@@ -79,8 +79,17 @@ class ExamInfo extends Component {
         <div id="returnhome-link">
           <Link to="/"><FiArrowLeft/> Back to Exam List</Link>
         </div>
-        <div id="exampage-label">Exam Details</div>
-
+        <div id="exampage-titlecontainer">Exam Details
+            <a href={'/exam/'+this.state.exams[0]._id+'/edit'}>
+              <button id='deleteBtn'>Delete</button>
+            </a>
+            <a href={'/exam/'+this.state.exams[0]._id+'/edit'}>
+              <button id='cancelBtn'>Cancel</button>
+            </a>
+            <a href={'/exam/'+this.state.exams[0]._id+'/edit'}>
+              <button id='editBtn'>Save</button>
+            </a>
+        </div>
         <div id="cards-container">
           {/* Patient Card */}
           <div class="card-container">

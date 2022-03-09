@@ -87,15 +87,15 @@ class PatientInfo extends Component {
 
           <div id="exampage-container">
             <div id="returnhome-link">
-                <Link to ="/"><FiArrowLeft/> Back to Home Page</Link>
-            </div><br/>
-            <div id="exampage-label">Patient Details</div>
+                <Link to ="/"><FiArrowLeft/> Back to Exam List</Link>
+            </div>
+            <div id="exampage-titlecontainer">Patient Details</div>
             <div id="cards-container">
                   {/* Patient Card Title*/}
                   <div class="card-container">
                   <div class="card-title-container">
-                        <div>
-                          <img src={require('../images/patient-icon.png')} alt="Patient Icon" />
+                        <div class="icon-image">
+                          <img class="icon" src={require('../images/patient-icon.png')} alt="Patient Icon" />
                         </div>
                         <div>
                           <p>Patient</p>
