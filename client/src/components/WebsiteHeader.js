@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './css/header.css'
+import { FiHome, FiSettings } from 'react-icons/fi'
 
 class Header extends Component {
     render() {
@@ -8,12 +9,20 @@ class Header extends Component {
                 <div class="inner">
                     <div class="logo">
                         <div>
-                            <h1 className='title'>COVID-19 Reporting App</h1>
+                            <a href="/">
+                                <h1 className='title'>
+                                    <FiHome size={26}/>&nbsp;
+                                    COVID-19 Reporting App
+                                </h1>
+                            </a>
                         </div>
                     </div>
                     <nav>
-                        <li><span><a href="/" class="button">Main</a></span></li>
-                        <li><span><a href="/admin" class="button">Admin</a></span></li>
+                        <span>
+                            <a id="settings-icon" href="/admin">
+                                <FiSettings size={26}/>
+                            </a>
+                        </span>
                     </nav>
                 </div>
             </header>

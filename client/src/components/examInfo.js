@@ -169,8 +169,8 @@ class ExamInfo extends Component {
                   <div class='data-column'>
                     {this.state.exams[0]._id}
                   </div>
-                  <div class='data-column'>
-                    {this.state.exams[0].date}
+                  <div class='data-column'>                    
+                    {(this.state.exams[0].date).split(' ').slice(1,4).join('-')}
                   </div>
                   <div class='data-column'>
                     <p id="brixia-background">{this.state.exams[0].brixiaScores}</p>

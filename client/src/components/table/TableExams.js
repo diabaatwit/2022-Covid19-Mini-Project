@@ -83,15 +83,23 @@ class Table extends Component {
    * Called when an onChange event happens in a <ExamForm> form
    * @param {Object} event passes an event object  from an onChange 
    */
-  handleAddFormChange(event) {
-    event.preventDefault();
+  handleAddFormChange(event, date) {
+    let fieldName;
+    let fieldValue;
 
-    const fieldName = event.target.getAttribute('name')
-    const fieldValue = event.target.value;
-
+    console.log(event);
+    console.log("my new date: " + date);
+    
+    if (date !== undefined) {
+      fieldName = 'date';
+      fieldValue = date;
+    } else if (date === undefined){
+      event.preventDefault();
+      fieldName = event.target.getAttribute('name')
+      fieldValue = event.target.value;
+    }
     const newFormData = { ...this.state.record };
     newFormData[fieldName] = fieldValue;
-
     this.setState({
       record: newFormData
     });

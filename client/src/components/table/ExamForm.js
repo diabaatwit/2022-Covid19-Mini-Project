@@ -1,5 +1,9 @@
-import React from 'react'
-import {FiX,FiPlus} from 'react-icons/fi'
+import React from 'react';
+import {FiX,FiPlus} from 'react-icons/fi';
+
+import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 /**
  * 
@@ -9,6 +13,13 @@ import {FiX,FiPlus} from 'react-icons/fi'
  * @returns 
  */
 export const ExamForm = ({handleAddFormChange, handleAddFormSubmit,cancelExam}) => {
+  const [startDate, setStartDate] = useState(new Date());
+  let handleChange = (date, event) => {
+    setStartDate(date); 
+    handleAddFormChange(event, date);
+    console.log('THIS IS THE DATE' + date);
+  }
+
   return (
     //this is not very dynamic but I'm not very worried about that right now
     <div className="create-exam">
@@ -41,15 +52,22 @@ export const ExamForm = ({handleAddFormChange, handleAddFormSubmit,cancelExam}) 
               />
               </td>
               <td>
-              <input
+              <DatePicker 
+                selected={startDate} 
+                type="date"
+                name="date" 
+                onChange={handleChange} 
+                defaultValue={startDate}
+                dateFormat='dd/MM/yyyy'
+                maxDate = {new Date()} />
+              {/* <input hidden
               type="text"
-
               name="date"
               required="required"
               placeholder="Date"
-
               onChange={handleAddFormChange}
-              /></td>
+              /> */}
+              </td>
               <td>
               <input
               type="text"

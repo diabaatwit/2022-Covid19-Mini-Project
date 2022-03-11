@@ -22,7 +22,7 @@ header{
 
 header .inner{
     margin-left: 5%;
-    margin-right: 10%;
+    margin-right: 7%;
     height: 100%;
     
 }
@@ -41,7 +41,7 @@ header .logo div{
 
 header .logo img{
     height: 50px;
-    margin-top: 5px; /* Optical alignment of the logo */
+    margin-top: 0px; /* Optical alignment of the logo */
 }
 
 header nav{
@@ -53,7 +53,7 @@ header nav li{
     display: table;
     height: 100%;
     float: left;
-    margin-right: 30px;
+    margin-right: 20px;
 }
 
 header nav li:last-of-type{
@@ -63,6 +63,7 @@ header nav li:last-of-type{
 header nav span {
     display: table-cell;
     vertical-align: middle;
+    padding-top: 65%;
 }
 
 header nav .button{
@@ -86,7 +87,9 @@ header nav .button:hover{
     font-family: 'Roboto', sans-serif;
     float: left;
     font-weight: 100;
-    font-size: 1.6em;
+    font-size: 1.4em;
+    display: inline-flex;
+    align-items: center;
 }
 
 #Main-Logo{
@@ -112,3 +115,6 @@ header .settings img{
     float: right;
 }
 
+#settings-icon { 
+    color: #D4D5D4;
+}
