@@ -1,9 +1,9 @@
 import React from 'react';
-import {FiX,FiPlus} from 'react-icons/fi';
-
 import { useState } from "react";
+import {FiX,FiPlus} from 'react-icons/fi';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import _ from "lodash";
 
 /**
  * 
@@ -16,8 +16,8 @@ export const ExamForm = ({handleAddFormChange, handleAddFormSubmit,cancelExam}) 
   const [startDate, setStartDate] = useState(new Date());
   let handleChange = (date, event) => {
     setStartDate(date); 
+    date = date.toDateString()
     handleAddFormChange(event, date);
-    console.log('THIS IS THE DATE' + date);
   }
 
   return (
@@ -41,7 +41,7 @@ export const ExamForm = ({handleAddFormChange, handleAddFormSubmit,cancelExam}) 
           </thead>
           <tbody>
 
-            <tr >
+            <tr>
               <td>
               <input
               type="text"
@@ -53,12 +53,13 @@ export const ExamForm = ({handleAddFormChange, handleAddFormSubmit,cancelExam}) 
               </td>
               <td>
               <DatePicker 
+                className='react-datepicker'
                 selected={startDate} 
                 type="date"
                 name="date" 
                 onChange={handleChange} 
                 defaultValue={startDate}
-                dateFormat='dd/MM/yyyy'
+                dateFormat='MMM-dd-yy'
                 maxDate = {new Date()} />
               {/* <input hidden
               type="text"
@@ -85,13 +86,26 @@ export const ExamForm = ({handleAddFormChange, handleAddFormSubmit,cancelExam}) 
               onChange={handleAddFormChange}
               /></td>
               <td>
-              <input
+              <select
+                type="select"
+                size="1"
+                name="brixiaScores"
+                required="required"
+                placeholder="Brixia Scores"
+                onChange={handleAddFormChange}
+                maxlength="2">
+                  {_.times(19, (i) => (
+                    <option value={i}>{i}</option>
+                  ))}
+              </select>
+              {/* <input
               type="text"
               name="brixiaScores"
               required="required"
               placeholder="Brixia Scores"
               onChange={handleAddFormChange}
-              /></td>
+              /> */}
+              </td>
 
               
 

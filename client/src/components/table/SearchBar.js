@@ -1,9 +1,10 @@
-import React, {Component} from 'react'
-
+import React, {Component} from 'react';
+import '../css/table.css'
 /**
  * Renders the search bar
  */
 class SearchBar extends Component{
+    // eslint-disable-next-line no-useless-constructor
     constructor(props){
         super(props);
     }

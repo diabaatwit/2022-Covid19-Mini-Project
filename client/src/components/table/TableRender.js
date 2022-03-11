@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react'
+import React, { useMemo } from 'react'
 import { useTable } from 'react-table'
 import { COLUMNS } from './columns'
 import { FaEdit, FaTrashAlt } from "react-icons/fa" 
@@ -102,7 +102,7 @@ export const TableRender = ({EXAMS, handleEditClick, handleEditFormChange, handl
                                                 <button className="cancel button-options"
                                                         type ="button" onClick={()=>cancelEdit()}><FiX/>
                                                 </button>
-                                                <button class="save" type="submit" ><FiSave/></button>
+                                                <button className="save" type="submit" ><FiSave/></button>
                                             </div>
                                         </td>
                                         /**

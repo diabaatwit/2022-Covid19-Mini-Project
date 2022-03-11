@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import "react-datepicker/dist/react-datepicker.css";
+
 /* Exam Page Details */
 #exampage-container{
     margin-left: 5%;
     margin-top: 1%;
-    margin-right: 0%;
     margin-bottom: auto;
     display: inline-block;
+    width: 100%;
+    overflow: hidden;
 }
-#exampage-titlecontainer{
+div#exampage-titlecontainer{
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -18,14 +19,22 @@
     padding-bottom: 0.5em;
     padding-left: 0.2em;
     margin-top: 2%;
-    min-width: 593px;
-    position: relative;
-    left: 0%;
-    top: 20%;   
+
+    align-items: center;
+	display: flex;
+	width: 87%;
 }
+div#editexam-buttons{
+	margin-left: auto;
+}
+
+div#exampage-editbutton{
+	margin-left: auto;
+}
+
 #cards-container{
     display: flex;
-    gap: 15px;
+    gap: 2%;
 }
 .exampage-details {
     border-top: solid 2px #242730;
@@ -41,10 +50,9 @@
     border-bottom: 3px solid #DADADA;
     border-radius: 12px 12px 0 0;
     display: inline-flex;
-    flex-wrap: wrap;
     gap: 16px;
     height: 1.8em;
-    width: 430px;
+    min-width: 450px;
     padding-left: 0.5em;
     padding-right: 0.5em;
     padding-top: 0.2em;
@@ -65,11 +73,21 @@ img.icon {
 .card-data-container {
     background-color: #E5E5E5;
     border-radius: 0 0 12px 12px;
-    min-height: 300px;
-    min-width: 430px;
-    max-width: 430px;
+    min-height: 400px;
+    min-width: 50px;
+    width: auto;
+    height: auto;
     padding: 1.5em 0em 0em 1.5em;
-    font-weight: 100;
+
+}
+
+.card-data-container-read-only {
+    background-color: #E5E5E5;
+    border-radius: 0 0 12px 12px;
+    min-height: 400px;
+    min-width:fit-content;
+    width:min-content;
+    padding: 1.5em 0em 0em 1.5em;
 }
 .row {
     display: flex;
@@ -85,20 +103,30 @@ img.icon {
 .title-column {
     font-weight: 600;
     font-size: 18px;
-    line-height: 2.5em;
+    line-height: 3.2em;
     min-width: 130px;
-    max-width: 130px;
+    width: auto;
     min-height: 40px;
+    padding-left: 5px;
 }
 .data-column {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 2.5em;
     min-width: 275px;
     min-height: 40px;
-    padding-right: 10px;
+    padding-left: 20px;
 }
+
+.data-column-read-only {
+    min-width: 275px;
+    min-height: 40px;
+    padding-left: 40px;
+    padding: 0.4rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 2.5em;
+}
+
 #brixia-background{
     background-color: #7CE078;
     border-radius: 0.5em;
@@ -107,10 +135,16 @@ img.icon {
     line-height: 1em;
     margin-top: 0px;
     margin-bottom: 16px;
-    padding: 10px 10px 10px 8px;
+    padding: 7px 6px 2px 4px;
 }
 #key-findings {
+    line-height: 30px; 
+
+}
+
+#key-findings-read-only {
     line-height: 24px;
+    padding-top: 15px;
     
 }
 /* X-Ray Card*/
@@ -118,12 +152,12 @@ img.icon {
     border: solid 1px DADADA;
     background-color: #E5E5E5;
     border-radius: 12px;
-    min-height: 360px;
-    min-width: 430px;
-    max-height: 360px;
-    max-width: 470px;
     padding: 1.1em;
     position: relative;
+    min-height: 400px;
+    min-width: 450px;
+    width: auto;
+    height: auto;
 }
 img.xray-image{
     max-width: 90%;
@@ -165,17 +199,12 @@ img.xray-image{
     padding: .5rem;
     color: white;
     width: 4em;
-    position: absolute;
-    right: 0%;
-    top: 0%;    
     cursor: pointer;
 }
 
 .inputField, textArea{
-	width: 240px;
-    height: 18px;
 	border: 2px solid gray;
-    border-radius: 4px;
+    border-radius: 5px;
 	padding: 0.3rem;
     font-family: 'Roboto', sans-serif;
 	font-size: 16px;
@@ -183,52 +212,43 @@ img.xray-image{
     font-style: normal;
     font-weight: normal;
     line-height: 2.5em;
-    padding-right: 10px;
-    margin: 8px 0px 6px 0px;
+    padding-left: 10px;
+    margin: 8px 0px 8px 0px;
+    width: 93%;
+    height: 1.8em;
 }
 
 textarea.paragraph {
-    width: 240px;
-    height: 90px;
-    font-size: 16px;
-    line-height: 1.3;
-    border: 2px solid gray;
-    border-radius: 4px;
+    width: 93.5%;
+    height: 9em;
+    line-height: 1.4;
 	padding: 0.4rem;
-    
 }
 
 .react-datepicker__input-container input {
-	width: 240px !important;
-    height: 18px;
+	width: 95%;
+    height: 1.8em;
 	border: 2px solid gray;
-    border-radius: 4px;
+    border-radius: 5px;
 	padding: 0.3rem;
     font-family: 'Roboto', sans-serif;
 	font-size: 16px;
-    resize: none;
-    font-style: normal;
-    font-weight: normal;
-    line-height: 2.5em;
-    padding-right: 10px;
-    margin: 8px 0px 6px 0px;
+    margin: 8px 0px 8px 0px;
 }
 
 select{
-	width: 60px;
-    height: 30px;
 	border: 2px solid gray;
-    border-radius: 4px;
+    background-color: white;
+    border-radius: 5px;
 	padding: 0.3rem;
-    text-align-last:center;
     font-family: 'Roboto', sans-serif;
 	font-size: 16px;
     resize: none;
     font-style: normal;
     font-weight: normal;
-    line-height: 2.5em;
-    padding-right: 10px;
-    margin: 8px 0px 6px 0px;
+    margin: 8px 0px 8px 0px;
+    width: 100%;
+    height: 2.5em;
 }
 
 #cancelBtn{
@@ -239,11 +259,9 @@ select{
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     padding: .45rem;
-    width: 4em;
-    position: absolute;
-    right: 6%;
-    top: 0%;    
+    width: 4em;  
     cursor: pointer;
+    margin: 0px 10px 0px 10px;
 }
 
 #cancelBtn:hover{
@@ -259,10 +277,8 @@ select{
     padding: .5rem;
     color: white;
     width: 4em;
-    position: absolute;
-    right: 0%;
-    top: 0%;    
     cursor: pointer;
+    margin: 0px 10px 0px 10px;
 }
 #saveBtn:hover{
     opacity: 0.9;
@@ -276,11 +292,9 @@ select{
     font-size: 18px;
     padding: .5rem;
     color: white;
-    width: 4em;
-    position: absolute;
-    right: 27.5%;
-    top: 0%;    
+    width: 4em; 
     cursor: pointer;
+    margin: 0px 10px 0px 0px;
 }
 #delBtn:hover{
     opacity: 0.9;

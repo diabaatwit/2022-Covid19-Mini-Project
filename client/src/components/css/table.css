@@ -2,7 +2,7 @@
 
 .patient-table-container{
 	margin: 4% 3% 10% 3%;
-	max-width: 1804px;
+	max-width: 1750px;
 	transition: transform 700ms, margin 500ms, width 700ms, max-width 700ms;
 }
 .app-container {
@@ -10,7 +10,9 @@
 	flex-direction: column;
 	gap: 10px;
 	padding: 1rem;
-	min-width: 1080px;
+	min-width: 95%;
+	margin-top: 1em;
+	margin-left: 1em;
   }
 
   .app-container td:last-child, .app-container td:nth-child(1), .app-container td,th{
@@ -29,14 +31,14 @@ table {
   td {
 	text-align: left;
 	padding: 8px;
-
 	
   }
 
  .app-container td{
 	cursor: default;
 	font-family: 'Roboto', sans-serif;
-	font-size: clamp(1.1rem,1.2vw,1.5rem);
+	font-size: clamp(1.1rem,1.2vw,1.3rem);
+	width: auto;
  }
 
  .app-container tr:hover{
@@ -46,6 +48,7 @@ table {
   th {
 	background-color: #ECECF2;
 	font-size: 20px;
+	width: auto;
 	
   }
 
@@ -60,18 +63,24 @@ table {
 }
 
 .create-exam {
-	margin-top: 10px;
-	min-width: 1090px;
+	margin-top: 25px;
+	margin-left: 2em;
+	margin-right: 1em;
+	margin-bottom: 25px;
+	min-width: 98%;
 }
 .create-exam h2{
-	margin-bottom: 10px;
-
+	margin-bottom: 15px;
 
 }
+
+.create-exam thead th{
+	border-bottom: solid 4px white;
+}
+
 .create-exam thead th:first-child{
 	border-radius: 10px 0px 0px 0px;
-
-
+	border-bottom: solid 4px white;
 }
 
 .create-exam thead th:last-child{
@@ -87,14 +96,42 @@ table {
   border-radius: 0px 0px 10px 0;
 }
 .create-exam tbody tr{
-	background-color:rgb(196, 198, 204);
+	/* background-color:rgb(196, 198, 204); */
+	background-color: #ECECF2;
+	border-radius: 10px;
 }
+
+.create-exam tbody input{
+	border: solid 1px #DADADA;
+	border-radius: 5px;
+	background-color: white;
+	font-size: 16px;
+	font-family: 'Roboto', sans-serif;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-top: 1px;
+	line-height: 2em;
+	width: 100%;
+}
+
+.create-exam tbody select{
+	border: solid 1px #DADADA;
+	border-radius: 5px;
+	background-color: white;
+	font-size: 18px;
+	font-family: 'Roboto', sans-serif;
+	padding-top: 0px 8px 0px 8px;
+	width: 100%;
+    height: 2em;
+	vertical-align: top;
+	margin: 0px 0px 0px 0px;
+}
+
+
 
 #create-exam{
 	background-color: #3577D1;
 	color: #FEFEFF;
-
-
 }
 .save:hover{
 	color:#255fdf
@@ -152,6 +189,7 @@ table {
 }
 .button-options-container{
 	display: flex;
+	gap:
 }
 .icon-button{
 	border: none;
@@ -206,6 +244,20 @@ table {
 .edit-view{
 	box-shadow: 0 0 20px rgba(0,0,0,0.3);
 	border-radius: 10px;
+}
+
+.edit-view input{
+	border: solid 1px #a4a5a8;
+	border-radius: 5px;
+	background-color: #ECECF2;
+	font-weight: 100;
+	font-size: 16px;
+	font-family: 'Roboto', sans-serif;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-top: 1px;
+	line-height: 2em;
+	width: 100%;
 }
 
 .icon-button:hover{
@@ -273,11 +325,12 @@ img{
 
 }
 
-tr[role=row] td:first-child a{
+tr[role=row] td a{
 	color: #3476D1;
-	font-weight:bold;
+	font-weight:regular;
 	transition: color 200ms;
 }
+
 tr[role=row] td:first-child a:hover{
 	color: #1851b9;
 
@@ -287,14 +340,20 @@ thead th:first-child, thead th:first-child, tbody td:first-child,thead td:first-
 	padding:15px 20px 15px 20px;
 }
 td{
-	padding-right: 25px;
+	padding-right: 20px;
 }
 th{
 	white-space: nowrap;
 }
 
+.exam-count h1{
+	margin-left: 1em;
+	margin-bottom: 0.3em;
+}
+
 .exam-count p{
-	margin-left: 3px;
+	margin-left: 1.8em;
+	margin-bottom: 1em;
 }
 .key-findings div{
 	flex: 3;
@@ -310,42 +369,57 @@ th{
 #search-nav{
 	align-items: center;
 	display: flex;
-	min-width: 1110px;
+	min-width: 1000px;
+	margin-right: 1%;
 }
 
 #search-container{
 	display:flex;
+	margin-top: 4px;
 	padding: .5em;
+	align-items: center;
 	/* padding-right: 50em; */
-	align-items:flex-start;
+	align-items: flex-start; 
 
 }
 
 #search-label{
 	font-weight: 100;
 	font-size: 1.7em;
-
 	font-family: 'Roboto', sans-serif;
-	
+	margin-left: 1em;
+	margin-top: 2px;
 }
 
 .search-bar{
 	border: solid 1px #a4a5a8;
 	border-radius: 5px;
 	background-color: #ECECF2;
+	vertical-align: middle;
 
+	font-weight: 100;
+	font-size: 17px;
+	font-family: 'Roboto', sans-serif;
+	padding-left: 8px;
+	padding-top: 1px;
 
-	min-width: 100%;
+	min-width: 250px;
 	margin-left: 1em;
+	margin-right: 1em;
+	line-height: 2em;
 
 }
 
-
-
+.react-datepicker__input-container input {
+    height: 2em;
+	border: 2px solid gray;
+    border-radius: 4px;
+	padding: 0.5rem;
+    font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+}
 
 #edit-list,#create-exam{
-
-
 	border: 0;
 	font-size: 20px;
 	margin-left: 1em;
@@ -363,7 +437,7 @@ th{
 	background-color: transparent;
 	color: #4d88da;
 	padding: 10px 15px 10px 15px;
-	min-width: 101.16px;
+	min-width: 101px;
 }
 
 #edit-list:hover{

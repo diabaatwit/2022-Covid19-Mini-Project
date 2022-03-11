@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import SearchBar from './SearchBar';  //Filters the exams
+import '../css/table.css'
 import { ExamForm } from './ExamForm';
+import SearchBar from './SearchBar';  //Filters the exams
 import { TableCount } from './TableCount';  //Displays count
 import { TableRender } from './TableRender'; //Renders the actual table
-import { AdminControls } from './AdminControls'; //Edit List and Creat Exam Button
-import '../css/table.css'
 import '../css/site.css'
+import { AdminControls } from './AdminControls'; //Edit List and Creat Exam Button
 
 /**
  * This component is responsible for putting the whole table view and table tools together

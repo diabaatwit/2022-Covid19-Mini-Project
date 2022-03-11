@@ -72,7 +72,7 @@ class ExamInfo extends Component {
 
     //const [searchTerm, setSearchTerm] = useState('')
     if (isLoading) {
-      return <div class="loading">Loading Exam...</div>
+      return <div className="loading">Loading Exam...</div>
     }
     if (isError) {
       return <div>Error</div>
@@ -83,56 +83,61 @@ class ExamInfo extends Component {
         <div id="returnhome-link">
           <Link to="/"><FiArrowLeft/> Back to Exam List</Link>
         </div>
-        <div id="exampage-titlecontainer">Exam Details
-            <a href={'/exam/'+this.state.exams[0]._id+'/edit'}>
-              <button id='editBtn'>Edit</button>
-            </a>
+        <div id="exampage-titlecontainer">
+            <div>Exam Details
+            </div>
+            <div id="exampage-editbutton">
+              <a href={'/exam/'+this.state.exams[0]._id+'/edit'}>
+                <button id='editBtn'>Edit</button>
+              </a>
+            </div>
+
         </div>
         <div id="cards-container">
           {/* Patient Card */}
-          <div class="card-container">
-            <div class="card-title-container">
-              <div class="icon-image">
-                <img class="icon" src={require('../images/patient-icon.png')} alt="Patient Icon" />
+          <div className="card-container">
+            <div className="card-title-container">
+              <div className="icon-image">
+                <img className="icon" src={require('../images/patient-icon.png')} alt="Patient Icon" />
               </div>
               <div>
                 <p>Patient</p>
               </div>
             </div>
             {/* Patient Card */}
-            <div class="card-data-container">
-              <div class='row'>
-                <div class='column'>
-                  <div class='title-column'>
+            <div className="card-data-container">
+              <div className='row'>
+                <div className='column'>
+                  <div className='title-column'>
                     Patient ID
                   </div>
-                  <div class='title-column'>
+                  <div className='title-column'>
                     Age
                   </div>
-                  <div class='title-column'>
+                  <div className='title-column'>
                     Sex
                   </div>
-                  <div class='title-column'>
+                  <div className='title-column'>
                     BMI
                   </div>
-                  <div class='title-column'>
+                  <div className='title-column'>
                     Zip Code
                   </div>
                 </div>
-                <div class='column'>
-                  <div class='data-column'>
+                <div className='column'>
+                  <div className='data-column-read-only'>
                     {this.state.exams[0].patientID}
                   </div>
-                  <div class='data-column'>
+                  <div className='data-column-read-only'>
                     {this.state.age}
                   </div>
-                  <div class='data-column'>
+                  <div className='data-column-read-only'>
                     {this.state.sex}
                   </div>
-                  <div class='data-column'>
+                  <div className='data-column-read-only'>
                     {this.state.BMI}
                   </div>
-                  <div class='data-column'>
+                  <div className='data-column-read-only'>
                     {this.state.zipCode}
                   </div>
                 </div>
@@ -140,42 +145,42 @@ class ExamInfo extends Component {
             </div>
           </div>
           {/* Exam Card */}
-          <div class="card-container">
-            <div class="card-title-container">
-              <div class="icon-image">
-                <img class="icon" src={require('../images/exam-icon.png')} alt="Exam Icon" />
+          <div className="card-container">
+            <div className="card-title-container">
+              <div className="icon-image">
+                <img className="icon" src={require('../images/exam-icon.png')} alt="Exam Icon" />
               </div>
               <div>
                 <p>Exam</p>
               </div>
             </div>
-            <div class="card-data-container">
-              <div class='row'>
-                <div class='column'>
-                  <div class='title-column'>
+            <div className="card-data-container-read-only">
+              <div className='row'>
+                <div className='column'>
+                  <div className='title-column'>
                     Exam ID
                   </div>
-                  <div class='title-column'>
+                  <div className='title-column'>
                     Date
                   </div>
-                  <div class='title-column'>
+                  <div className='title-column'>
                     Brixia Scores
                   </div>
-                  <div class='title-column'>
+                  <div className='title-column'>
                     Key Findings
                   </div>
                 </div>
-                <div class='column'>
-                  <div class='data-column'>
+                <div className='column'>
+                  <div className='data-column-read-only'>
                     {this.state.exams[0]._id}
                   </div>
-                  <div class='data-column'>                    
+                  <div className='data-column-read-only'>              
                     {(this.state.exams[0].date).split(' ').slice(1,4).join('-')}
                   </div>
-                  <div class='data-column'>
+                  <div className='data-column-read-only'>
                     <p id="brixia-background">{this.state.exams[0].brixiaScores}</p>
                   </div>
-                  <div class='data-column' id="key-findings">
+                  <div className='data-column-read-only' id="key-findings-read-only">
                     {this.state.exams[0].keyFindings}
                   </div>
                 </div>
@@ -185,9 +190,9 @@ class ExamInfo extends Component {
           </div>
 
           {/* X-Ray Image Card */}
-          <div class="xray-card">
+          <div className="xray-card">
             <a href={this.state.exams[0].xRayImageLink} target="_blank" rel="noopener noreferrer">
-            <img class="xray-image" src={this.state.exams[0].xRayImageLink} alt="xRayImage" />
+            <img className="xray-image" src={this.state.exams[0].xRayImageLink} alt="xRayImage" />
             </a>
           </div>
         </div>
