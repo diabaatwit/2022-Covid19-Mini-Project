@@ -1,12 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-
-div{
-	transition: transform 700ms, margin 500ms, width 700ms, max-width 700ms;;
-}
 .patient-table-container{
 	margin: 4% 3% 10% 3%;
 	max-width: 1804px;
+	transition: transform 700ms, margin 500ms, width 700ms, max-width 700ms;
 }
 .app-container {
 	display: flex;

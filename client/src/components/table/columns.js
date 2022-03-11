@@ -3,7 +3,7 @@
  */
 export const COLUMNS = [
     {
-        Header: 'Patient name',
+        Header: 'Patient ID',
         accessor: 'patientID'
     },
     {

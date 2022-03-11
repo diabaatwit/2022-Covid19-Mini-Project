@@ -1,6 +1,4 @@
 import React, {useMemo} from 'react'
-import {useTable} from 'react-table'
-import {COLUMNS} from './columns'
 
 /**
  * responsible for rendering table count

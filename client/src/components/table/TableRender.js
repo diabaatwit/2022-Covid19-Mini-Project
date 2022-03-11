@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react'
-import {useTable} from 'react-table'
-import {COLUMNS} from './columns'
+import { useTable } from 'react-table'
+import { COLUMNS } from './columns'
 import { FaEdit, FaTrashAlt } from "react-icons/fa" 
 import { FiX, FiSave } from "react-icons/fi"
 import { Link } from 'react-router-dom';

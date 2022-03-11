@@ -1,14 +1,11 @@
-import { set } from 'mongoose';
 import React, { Component } from 'react'
-import '../css/table.css'
-import EditableRow from './EditableRow'; //Previous attemp that used a vanilla table to edit inline
-import { ExamForm } from './ExamForm';
-import ReadOnlyRow from './ReadOnlyRow';  //Previous attemp that used a vanilla table to read rows
 import SearchBar from './SearchBar';  //Filters the exams
+import { ExamForm } from './ExamForm';
 import { TableCount } from './TableCount';  //Displays count
 import { TableRender } from './TableRender'; //Renders the actual table
-import '../css/site.css'
 import { AdminControls } from './AdminControls'; //Edit List and Creat Exam Button
+import '../css/table.css'
+import '../css/site.css'
 
 /**
  * This component is responsible for putting the whole table view and table tools together
