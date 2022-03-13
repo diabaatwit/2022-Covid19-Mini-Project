@@ -122,19 +122,19 @@ class PatientInfo extends Component {
                         </div>
                     </div>
                     <div class='column'>
-                      <div class='data-column'>
+                      <div class='data-column-read-only'>
                         {this.state.patients[0]._id}
                       </div>
-                      <div class='data-column'>
+                      <div class='data-column-read-only'>
                         {this.state.patients[0].age}
                       </div>
-                      <div class='data-column'>
+                      <div class='data-column-read-only'>
                         {this.state.patients[0].sex}
                       </div>
-                      <div class='data-column'>
+                      <div class='data-column-read-only'>
                         {this.state.patients[0].BMI}
                       </div>
-                      <div class='data-column'>
+                      <div class='data-column-read-only'>
                         {this.state.patients[0].zipCode}
                       </div>
                       </div>

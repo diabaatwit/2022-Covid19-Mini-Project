@@ -135,7 +135,7 @@ img.icon {
     line-height: 1em;
     margin-top: 0px;
     margin-bottom: 16px;
-    padding: 7px 6px 2px 4px;
+    padding: 7px 6px 4px 4px;
 }
 #key-findings {
     line-height: 30px; 
@@ -274,7 +274,7 @@ textarea.paragraph {
     color: white;
     width: 4em;
     cursor: pointer;
-    margin: 0px 10px 0px 10px;
+    margin: 0px 20px 0px 10px;
 }
 #saveBtn:hover{
     opacity: 0.9;

@@ -6,6 +6,7 @@ import _ from "lodash";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { faJoint } from '@fortawesome/free-solid-svg-icons';
 
 class ExamInfoEdit extends Component {
   constructor(props) {
@@ -144,27 +145,12 @@ class ExamInfoEdit extends Component {
         .catch(error => console.log('error', error));
       this.refreshPage();
     }
-
-
-
-    /*await Promise.all(
-
-      fetch(`http://localhost:3001/exams/${this.state.exams[0]._id}`, editExamOptions),
-      fetch(`http://localhost:3001/patients/${editExamRecord.patientID}`, editPatientOptions)
-
-
-    ).catch((err) => {
-      console.log('error', err)
-    })*/
-
   }
 
   async cancelEditing(event, id) {
     event.preventDefault()
     window.location.assign(`/exam/${id}`);
   }
-
-
 
   /* fetching exam */
   async componentDidMount() {
@@ -190,6 +176,13 @@ class ExamInfoEdit extends Component {
           <div id='editexam-buttons'>
             <a href={'/exam/' + this.state.exams[0]._id + '/edit'}>
               <button
+                id='saveBtn'
+                onClick={(event) => { this.updateExam(event, this.state.exams[0]._id) }}>
+                Save
+              </button>
+            </a>
+            <a href={'/exam/' + this.state.exams[0]._id + '/edit'}>
+              <button
                 id='delBtn'
                 onClick={(event) => { this.deleteExam(event, this.state.exams[0]._id) }}>
                 Delete
@@ -202,13 +195,7 @@ class ExamInfoEdit extends Component {
                 Cancel
               </button>
             </a>
-            <a href={'/exam/' + this.state.exams[0]._id + '/edit'}>
-              <button
-                id='saveBtn'
-                onClick={(event) => { this.updateExam(event, this.state.exams[0]._id) }}>
-                Save
-              </button>
-            </a>
+
           </div>
         </div>
         <div id="cards-container">
@@ -341,28 +328,29 @@ class ExamInfoEdit extends Component {
                       required="required"
                       placeholder="Exam ID"
                       defaultValue={this.state.exams[0]._id}
-                      onChange={console.log("hang in there")}
                       autoFocus
+                      readonly="readonly"
                     />
                   </div>
                   <div className='data-column'>
-                    <DatePicker
+                    {/* <DatePicker
                       wrapperclassName="datePicker"
                       selected={Date.parse(this.state.exams[0].date)}
                       onChange={(e) => this.setState({ date: e.target.value })}
                       defaultValue={Date.parse(this.state.exams[0].date)}
                       dateFormat='MMM-dd-yy'
-                      maxDate={new Date()} />
-                    {/* <input
+                      readonly="readonly"
+                      maxDate={new Date()} /> */}
+                    <input
                     className="inputField"
-                    type="date"
+                    type="text"
                     name="date"
                     required="required"
                     placeholder="Date"
-                    defaultValue={this.state.exams[0].date}
-                    onChange={console.log("hang in there")}
+                    defaultValue= {(this.state.exams[0].date).split(' ').splice(1,4).join("-")}
+                    readonly="readonly"
                     autocomplete="on"
-                    /> */}
+                    />
                   </div>
                   <div className='data-column'>
                     <input id='brixiaScoresInput'
@@ -373,8 +361,6 @@ class ExamInfoEdit extends Component {
                       defaultValue={this.state.exams[0].brixiaScores}
                       onChange={(e) => this.setState({ brixiaScores: e.target.value })}
                       maxlength="6" />
-
-
                   </div>
                   <div className='data-column' id="key-findings">
                     <textarea
