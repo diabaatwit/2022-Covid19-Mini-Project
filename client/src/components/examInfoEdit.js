@@ -142,6 +142,7 @@ class ExamInfoEdit extends Component {
       await fetch(`http://localhost:3001/exams/${id}`, editExamOptions)
         .then(response => response.text())
         .catch(error => console.log('error', error));
+      this.refreshPage();
     }
 
 
