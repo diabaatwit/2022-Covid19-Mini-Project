@@ -16,7 +16,8 @@ class ExamInfo extends Component {
       age: "",
       sex: "",
       zipCode: "",
-      BMI: ""
+      BMI: "",
+      date: ""
     }
   }
   redirectTo(){
@@ -50,7 +51,8 @@ class ExamInfo extends Component {
         const sex = this.state.patients[0].sex
         const zipCode = this.state.patients[0].zipCode
         const BMI = this.state.patients[0].BMI
-        this.setState({ age, sex, zipCode, BMI })
+        const date = this.state.patients[0].date
+        this.setState({ age, sex, zipCode, BMI, date })
 
       } else {
         this.setState({ isErrorPatient: true, isLoadingPatient: false })
@@ -175,7 +177,7 @@ class ExamInfo extends Component {
                     {this.state.exams[0]._id}
                   </div>
                   <div className='data-column-read-only'>              
-                    {(this.state.exams[0].date).split(' ').slice(1,4).join('-')}
+                    {(this.state.exams[0].date)}
                   </div>
                   <div className='data-column-read-only'>
                     <p id="brixia-background">{this.state.exams[0].brixiaScores}</p>

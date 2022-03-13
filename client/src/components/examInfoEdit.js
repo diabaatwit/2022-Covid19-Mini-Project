@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi'
 import './css/examPage.css'
 import _ from "lodash";
-
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -18,10 +17,17 @@ class ExamInfoEdit extends Component {
       isError: false,
       isLoadingPatient: false,
       isErrorPatient: false,
-      age: "",
-      sex: "",
-      zipCode: "",
-      BMI: ""
+
+
+      date: '',
+      xRayImageLink: '',
+      keyFindings: '',
+      brixiaScores: '',
+      patientID: '',
+      age: '',
+      sex: '',
+      zipCode: '',
+      BMI: ''
     }
   }
   fetchData = async () => {
@@ -37,6 +43,11 @@ class ExamInfoEdit extends Component {
         console.log(exams)
         console.log(typeof (exams))
         this.setState({ exams, isLoading: false })
+        const date = this.state.exams[0].date
+        const xRayImageLink = this.state.exams[0].xRayImageLink
+        const keyFindings = this.state.exams[0].keyFindings
+        const brixiaScores = this.state.exams[0].brixiaScores
+        this.setState({ date, xRayImageLink, keyFindings, brixiaScores })
       } else {
         this.setState({ isError: true, isLoading: false })
         //console.log(error)
@@ -76,11 +87,78 @@ class ExamInfoEdit extends Component {
       await fetch(`http://localhost:3001/exams/${id}`, options)
         .then(response => response.text())
         .catch(error => console.log('error', error));
-        this.refreshPage();
+      this.refreshPage();
     }
   }
 
-  async cancelEditing(event,id) {
+  async updateExam(event, id) {
+
+    event.preventDefault()
+    const editExamRecord = {
+
+      date: this.state.date,
+      xRayImageLink: this.state.xRayImageLink,
+      keyFindings: this.state.keyFindings,
+      brixiaScores: this.state.brixiaScores,
+    }
+
+    console.log(this.state.exams[0]._id)
+    console.log(editExamRecord.patientID)
+
+
+    const editPatientRecord = {
+
+      age: this.state.age,
+      sex: this.state.sex,
+      BMI: this.state.BMI,
+      zipCode: this.state.zipCode
+    }
+
+    console.log(editPatientRecord.age)
+    console.log(editPatientRecord.sex)
+
+    const editExamOptions = {
+
+      method: "PATCH",
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(editExamRecord)
+
+    }
+
+    const editPatientOptions = {
+      method: "PATCH",
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(editPatientRecord)
+    }
+    const url = `http://localhost:3001/patients/${editExamRecord.patientID}`
+    console.log(url)
+
+    if (window.confirm("Are you sure you want to update this exam?")) {
+      await fetch(`http://localhost:3001/patients/${this.state.exams[0].patientID}`, editPatientOptions)
+        .then(response => response.text())
+        .catch(error => console.log('error', error));
+      await fetch(`http://localhost:3001/exams/${id}`, editExamOptions)
+        .then(response => response.text())
+        .catch(error => console.log('error', error));
+    }
+
+
+
+    /*await Promise.all(
+
+      fetch(`http://localhost:3001/exams/${this.state.exams[0]._id}`, editExamOptions),
+      fetch(`http://localhost:3001/patients/${editExamRecord.patientID}`, editPatientOptions)
+
+
+    ).catch((err) => {
+      console.log('error', err)
+    })*/
+
+  }
+
+  async cancelEditing(event, id) {
     event.preventDefault()
     window.location.assign(`/exam/${id}`);
   }
@@ -104,27 +182,31 @@ class ExamInfoEdit extends Component {
     return exams.length > 0 ? (
       <div id="exampage-container" >
         <div id="returnhome-link">
-          <Link to="/"><FiArrowLeft/> Back to Exam List</Link>
+          <Link to="/"><FiArrowLeft /> Back to Exam List</Link>
         </div>
         <div id="exampage-titlecontainer">
           <div id='editexam-title'>Exam Details</div>
           <div id='editexam-buttons'>
-          <a href={'/exam/'+this.state.exams[0]._id+'/edit'}>
-                <button 
-                  id='delBtn'
-                  onClick={(event)=>{this.deleteExam(event,this.state.exams[0]._id)}}>
-                  Delete
-                </button>
-              </a>
-            <a href={'/exam/'+this.state.exams[0]._id+'/edit'}>
-              <button 
+            <a href={'/exam/' + this.state.exams[0]._id + '/edit'}>
+              <button
+                id='delBtn'
+                onClick={(event) => { this.deleteExam(event, this.state.exams[0]._id) }}>
+                Delete
+              </button>
+            </a>
+            <a href={'/exam/' + this.state.exams[0]._id + '/edit'}>
+              <button
                 id='cancelBtn'
-                onClick={(event)=>{this.cancelEditing(event,this.state.exams[0]._id)}}>
+                onClick={(event) => { this.cancelEditing(event, this.state.exams[0]._id) }}>
                 Cancel
               </button>
             </a>
-            <a href={'/exam/'+this.state.exams[0]._id+'/edit'}>
-              <button id='saveBtn'>Save</button>
+            <a href={'/exam/' + this.state.exams[0]._id + '/edit'}>
+              <button
+                id='saveBtn'
+                onClick={(event) => { this.updateExam(event, this.state.exams[0]._id) }}>
+                Save
+              </button>
             </a>
           </div>
         </div>
@@ -168,7 +250,7 @@ class ExamInfoEdit extends Component {
                       required="required"
                       placeholder="Patient ID"
                       defaultValue={this.state.exams[0].patientID}
-                      onChange={console.log("hang in there")}
+                      onChange={(e) => this.setState({ patientID: e.target.value })}
                     />
                   </div>
                   <div className='data-column'>
@@ -179,21 +261,21 @@ class ExamInfoEdit extends Component {
                       required="required"
                       placeholder="Age"
                       defaultValue={this.state.age}
-                      onChange={console.log("hang in there")}
+                      onChange={(e) => this.setState({ age: e.target.value })}
                       maxlength="3"
-                      />
+                    />
                   </div>
                   <div className='data-column'>
                     <input
-                      className="inputField"  
+                      className="inputField"
                       type="text"
                       name="sex"
                       required="required"
                       placeholder="Sex"
                       defaultValue={this.state.sex}
-                      onChange={console.log("hang in there")}
+                      onChange={(e) => this.setState({ sex: e.target.value })}
                       maxlength="10"
-                      />
+                    />
                   </div>
                   <div className='data-column'>
                     <input
@@ -203,21 +285,21 @@ class ExamInfoEdit extends Component {
                       required="required"
                       placeholder="BMI"
                       defaultValue={this.state.BMI}
-                      onChange={console.log("hang in there")}
+                      onChange={(e) => this.setState({ BMI: e.target.value })}
                       maxlength="4"
-                      />
+                    />
                   </div>
                   <div className='data-column'>
                     <input
-                        className="inputField"
-                        type="text"
-                        name="zipCode"
-                        required="required"
-                        placeholder="ZipCode"
-                        defaultValue={this.state.zipCode}
-                        onChange={console.log("hang in there")}
-                        maxlength="5"
-                        />
+                      className="inputField"
+                      type="text"
+                      name="zipCode"
+                      required="required"
+                      placeholder="ZipCode"
+                      defaultValue={this.state.zipCode}
+                      onChange={(e) => this.setState({ zipCode: e.target.value })}
+                      maxlength="5"
+                    />
                   </div>
                 </div>
               </div>
@@ -251,25 +333,25 @@ class ExamInfoEdit extends Component {
                 </div>
                 <div className='column'>
                   <div className='data-column'>
-                  <input
-                    className="inputField"
-                    type="text"
-                    name="_id"
-                    required="required"
-                    placeholder="Exam ID"
-                    defaultValue={this.state.exams[0]._id}
-                    onChange={console.log("hang in there")}
-                    autoFocus
+                    <input
+                      className="inputField"
+                      type="text"
+                      name="_id"
+                      required="required"
+                      placeholder="Exam ID"
+                      defaultValue={this.state.exams[0]._id}
+                      onChange={console.log("hang in there")}
+                      autoFocus
                     />
                   </div>
                   <div className='data-column'>
-                  <DatePicker 
-                    wrapperclassName="datePicker"
-                    selected={Date.parse(this.state.exams[0].date)} 
-                    onChange={console.log('stuck here')}
-                    defaultValue={Date.parse(this.state.exams[0].date)}
-                    dateFormat='MMM-dd-yy'
-                    maxDate = {new Date()} />
+                    <DatePicker
+                      wrapperclassName="datePicker"
+                      selected={Date.parse(this.state.exams[0].date)}
+                      onChange={(e) => this.setState({ date: e.target.value })}
+                      defaultValue={Date.parse(this.state.exams[0].date)}
+                      dateFormat='MMM-dd-yy'
+                      maxDate={new Date()} />
                     {/* <input
                     className="inputField"
                     type="date"
@@ -282,31 +364,28 @@ class ExamInfoEdit extends Component {
                     /> */}
                   </div>
                   <div className='data-column'>
-                    <select
-                      type="select"
-                      size="1"
+                    <input id='brixiaScoresInput'
+                      type="text"
                       name="brixiaScores"
                       required="required"
                       placeholder="Brixia Scores"
                       defaultValue={this.state.exams[0].brixiaScores}
-                      onChange={console.log("hang in there")}
-                      maxlength="2">
-                        {_.times(19, (i) => (
-                          <option value={i}>{i}</option>
-                        ))}
-                    </select>
+                      onChange={(e) => this.setState({ brixiaScores: e.target.value })}
+                      maxlength="6" />
+
+
                   </div>
                   <div className='data-column' id="key-findings">
                     <textarea
-                        className="paragraph"
-                        type="text"
-                        name="keyFindings"
-                        required="required"
-                        placeholder="Key Findings"
-                        maxlength="180"
-                        defaultValue={this.state.exams[0].keyFindings}
-                        onChange={console.log("hang in there")}
-                        />
+                      className="paragraph"
+                      type="text"
+                      name="keyFindings"
+                      required="required"
+                      placeholder="Key Findings"
+                      maxlength="180"
+                      defaultValue={this.state.exams[0].keyFindings}
+                      onChange={(e) => this.setState({ keyFindings: e.target.value })}
+                    />
                   </div>
                 </div>
               </div>
@@ -315,7 +394,7 @@ class ExamInfoEdit extends Component {
           {/* X-Ray Image Card */}
           <div className="xray-card">
             <a href={this.state.exams[0].xRayImageLink} target="_blank" rel="noopener noreferrer">
-            <img className="xray-image" src={this.state.exams[0].xRayImageLink} alt="xRayImage" />
+              <img className="xray-image" src={this.state.exams[0].xRayImageLink} alt="xRayImage" />
             </a>
           </div>
         </div>
