@@ -16,8 +16,3 @@ Key Visual Elements:
 - Staying true to the reference material and adding functionally conscious to the overall aesthetic.
 - Creating visual feedback with CSS, to make sure user experience is enjoyable, easy, and intuitive. 
 - Making sure the design is responsive to different monitor sizes.
-
-Learning Takeaways:
-- Cooperating with team members to divide tasks, help debug code, meet deadlines, and have fun in a work environment.
-- Learning the ins-and-out of a MERN stack. application while improving team leadership.
-- Improving my work-flow and problem solving skills.
