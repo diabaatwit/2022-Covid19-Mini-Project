@@ -16,3 +16,16 @@ Key Visual Elements:
 - Staying true to the reference material and adding functionally conscious to the overall aesthetic.
 - Creating visual feedback with CSS, to make sure user experience is enjoyable, easy, and intuitive. 
 - Making sure the design is responsive to different monitor sizes.
+
+
+### Getting Started:
+
+Please make sure you have the latest version of Node.js installed, as well as its package manager npm before continuing.
+
+Install dependencies:
+
+$ npm install
+
+Start the web server:
+
+$ npm start
