@@ -21,7 +21,3 @@ Learning Takeaways:
 - Cooperating with team members to divide tasks, help debug code, meet deadlines, and have fun in a work environment.
 - Learning the ins-and-out of a MERN stack. application while improving team leadership.
 - Improving my work-flow and problem solving skills.
-
-![App](https://ibb.co/cwzjds8)
-
-
