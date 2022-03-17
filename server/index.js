@@ -37,6 +37,7 @@ app.get("/", (req, res) => {
 if(process.env.NODE_ENV === 'production') {
   // serve any static files
   app.use(express.static(path.join(__dirname, 'client/build')));
+  app.use(favicon(__dirname + 'client/build/favicon.ico'));
   //handle react routing, return all requests to react app
   app.get('*', function(req, res){
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
