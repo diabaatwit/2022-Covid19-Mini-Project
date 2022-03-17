@@ -34,6 +34,15 @@ app.get("/", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
 
+if(process.env.NODE_ENV === 'production') {
+  // serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  //handle react routing, return all requests to react app
+  app.get('*', function(req, res){
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
+
 // server listening on port 3001
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
