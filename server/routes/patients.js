@@ -5,7 +5,7 @@ const cors = require('cors')
 
 
 //Give write access to server
-const whitelist = ["http://localhost:3000", "https://covid19-reporting-app.herokuapp.com"]
+const whitelist = ["http://localhost:3000", "https://covid19-reporting-web-app.herokuapp.com"]
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {
